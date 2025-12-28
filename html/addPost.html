@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+    <title>Unigames-aggiunta post</title>
+    <link rel="stylesheet" href="#">
+    </head>
+    <main>
+            <form action="#"  method="POST">
+                <h1>Inserisci i dati del nuovo Post</h1>
+                <fieldset>
+                    <label for="titolo">Titolo</label><br/>
+                    <input type="text" id="titolo" name="titolo"/><br/><br/>
+                    <label>Tipo di post</label><br/>
+                    <label for="generico">Generico</label>
+                    <input type="radio" id="generico" name="tipo_post">
+                    <label for="recensione_videogioco">Recensione Videogioco in libreria</label>
+                    <input type="radio" id="recensione_videogioco" name="tipo_post"><br/><br/>
+
+                    <div id="sezione_recensione_videogioco">
+                        <label for="scelta_gioco">Scegli il gioco da recensire:</label>
+                        <select id="videogioco" name="videogioco">
+                        <option value="">-- Seleziona un videogioco --</option>
+                        <option value="Elden Ring">Elden Ring</option>
+                        <option value="Clair Obscure: Expedition 33">Clair Obscure: Expedition 33</option>
+                        <option value="God of War">God of War</option>
+                        <option value="Dark Souls III">Dark Souls III</option>
+                        </select><br/><br/>
+
+                        <label for="voto">Valuta il gioco secondo la tua opinione:</label>
+                        <select id="voto" name="voto">
+                        <option value="">-- Seleziona un voto --</option>
+                        <option value="0">0</option>
+                        <option value="0.5">0.5</option>
+                        <option value="1">1</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3">3</option>
+                        <option value="3.5">3.5</option>
+                        <option value="4">4</option>
+                        <option value="4.5">4.5</option>
+                        <option value="5">5</option>
+                        </select><br/><br/>
+                        <label for="testo_rec">Testo della recensione</label><br/>
+                        <input type="text" id="testo_rec" name ="testo_rec"><br/><br/>
+                    </div>
+
+                    <div id = "sezione_generico">
+                    <label for="testo_post">Testo del post</label><br/>
+                    <input type="text" id="testo_post" name ="testo_post"><br/><br/>
+                    </div>
+                    
+                    
+                </fieldset>
+                <input type="submit" value="invia">
+                <input type="reset" value="cancella">
+            </form>
+    
+        <script> 
+            const radioGenerico = document.getElementById("generico");
+            const radioRecensione = document.getElementById("recensione_videogioco");
+            const sezioneGenerico = document.getElementById("sezione_generico");
+            const sezioneRecensione = document.getElementById("sezione_recensione_videogioco");
+
+            sezioneGenerico.style.display = "none";
+            sezioneRecensione.style.display = "none";
+
+            radioGenerico.addEventListener("change", () => {
+                sezioneGenerico.style.display = "block";
+                sezioneRecensione.style.display = "none"; 
+            });
+            radioRecensione.addEventListener("change", () => { 
+                sezioneGenerico.style.display = "none";
+                sezioneRecensione.style.display = "block"; 
+            });
+        </script>
+    </main>
+</html>
