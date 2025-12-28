@@ -5,9 +5,11 @@
     <link rel="stylesheet" href="#">
     </head>
     <main>
-            <form action="#">
+            <form action="#"  method="POST" enctype="multipart/form-data">
                 <h1>Inserisci i dati del Videogioco</h1>
                 <fieldset>
+                    <label for="immagine">Aggiungi immagine:</label><br/>
+                    <input type="file" id="immagine" name="immagine" accept="image/*"><br/><br/>
                     <label for="titolo">Titolo</label><br/>
                     <input type="text" id="titolo" name="titolo"/><br/><br/>
                     <label for="anno_pubb">Anno di pubblicazione</label><br/>
