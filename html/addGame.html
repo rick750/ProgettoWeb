@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+    <title>Unigames-aggiunta videogioco in libreria</title>
+    <link rel="stylesheet" href="#">
+    </head>
+    <main>
+            <form action="#">
+                <h1>Inserisci i dati del Videogioco</h1>
+                <fieldset>
+                    <label for="titolo">Titolo</label><br/>
+                    <input type="text" id="titolo" name="titolo"/><br/><br/>
+                    <label for="anno_pubb">Anno di pubblicazione</label><br/>
+                    <input type="number" id="anno_pubb" name="anno_pubb"><br/><br/>
+                    <label for="software_house">Software house</label><br/>
+                    <input type="text" id="software_house" name ="software_house"><br/><br/>
+                    <label for="tags">Tags</label><br/>
+                    <input type="text" id="tags" name="tags"><br/><br/>
+                    <label for="voto">Recensione testata giornalistica:</label>
+                    <select id="voto" name="voto">
+                        <option value="">-- Seleziona un voto --</option>
+                        <option value="0">0</option>
+                        <option value="0.5">0.5</option>
+                        <option value="1">1</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3">3</option>
+                        <option value="3.5">3.5</option>
+                        <option value="4">4</option>
+                        <option value="4.5">4.5</option>
+                        <option value="5">5</option>
+                    </select><br/><br/>
+                <label for="descr">Descrizione testuale</label><br/>
+                <input type="text" id="descr" name="descr"/><br/><br/>
+                </fieldset>
+                <input type="submit" value="invia">
+                <input type="reset" value="cancella">
+            </form>
+        
+    </main>
+</html>
