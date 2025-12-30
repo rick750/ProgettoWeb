@@ -11,9 +11,17 @@ INSERT INTO UTENTE VALUES
 -- TAG
 -- =====================
 INSERT INTO TAG VALUES
-(1,"Action","riccardo.carta2@studio.unibo.it"),
-(2,"Indie","marco.battistini10@studio.unibo.it"),
-(3,"Multiplayer","riccardo.carta2@studio.unibo.it");
+(1,"Avventura","riccardo.carta2@studio.unibo.it"),
+(2,"Azione","riccardo.carta2@studio.unibo.it"),
+(3,"Famiglia","marco.battistini10@studio.unibo.it"),
+(4,"Gioco di Ruolo","riccardo.carta2@studio.unibo.it"),
+(5,"Horror","marco.battistini10@studio.unibo.it"),
+(6,"Indie","marco.battistini10@studio.unibo.it"),
+(7,"Multiplayer","riccardo.carta2@studio.unibo.it"),
+(8,"Platform","riccardo.carta2@studio.unibo.it"),
+(9,"Sparatutto","marco.battistini10@studio.unibo.it"),
+(10,"Sport","marco.battistini10@studio.unibo.it"),
+(11,"Visual Novel","riccardo.carta2@studio.unibo.it");
 
 -- =====================
 -- GIOCHI
