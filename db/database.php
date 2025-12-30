@@ -67,6 +67,24 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
+    public function getTornei() {
+        $query = "SELECT t.nome AS nomeTorneo, g.nome AS nomeGioco, t.descrizione, t.data
+                    FROM TORNEO t, GIOCO g
+                    WHERE g.codiceGioco = t.codiceGioco
+                    ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getTorneiIscritto() {
+
+    }
+    public function getTorneiNonIscritto() {
+
+    }
 
     public function getGiochiRandom($n = -1) {
         $query = "SELECT g.codiceGioco, g.nome, g.valutazioneGiornalistica,

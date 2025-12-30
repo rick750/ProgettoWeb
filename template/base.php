@@ -24,13 +24,13 @@
     <nav class="bg-dark border-bottom border-secondary">
         <ul class="nav justify-content-center gap-3 py-2">
             <li class="nav-item">
-                <a class="nav-link text-primary fw-semibold active" aria-current="page" href="#">HOME</a>
+                <a class="nav-link text-primary fw-semibold active" href="index.php">HOME</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-primary" href="#">GIOCHI</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="#">TORNEI</a>
+                <a class="nav-link text-primary" href="tornei.php">TORNEI</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-primary" href="#">NOTIFICHE</a>
