@@ -7,7 +7,7 @@ $templateParams["nome"] = "lista-post.php";
 $templateParams["giochiRandom"] = "lista-giochiRandom.php";
 $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(2);
 //Home Template
-$templateParams["filtri"] = $dbh->getTags();
+$templateParams["filtri"] = [["id" => "generici", "nome" => "Generici"], ["id" => "recensioni", "nome" => "Recensioni"]];
 $templateParams["post"] = $dbh->getGenericPosts(2);
 $templateParams["recensioni"] = $dbh->getRecensioni(2);
 
