@@ -5,10 +5,7 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "Unigames - Home";
 $templateParams["nome"] = "lista-tornei.php";
 //Tornei Template
-$templateParams["filtri"] = [
-    ["id" => "iscritto", "nome" => "Iscritto"],
-    ["id" => "noniscritto", "nome" => "Non iscritto"]
-];
+$templateParams["filtri"] = [["id" => "iscritto", "nome" => "Iscritto"]];
 $templateParams["tornei"] = $dbh->getTornei();
 $templateParams["tornei_iscritto"] = $dbh->getTorneiIscritto();
 $templateParams["tornei_noniscritto"] = $dbh->getTorneiNonIscritto();
