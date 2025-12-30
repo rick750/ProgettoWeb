@@ -1,5 +1,5 @@
 <?php foreach($templateParams["post"] as $post): ?>
-<article>
+<article class="border rounded p-4 bg-light">
     <header>
         <h2><?php echo $post["titolo"]; ?></h2>
         <p><?php echo $post["data"]; ?> - <?php echo $post["crea_email"]; ?></p>
@@ -11,7 +11,7 @@
 <?php endforeach; ?>
 
 <?php foreach($templateParams["recensioni"] as $recensioni): ?>
-<article>
+<article class="border rounded p-4 bg-light">
     <header>
         <h2><?php echo $recensioni["titolo"]; ?></h2>
         <p><?php echo $recensioni["data"]; ?> - <?php echo $recensioni["crea_email"]; ?></p>
