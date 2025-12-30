@@ -53,10 +53,6 @@
                 </div>
                 <?php endforeach; ?>
             </form>
-            <button class="btn btn-primary rounded-pill px-4">
-                Nuovo
-            </button>
-
         </div>
     </div>
 
@@ -72,12 +68,15 @@
             </section>
 
             <aside class="col-md-3 text-muted border-start border-secondary ps-md-4">
-                <div class="border rounded p-3 mb-4 bg-light">
-                    <p class="fw-bold mb-0">Novità</p>
-                </div>
-
-                <div class="border rounded p-4 text-center bg-light">
-                    Gioco random
+                    <button class="btn btn-primary rounded-pill px-4 d-flex justify-content-center">
+                        Nuovo
+                    </button>
+                <div>
+                    <?php
+                        if (isset($templateParams["giochiRandom"])) {
+                            require($templateParams["giochiRandom"]);
+                        }
+                    ?>
                 </div>
             </aside>
         </div>

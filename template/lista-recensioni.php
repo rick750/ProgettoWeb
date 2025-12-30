@@ -1,4 +1,4 @@
-        <?php ?>
+
         <?php foreach($templateParams["recensioni"] as $recensioni): ?>
         <article>
             <header>
