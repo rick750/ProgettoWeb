@@ -44,11 +44,11 @@
     <div class="bg-light border-bottom border-secondary py-2">
         <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
             <form class="d-flex flex-wrap align-items-center gap-3">
-                <?php foreach($templateParams["tag"] as $tag): ?>
+                <?php foreach($templateParams["filtri"] as $filtro): ?>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="filter-generico">
                     <label class="form-check-label" for="filter-generico">
-                        <?php echo $tag["nome"]; ?>
+                        <?php echo $filtro["nome"]; ?>
                     </label>
                 </div>
                 <?php endforeach; ?>
