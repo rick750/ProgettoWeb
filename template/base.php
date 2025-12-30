@@ -46,7 +46,7 @@
             <form class="d-flex flex-wrap align-items-center gap-3">
                 <?php foreach ($templateParams["filtri"] as $filtro): ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="filter-generico">
+                        <input class="form-check-input" type="checkbox" id="filter-generico" <?php if ($templateParams["selezionaFiltro"]) echo "checked"; ?>>
                         <label class="form-check-label" for="filter-generico">
                             <?php echo $filtro["nome"]; ?>
                         </label>
