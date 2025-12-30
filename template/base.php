@@ -30,7 +30,7 @@
                 <a class="nav-link text-primary" href="#">GIOCHI</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="#">TORNEI</a>
+                <a class="nav-link text-primary" href="tornei.php">TORNEI</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-primary" href="#">NOTIFICHE</a>

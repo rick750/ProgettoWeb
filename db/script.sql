@@ -37,7 +37,7 @@ INSERT INTO GIOCO VALUES
 -- =====================
 INSERT INTO POST VALUES
 ("riccardo.carta2@studio.unibo.it",1,
- "Qualcuno ha provato l'ultimo DLC?",
+ "Qualcuno ha provato l\'ultimo DLC?",
  "2025-01-10","Domanda DLC",
  NULL,'G'),
 
