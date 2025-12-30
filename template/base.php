@@ -44,13 +44,13 @@
     <div class="bg-light border-bottom border-secondary py-2">
         <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
             <form class="d-flex flex-wrap align-items-center gap-3">
-                <?php foreach($templateParams["filtri"] as $filtro): ?>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="filter-generico">
-                    <label class="form-check-label" for="filter-generico">
-                        <?php echo $filtro["nome"]; ?>
-                    </label>
-                </div>
+                <?php foreach ($templateParams["filtri"] as $filtro): ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="filter-generico">
+                        <label class="form-check-label" for="filter-generico">
+                            <?php echo $filtro["nome"]; ?>
+                        </label>
+                    </div>
                 <?php endforeach; ?>
             </form>
         </div>
@@ -68,17 +68,21 @@
             </section>
 
             <aside class="col-md-3 text-muted border-start border-secondary ps-md-4">
-                    <button class="btn btn-primary rounded-pill px-4 d-flex justify-content-center">
+                <div class="d-flex justify-content-center mb-3">
+                    <button class="btn btn-primary rounded-pill px-4">
                         Nuovo
                     </button>
+                </div>
+
                 <div>
                     <?php
-                        if (isset($templateParams["giochiRandom"])) {
-                            require($templateParams["giochiRandom"]);
-                        }
+                    if (isset($templateParams["giochiRandom"])) {
+                        require($templateParams["giochiRandom"]);
+                    }
                     ?>
                 </div>
             </aside>
+
         </div>
     </main>
 
