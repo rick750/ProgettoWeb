@@ -59,12 +59,10 @@ CREATE TABLE POST (
   testo VARCHAR(2000) NOT NULL,
   data DATE NOT NULL,
   titolo VARCHAR(150) NOT NULL,
-  email VARCHAR(254) NOT NULL,
   RECENSIONE VARCHAR(1),
   GENERICO VARCHAR(1),
   PRIMARY KEY (crea_email, codicePost),
   FOREIGN KEY (crea_email) REFERENCES UTENTE(email),
-  FOREIGN KEY (email) REFERENCES ADMIN(email),
   CHECK (
     (GENERICO IS NOT NULL AND RECENSIONE IS NULL)
     OR
@@ -88,7 +86,7 @@ CREATE TABLE GIOCO (
 CREATE TABLE RECENSIONE (
   crea_email VARCHAR(254) NOT NULL,
   codicePost NUMERIC(10) NOT NULL,
-  valutazione VARCHAR(10) NOT NULL,
+  valutazione NUMERIC (3) NOT NULL,
   codiceGioco NUMERIC(10) NOT NULL,
   PRIMARY KEY (crea_email, codicePost),
   FOREIGN KEY (crea_email, codicePost) REFERENCES POST(crea_email, codicePost),

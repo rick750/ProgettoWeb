@@ -19,9 +19,9 @@ INSERT INTO TAG VALUES
 -- GIOCHI
 -- =====================
 INSERT INTO GIOCO VALUES
-(100,"Zelda: Breath of the Wild","2017-03-03","Nintendo",97,
+(00001,"Zelda: Breath of the Wild","2017-03-03","Nintendo",5,
  "Open world rivoluzionario","zelda.jpg","riccardo.carta2@studio.unibo.it"),
-(101,"Hades","2020-09-17","Supergiant Games",93,
+(00002,"Hades","2020-09-17","Supergiant Games",4.5,
  "Roguelike frenetico","hades.jpg","marco.battistini10@studio.unibo.it");
 
 -- =====================
@@ -31,13 +31,11 @@ INSERT INTO POST VALUES
 ("riccardo.carta2@studio.unibo.it",1,
  "Qualcuno ha provato l'ultimo DLC?",
  "2025-01-10","Domanda DLC",
- "riccardo.carta2@studio.unibo.it",
  NULL,'G'),
 
 ("marco.battistini10@studio.unibo.it",1,
  "Consigli per giochi cooperativi?",
  "2025-01-11","Co-op games",
- "marco.battistini10@studio.unibo.it",
  NULL,'G');
 
 INSERT INTO GENERICO VALUES
@@ -51,11 +49,10 @@ INSERT INTO POST VALUES
 ("luca.rossi@studio.unibo.it",1,
  "Un capolavoro senza tempo",
  "2025-01-12","Recensione Zelda",
- "luca.rossi@studio.unibo.it",
  'R',NULL);
 
 INSERT INTO RECENSIONE VALUES
-("luca.rossi@studio.unibo.it",1,"10/10",100);
+("luca.rossi@studio.unibo.it",1,"5",00001);
 
 -- =====================
 -- COMMENTI
@@ -73,7 +70,7 @@ INSERT INTO COMMENTO VALUES
 -- TORNEI
 -- =====================
 INSERT INTO TORNEO VALUES
-(101,1,"Hades Speedrun",
+(00002,1,"Hades Speedrun",
  "Torneo universitario","2025-02-20",
  "marco.battistini10@studio.unibo.it");
 
@@ -81,8 +78,8 @@ INSERT INTO TORNEO VALUES
 -- ISCRIZIONI TORNEI
 -- =====================
 INSERT INTO iscrizione VALUES
-(101,1,"riccardo.carta2@studio.unibo.it"),
-(101,1,"anna.verdi@studio.unibo.it");
+(00002,1,"riccardo.carta2@studio.unibo.it"),
+(00002,1,"anna.verdi@studio.unibo.it");
 
 -- =====================
 -- CORSI
@@ -102,6 +99,6 @@ INSERT INTO iscritto VALUES
 -- TAG ↔ GIOCHI
 -- =====================
 INSERT INTO riguarda VALUES
-(100,1),
-(100,3),
-(101,2);
+(00001,1),
+(00001,3),
+(00002,2);
