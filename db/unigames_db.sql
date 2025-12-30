@@ -166,3 +166,10 @@ CREATE TABLE riguarda (
   FOREIGN KEY (codiceTag) REFERENCES TAG(codiceTag)
 ) ENGINE=InnoDB;
 
+
+INSERT INTO UTENTE
+VALUES ("riccardo.carta2@studio.unibo.it","Riccardo2025","Riccardo","Carta","2004-07-28","0001115294","Hello World!"),
+("marco.battistini10@studio.unibo.it","Marco2025","Marco","Battistini","2004-11-28","0001114229","Ciao!");
+INSERT INTO ADMIN VALUES
+("riccardo.carta2@studio.unibo.it"),
+("marco.battistini10@studio.unibo.it");
