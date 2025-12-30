@@ -22,6 +22,7 @@ USE Unigames_db;
 
 CREATE TABLE UTENTE (
   email VARCHAR(254) NOT NULL,
+  password varchar(254) not null,
   nome VARCHAR(30) NOT NULL,
   cognome VARCHAR(30) NOT NULL,
   dataDiNascita DATE NOT NULL,
