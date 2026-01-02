@@ -43,17 +43,17 @@
 
     <div class="bg-light border-bottom border-secondary py-2">
         <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
-            <form class="d-flex flex-wrap align-items-center gap-3">
+            <form method="get" class="d-flex flex-wrap align-items-center gap-3" id="form-filtri">
                 <?php foreach ($templateParams["filtri"] as $filtro): ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="filter-generico" <?php if ($templateParams["selezionaFiltro"])
-                            echo "checked"; ?>>
-                        <label class="form-check-label" for="filter-generico">
-                            <?php echo $filtro["nome"]; ?>
-                        </label>
+                        <input class="form-check-input" type="checkbox" name="filter[]"
+                            value="<?php echo $filtro["valore"]; ?>" <?php if (in_array($filtro["valore"], $templateParams["selezionaFiltro"]))
+                                   echo "checked"; ?>>
+                        <label class="form-check-label"><?php echo $filtro["nome"]; ?></label>
                     </div>
                 <?php endforeach; ?>
             </form>
+
         </div>
     </div>
 
@@ -92,6 +92,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="js/info-giochi.js"></script>
+    <script src="js/filtri-di-ricerca.js"></script>
+    <script src="js/info-post.js"></script>
 </body>
 
 </html>
