@@ -124,8 +124,14 @@ class DatabaseHelper
               ";
         if (!empty($filtri)) {
             $in = implode(',', array_map('intval', $filtri));
-            $query .= " WHERE r.codiceTag IN ($in)";
+            $query .= " WHERE g.codiceGioco IN (
+                        SELECT g2.codiceGioco
+                        FROM GIOCO g2
+                        LEFT JOIN riguarda r2 ON g2.codiceGioco = r2.codiceGioco
+                        WHERE r2.codiceTag IN ($in)
+                    )";
         }
+
         $query .= " GROUP BY g.codiceGioco";
 
         $stmt = $this->db->prepare($query);
@@ -134,5 +140,6 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
 }
 ?>
