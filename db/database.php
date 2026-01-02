@@ -34,7 +34,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getRecensioni($n = -1) {
+    public function getRecensioni($n = -1)
+    {
         $query = "SELECT p.*, r.valutazione, g.nome
                     FROM POST p
                     JOIN RECENSIONE r
@@ -57,18 +58,20 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getTags(){
-        $query = "SELECT t.nome
-                    FROM TAG t
-                    ";
+    public function getTags()
+    {
+        $query = "SELECT t.codiceTag, t.nome
+              FROM TAG t";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
-    public function getTornei() {
+
+
+    public function getTornei()
+    {
         $query = "SELECT t.nome AS nomeTorneo, g.nome AS nomeGioco, t.descrizione, t.data
                     FROM TORNEO t, GIOCO g
                     WHERE g.codiceGioco = t.codiceGioco
@@ -79,14 +82,17 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function getTorneiIscritto() {
+    public function getTorneiIscritto()
+    {
 
     }
-    public function getTorneiNonIscritto() {
+    public function getTorneiNonIscritto()
+    {
 
     }
 
-    public function getGiochiRandom($n = -1) {
+    public function getGiochiRandom($n = -1)
+    {
         $query = "SELECT g.codiceGioco, g.nome, g.valutazioneGiornalistica,
                      GROUP_CONCAT(t.nome SEPARATOR ', ') AS listaTag
                     FROM GIOCO g
@@ -108,19 +114,25 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getLibreriaGiochi() {
+    public function getLibreriaGiochi($filtri = [])
+    {
         $query = "SELECT g.*,
                      GROUP_CONCAT(t.nome SEPARATOR ', ') AS listaTag
-                    FROM GIOCO g
-                    LEFT JOIN riguarda r ON g.codiceGioco = r.codiceGioco
-                    LEFT JOIN TAG t ON r.codiceTag = t.codiceTag
-                    GROUP BY g.codiceGioco, g.nome, g.valutazioneGiornalistica;";
+              FROM GIOCO g
+              LEFT JOIN riguarda r ON g.codiceGioco = r.codiceGioco
+              LEFT JOIN TAG t ON r.codiceTag = t.codiceTag
+              ";
+        if (!empty($filtri)) {
+            $in = implode(',', array_map('intval', $filtri));
+            $query .= " WHERE r.codiceTag IN ($in)";
+        }
+        $query .= " GROUP BY g.codiceGioco";
+
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
 }
 ?>
