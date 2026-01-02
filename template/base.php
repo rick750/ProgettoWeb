@@ -57,24 +57,26 @@
         </div>
     </div>
 
-
-    <main class="container my-4">
-        <div class="row">
-            <section class="col-md-9 px-md-4">
-                <?php
-                if (isset($templateParams["nome"])) {
-                    require($templateParams["nome"]);
-                }
-                ?>
+    <main class="container-fluid my-4 px-4">
+        <div class="row gx-4">
+            <section class="col-md-10">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-9">
+                        <?php
+                        if (isset($templateParams["nome"])) {
+                            require($templateParams["nome"]);
+                        }
+                        ?>
+                    </div>
+                </div>
             </section>
 
-            <aside class="col-md-3 text-muted border-start border-secondary ps-md-4">
+            <aside class="col-md-2 border-start border-secondary text-muted">
                 <div class="d-flex justify-content-center mb-3">
                     <button class="btn btn-primary rounded-pill px-4">
                         Nuovo
                     </button>
                 </div>
-
                 <div>
                     <?php
                     if (isset($templateParams["giochiRandom"])) {
@@ -83,7 +85,6 @@
                     ?>
                 </div>
             </aside>
-
         </div>
     </main>
 
