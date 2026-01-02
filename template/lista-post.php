@@ -10,12 +10,18 @@
             </p>
         </header>
 
-        <section class="card-text">
+        <section class="card-text generic-extra-info d-none">
             <p class="mb-0">
                 <?php echo $post["testo"]; ?>
             </p>
         </section>
+        <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-primary rounded-pill px-4 btn-generic-expand">Espandi</button>
+            <button class="btn btn-primary rounded-pill px-4 btn-generic-collapse d-none">Riduci</button>
+            <button class="btn btn-primary rounded-pill px-4 btn-generic-answer d-none">Rispondi</button>
+        </div>
     </div>
+
 </article>
 <?php endforeach; ?>
 
@@ -32,11 +38,11 @@
             </p>
         </header>
 
-        <section class="card-text">
+        <section class="card-text recensione-extra-info d-none">
             <p class="fw-semibold mb-1">
                 <?php echo $recensioni["nome"]; ?>
             </p>
-
+ 
             <span class="badge bg-primary mb-2">
                 Valutazione: <?php echo $recensioni["valutazione"]; ?>
             </span>
@@ -45,6 +51,11 @@
                 <?php echo $recensioni["testo"]; ?>
             </p>
         </section>
+        <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-primary rounded-pill px-4 btn-recensione-expand">Espandi</button>
+            <button class="btn btn-primary rounded-pill px-4 btn-recensione-collapse d-none">Riduci</button>
+            <button class="btn btn-primary rounded-pill px-4 btn-recensione-answer d-none">Rispondi</button>
+        </div>
     </div>
 </article>
 <?php endforeach; ?>

@@ -14,17 +14,17 @@
                  <p class="fw-semibold mb-2"> Tag: <?php echo $gioco["listaTag"]; ?> </p>
             </section>
 
-        <div class="extra-info d-none">
-            <section>
-                <p>Data di rilascio: <?php echo $gioco["annoDiPubblicazione"]; ?></p>
-            </section>
-            <section>
-                <p>Software House/Sviluppatore: <?php echo $gioco["softwareHouse"]; ?></p>
-            </section>
-            <section>
-                <p>Descrizione: <?php echo $gioco["descrizione"]; ?></p>
-            </section>
-        </div>
+            <div class="extra-info d-none">
+                <section>
+                    <p>Data di rilascio: <?php echo $gioco["annoDiPubblicazione"]; ?></p>
+                </section>
+                <section>
+                    <p>Software House/Sviluppatore: <?php echo $gioco["softwareHouse"]; ?></p>
+                </section>
+                <section>
+                    <p>Descrizione: <?php echo $gioco["descrizione"]; ?></p>
+                </section>
+            </div>
             <div class="d-flex justify-content-end mt-3">
                 <button class="btn btn-primary rounded-pill px-4 btn-expand">Espandi</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-collapse d-none">Riduci</button>
