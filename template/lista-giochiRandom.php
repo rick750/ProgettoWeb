@@ -1,5 +1,5 @@
-<?php foreach($templateParams["giochiRandomFunc"] as $giocoRandom): ?>
-<article class="card mb-3 shadow-sm border-0 border-start border-3 border-primary">
+<?php foreach($templateParams["giochiRandomFunc"] as $giocoRandom): ?><article class="card mb-3 shadow-sm border-0">
+
     <div class="card-body p-3 text-center">
         <header class="mb-2">
             <h2 class="card-title h6 fw-bold mb-1">

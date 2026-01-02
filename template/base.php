@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <main class="container-fluid my-4 px-4">
+    <main class="container-fluid py-2 px-4 bg-info bg-opacity-10">
         <div class="row gx-4">
             <section class="col-md-10">
                 <div class="row justify-content-center">
