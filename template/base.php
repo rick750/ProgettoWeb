@@ -27,7 +27,7 @@
                 <a class="nav-link text-primary fw-semibold active" href="index.php">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="#">GIOCHI</a>
+                <a class="nav-link text-primary" href="giochi.php">GIOCHI</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-primary" href="tornei.php">TORNEI</a>

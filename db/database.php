@@ -108,5 +108,19 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getLibreriaGiochi() {
+        $query = "SELECT g.*,
+                     GROUP_CONCAT(t.nome SEPARATOR ', ') AS listaTag
+                    FROM GIOCO g
+                    LEFT JOIN riguarda r ON g.codiceGioco = r.codiceGioco
+                    LEFT JOIN TAG t ON r.codiceTag = t.codiceTag
+                    GROUP BY g.codiceGioco, g.nome, g.valutazioneGiornalistica;";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>
