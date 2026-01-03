@@ -18,7 +18,5 @@ $templateParams["filtri"] = array_map(
 $templateParams["selezionaFiltro"] = $_GET["filter"] ?? [];
 $templateParams["libreriaGiochiFunc"] =
     $dbh->getLibreriaGiochi($templateParams["selezionaFiltro"]);
-
-
 require 'template/base.php';
 ?>

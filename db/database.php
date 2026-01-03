@@ -84,12 +84,32 @@ class DatabaseHelper
     }
     public function getTorneiIscritto()
     {
+        //$email = $_SESSION["email"];
+        $email = 'riccardo.carta2@studio.unibo.it';
 
-    }
-    public function getTorneiNonIscritto()
-    {
+        $query = "
+        SELECT 
+            t.nome AS nomeTorneo,
+            g.nome AS nomeGioco,
+            t.descrizione,
+            t.data
+        FROM TORNEO t
+        JOIN GIOCO g
+            ON g.codiceGioco = t.codiceGioco
+        JOIN iscrizione i
+            ON i.codiceGioco = t.codiceGioco
+            AND i.codiceTorneo = t.codiceTorneo
+        WHERE i.email = ?
+    ";
 
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
+
 
     public function getGiochiRandom($n = -1)
     {
