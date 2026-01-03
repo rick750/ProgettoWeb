@@ -75,7 +75,7 @@ CREATE TABLE GIOCO (
   nome VARCHAR(100) NOT NULL,
   annoDiPubblicazione DATE NOT NULL,
   softwareHouse VARCHAR(100) NOT NULL,
-  valutazioneGiornalistica NUMERIC(3) NOT NULL,
+  valutazioneGiornalistica DECIMAL(2,1) NOT NULL,
   descrizione VARCHAR(1000) NOT NULL,
   immagine VARCHAR(255) NOT NULL,
   email VARCHAR(254) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE GIOCO (
 CREATE TABLE RECENSIONE (
   crea_email VARCHAR(254) NOT NULL,
   codicePost NUMERIC(10) NOT NULL,
-  valutazione NUMERIC (3) NOT NULL,
+  valutazione DECIMAL(2,1) NOT NULL,
   codiceGioco NUMERIC(10) NOT NULL,
   PRIMARY KEY (crea_email, codicePost),
   FOREIGN KEY (crea_email, codicePost) REFERENCES POST(crea_email, codicePost),

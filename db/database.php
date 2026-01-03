@@ -23,6 +23,8 @@ class DatabaseHelper
                     ";
         if ($n > 0) {
             $query .= " LIMIT ?;";
+        } else {
+            $query.= ";";
         }
         $stmt = $this->db->prepare($query);
         if ($n > 0) {
@@ -47,6 +49,8 @@ class DatabaseHelper
                     ";
         if ($n > 0) {
             $query .= " LIMIT ?;";
+        } else {
+            $query.= ";";
         }
         $stmt = $this->db->prepare($query);
         if ($n > 0) {
@@ -141,5 +145,6 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    
 }
 ?>
