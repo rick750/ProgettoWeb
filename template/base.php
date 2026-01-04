@@ -73,7 +73,7 @@
                 </div>
             </section>
 
-            <aside class="col-md-3 bg-primary bg-opacity-10 border-start border-secondary">
+            <aside class="col-md-3 bg-primary bg-opacity-10 border-start border-secondary py-4">
                 <div>
                     <?php
                     if (isset($templateParams["aside"])) {
