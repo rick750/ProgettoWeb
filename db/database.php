@@ -24,7 +24,7 @@ class DatabaseHelper
         if ($n > 0) {
             $query .= " LIMIT ?;";
         } else {
-            $query.= ";";
+            $query .= ";";
         }
         $stmt = $this->db->prepare($query);
         if ($n > 0) {
@@ -50,7 +50,7 @@ class DatabaseHelper
         if ($n > 0) {
             $query .= " LIMIT ?;";
         } else {
-            $query.= ";";
+            $query .= ";";
         }
         $stmt = $this->db->prepare($query);
         if ($n > 0) {
@@ -168,7 +168,7 @@ class DatabaseHelper
     public function getNomeGioco($idGioco) {
         $query = "SELECT nome FROM GIOCO WHERE codiceGioco = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $idGioco); // i = integer
+        $stmt->bind_param("i", $idGioco);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
@@ -197,5 +197,46 @@ class DatabaseHelper
     }
 
     
+    public function checkLogin($email, $password)
+    {
+        $query = "SELECT email, password, nome
+              FROM UTENTE
+              WHERE email = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+
+        if ($result && password_verify($password, $result["password"])) {
+            return $result;
+        }
+        return null;
+    }
+
+
+    public function registraUtente($email, $password, $nome, $cognome, $dataNascita, $matricola, $descrizione)
+    {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO UTENTE
+        (email, password, nome, cognome, dataDiNascita, matricola, descrizione)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(
+            "sssssis",
+            $email,
+            $hash,
+            $nome,
+            $cognome,
+            $dataNascita,
+            $matricola,
+            $descrizione
+        );
+
+        return $stmt->execute();
+    }
+
 }
 ?>

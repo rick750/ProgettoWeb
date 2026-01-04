@@ -39,7 +39,7 @@
                 <a class="nav-link text-primary" href="#">NOTIFICHE</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="login.php">ACCEDI/PROFILO</a>
+                <a class="nav-link text-primary" href="login-form.php">ACCEDI/PROFILO</a>
             </li>
         </ul>
     </nav>
