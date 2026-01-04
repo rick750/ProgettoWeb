@@ -27,6 +27,8 @@
                 <div class="mt-auto d-flex justify-content-end">
                     <button class="btn btn-primary rounded-pill px-4 btn-expand">Espandi</button>
                     <button class="btn btn-primary rounded-pill px-4 btn-collapse d-none">Riduci</button>
+                    <a href="giochi.php?action=recensioni&id=<?php echo $gioco['codiceGioco']; ?>"
+                     class="btn btn-primary rounded-pill px-4"> Recensioni </a>
                 </div>
             </div>
         </article>

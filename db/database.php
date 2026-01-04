@@ -165,6 +165,37 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getNomeGioco($idGioco) {
+        $query = "SELECT nome FROM GIOCO WHERE codiceGioco = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $idGioco); // i = integer
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["nome"] ?? null;
+    }
+
+    public function getRecensioniGioco($idGioco) {
+        $query = "
+            SELECT 
+                P.crea_email,
+                P.codicePost,
+                P.titolo,
+                P.testo,
+                P.data,
+                R.valutazione
+            FROM RECENSIONE R
+            JOIN POST P 
+                ON R.crea_email = P.crea_email 
+                AND R.codicePost = P.codicePost
+            WHERE R.codiceGioco = ?
+            ORDER BY P.data DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$idGioco]);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     
 }
 ?>

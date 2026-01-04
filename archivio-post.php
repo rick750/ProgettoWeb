@@ -4,7 +4,7 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "Unigames - Archivio Post";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["selezionaFiltro"] = [];
-$templateParams["giochiRandom"] = "lista-giochiRandom.php";
+$templateParams["aside"] = "lista-giochiRandom.php";
 $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(2);
 
 $templateParams["filtri"] = [

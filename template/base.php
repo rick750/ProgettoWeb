@@ -61,7 +61,7 @@
 
     <main class="container-fluid bg-info bg-opacity-10">
         <div class="row gx-4">
-            <section class="col-md-10 py-4">
+            <section class="col-md-9 py-4">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10 col-xl-9">
                         <?php
@@ -73,16 +73,11 @@
                 </div>
             </section>
 
-            <aside class="col-md-2 bg-primary bg-opacity-10 border-start border-secondary">
-                <div class="py-4 d-flex justify-content-center mb-3">
-                    <button class="btn btn-primary rounded-pill px-4">
-                        Nuovo
-                    </button>
-                </div>
+            <aside class="col-md-3 bg-primary bg-opacity-10 border-start border-secondary">
                 <div>
                     <?php
-                    if (isset($templateParams["giochiRandom"])) {
-                        require($templateParams["giochiRandom"]);
+                    if (isset($templateParams["aside"])) {
+                        require($templateParams["aside"]);
                     }
                     ?>
                 </div>
