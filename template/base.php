@@ -73,7 +73,7 @@
                 </div>
             </section>
 
-            <aside class="col-md-2 bg-secondary bg-opacity-10 border-start border-secondary">
+            <aside class="col-md-2 bg-primary bg-opacity-10 border-start border-secondary">
                 <div class="py-4 d-flex justify-content-center mb-3">
                     <button class="btn btn-primary rounded-pill px-4">
                         Nuovo

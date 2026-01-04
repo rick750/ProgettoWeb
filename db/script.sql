@@ -63,7 +63,9 @@ INSERT INTO GIOCO VALUES
 (00016,"Little Nightmares","2017-04-28","Tarsier Studios",4.5,
  "Horror atmosferico e simbolico","littlenightmares.jpg","riccardo.carta2@studio.unibo.it"),
 (00017,"Elden Ring", "2022-02-25", "FromSoftware", 4.9,
- "RPG vastissimo pieno di segreti da scoprire", "eldenring.jpg", "marco.battistini10@studio.unibo.it");
+ "RPG vastissimo pieno di segreti da scoprire", "eldenring.jpg", "marco.battistini10@studio.unibo.it"),
+(00018, "Gran Turismo 7", "2022-03-04", "Polyphony Digital", 4.6,
+ "Simulatore di guida realistico", "granturismo7.jpg", "riccardo.carta2@studio.unibo.it");
 
 -- =====================
 -- POST GENERICI
@@ -183,7 +185,10 @@ INSERT INTO riguarda VALUES
 (00016,6),
 (00017,1),
 (00017,2),
-(00017,4);
+(00017,4),
+(00018,7),
+(00018,10),
+(00018, 12);
 
 
 
