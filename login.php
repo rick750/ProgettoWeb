@@ -3,14 +3,16 @@ require_once 'bootstrap.php';
 
 $templateParams["filtri"] = [];
 $templateParams["titolo"] = "Unigames - Login";
-$templateParams["nome"] = "login-form.php";
+$templateParams["nome"] = "login-main.php";
+$templateParams["aside"] = "login-aside.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $user = $dbh->checkLogin($_POST["email"], $_POST["password"]);
 
     if ($user) {
-        registerLoggedUser($user);
+        //registerLoggedUser($user);
         header("Location: profilo.php");
         exit;
     } else {

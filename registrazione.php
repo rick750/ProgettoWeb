@@ -4,6 +4,7 @@ require_once 'bootstrap.php';
 $templateParams["filtri"] = [];
 $templateParams["titolo"] = "Unigames - Registrazione";
 $templateParams["nome"] = "login-form.php";
+$templateParams["aside"] = "login-aside.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -18,10 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
 
     if ($ok) {
-        registerLoggedUser([
+        /*  registerLoggedUser([
             "email" => $_POST["email"],
             "nome" => $_POST["nome"]
-        ]);
+        ]); */
         header("Location: profilo.php");
         exit;
     } else {

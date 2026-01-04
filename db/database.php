@@ -12,6 +12,12 @@ class DatabaseHelper
         }
     }
 
+    public function getConnection()
+    {
+        return $this->db;
+    }
+
+
     public function getGenericPosts($n = -1)
     {
         $query = "SELECT p.*
@@ -165,7 +171,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getNomeGioco($idGioco) {
+    public function getNomeGioco($idGioco)
+    {
         $query = "SELECT nome FROM GIOCO WHERE codiceGioco = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idGioco);
@@ -175,7 +182,8 @@ class DatabaseHelper
         return $row["nome"] ?? null;
     }
 
-    public function getRecensioniGioco($idGioco) {
+    public function getRecensioniGioco($idGioco)
+    {
         $query = "
             SELECT 
                 P.crea_email,
@@ -196,7 +204,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    
+
     public function checkLogin($email, $password)
     {
         $query = "SELECT email, password, nome

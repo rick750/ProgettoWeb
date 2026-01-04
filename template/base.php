@@ -39,11 +39,12 @@
                 <a class="nav-link text-primary" href="#">NOTIFICHE</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="login-form.php">ACCEDI/PROFILO</a>
+                <a class="nav-link text-primary" href="login.php">ACCEDI/PROFILO</a>
             </li>
         </ul>
     </nav>
 
+    <?php if (isset($templateParams["filtri"]) && count($templateParams["filtri"])>0): ?>
     <div class="bg-light border-bottom border-secondary py-2">
         <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
             <form method="get" class="d-flex flex-wrap align-items-center gap-3" id="form-filtri">
@@ -58,6 +59,7 @@
             </form>
         </div>
     </div>
+    <?php endif;?>
 
     <main class="container-fluid bg-info bg-opacity-10">
         <div class="row gx-4">
