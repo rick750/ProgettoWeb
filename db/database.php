@@ -24,7 +24,7 @@ class DatabaseHelper
         if ($n > 0) {
             $query .= " LIMIT ?;";
         } else {
-            $query.= ";";
+            $query .= ";";
         }
         $stmt = $this->db->prepare($query);
         if ($n > 0) {
@@ -50,7 +50,7 @@ class DatabaseHelper
         if ($n > 0) {
             $query .= " LIMIT ?;";
         } else {
-            $query.= ";";
+            $query .= ";";
         }
         $stmt = $this->db->prepare($query);
         if ($n > 0) {
@@ -165,6 +165,46 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    
+    public function checkLogin($email, $password)
+    {
+        $query = "SELECT email, password, nome
+              FROM UTENTE
+              WHERE email = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+
+        if ($result && password_verify($password, $result["password"])) {
+            return $result;
+        }
+        return null;
+    }
+
+
+    public function registraUtente($email, $password, $nome, $cognome, $dataNascita, $matricola, $descrizione)
+    {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO UTENTE
+        (email, password, nome, cognome, dataDiNascita, matricola, descrizione)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(
+            "sssssis",
+            $email,
+            $hash,
+            $nome,
+            $cognome,
+            $dataNascita,
+            $matricola,
+            $descrizione
+        );
+
+        return $stmt->execute();
+    }
+
 }
 ?>
