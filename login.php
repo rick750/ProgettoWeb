@@ -27,6 +27,9 @@
                 <a class="nav-link text-primary fw-semibold active" href="index.php">HOME</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-primary" href="archivio-post.php">ARCHIVIO POST</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-primary" href="giochi.php">GIOCHI</a>
             </li>
             <li class="nav-item">
@@ -36,7 +39,7 @@
                 <a class="nav-link text-primary" href="#">NOTIFICHE</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="#">ACCEDI/PROFILO</a>
+                <a class="nav-link text-primary" href="login.php">ACCEDI/PROFILO</a>
             </li>
         </ul>
     </nav>
