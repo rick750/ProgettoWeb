@@ -1,3 +1,16 @@
+<?php if(empty($templateParams["tornei"])): ?>
+    <p>Al momento non hai creato nessun Torneo</p>
+<?php endif;?>
+
+<?php if($_SESSION["admin"] == true): ?>
+        <a href="#"class="btn btn-primary rounded-pill px-4"> Nuovo Torneo</a>
+<?php endif;?>
+
+<?php if (isset($templateParams["indietro"])):?>
+    <a href="<?php echo $templateParams["indietro"];?>"
+        class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
+<?php endif;?>
+
 <?php foreach ($templateParams["tornei"] as $torneo): ?>
 <article class="border rounded p-3 mb-4 position-relative">
     <header>
@@ -19,3 +32,4 @@
     </div>
 </article>
 <?php endforeach; ?>
+

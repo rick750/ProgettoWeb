@@ -85,6 +85,7 @@ class DatabaseHelper
         $query = "SELECT t.nome AS nomeTorneo, g.nome AS nomeGioco, t.descrizione, t.data
                     FROM TORNEO t, GIOCO g
                     WHERE g.codiceGioco = t.codiceGioco
+                    ORDER BY t.data DESC;
                     ";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -246,5 +247,71 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
+    public function getUserPosts($email) {
+        $query = "SELECT * FROM POST WHERE crea_email = ? ORDER BY data DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserRecensioni($email) {
+        $query = "SELECT p.*
+                    FROM POST p
+                    JOIN RECENSIONE r
+                    ON p.crea_email = r.crea_email
+                    AND p.codicePost = r.codicePost
+                    WHERE p.crea_email = ?
+                    ORDER BY p.data DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserTornei($email) {
+        $query = "SELECT t.nome AS nomeTorneo, t.email , g.nome AS nomeGioco, t.descrizione, t.data
+                    FROM TORNEO t, GIOCO g
+                    WHERE g.codiceGioco = t.codiceGioco
+                    AND t.email = ?
+                    ORDER BY t.data DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAdminGiochi($email) {
+        $query = "SELECT g.*,
+                     GROUP_CONCAT(t.nome SEPARATOR ', ') AS listaTag
+              FROM GIOCO g
+              LEFT JOIN riguarda r ON g.codiceGioco = r.codiceGioco
+              LEFT JOIN TAG t ON r.codiceTag = t.codiceTag
+              WHERE g.email = ?
+              GROUP BY g.codiceGioco;
+              ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function isUserAdmin($email) {
+        $query = "SELECT * FROM ADMIN WHERE email = ?;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

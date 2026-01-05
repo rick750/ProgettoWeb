@@ -1,3 +1,12 @@
+<?php if(empty($templateParams["libreriaGiochiFunc"])): ?>
+    <p>Al momento Non hai pubblicato Giochi in Libreria</p>
+<?php endif;?>
+
+<?php if (isset($templateParams["indietro"])):?>
+    <a href="<?php echo $templateParams["indietro"];?>"
+        class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
+<?php endif;?>
+
 <div class="row">
 <?php foreach($templateParams["libreriaGiochiFunc"] as $gioco): ?>
     <div class="col-12 col-md-6 mb-4">
@@ -35,3 +44,4 @@
     </div>
 <?php endforeach; ?>
 </div>
+

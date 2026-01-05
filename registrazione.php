@@ -19,10 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
 
     if ($ok) {
-        /*  registerLoggedUser([
+        if (count($dbh -> isUserAdmin($_POST["email"])) != 0) {
+            $isAdmin = true;
+        } else {
+            $isAdmin = false;
+        }
+        registerLoggedUser([
             "email" => $_POST["email"],
             "nome" => $_POST["nome"]
-        ]); */
+        ], $isAdmin);
         header("Location: profilo.php");
         exit;
     } else {

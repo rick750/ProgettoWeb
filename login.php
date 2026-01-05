@@ -12,7 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = $dbh->checkLogin($_POST["email"], $_POST["password"]);
 
     if ($user) {
-        //registerLoggedUser($user);
+        if (count($dbh -> isUserAdmin($_POST["email"])) != 0) {
+            $isAdmin = true;
+        } else {
+            $isAdmin = false;
+        }
+        registerLoggedUser($user, $isAdmin);
         header("Location: profilo.php");
         exit;
     } else {
