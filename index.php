@@ -6,7 +6,7 @@ $templateParams["titolo"] = "Unigames - Home";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["selezionaFiltro"] = [];
 $templateParams["aside"] = "lista-giochiRandom.php";
-$templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(2);
+$templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
 //Home Template
 $templateParams["filtri"] = [
     ["valore" => "generici", "nome" => "Generici"],
