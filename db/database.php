@@ -93,10 +93,10 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getTorneiIscritto()
     {
-        //$email = $_SESSION["email"];
-        $email = 'riccardo.carta2@studio.unibo.it';
+        $email = $_SESSION["email"];
 
         $query = "
         SELECT 

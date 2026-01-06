@@ -14,12 +14,18 @@ $filtri = $templateParams["selezionaFiltro"];
 $mostraSoloIscritto = in_array("iscritto", $filtri);
 
 if ($mostraSoloIscritto) {
-    $templateParams["tornei"] = $dbh->getTorneiIscritto();
+    $tornei = $dbh->getTorneiIscritto();
+    foreach ($tornei as &$torneo) {
+        $torneo["iscritto"] = true;
+    }
 } else {
-    $templateParams["tornei"] = $dbh->getTornei();
+    $tornei = $dbh->getTornei();
+    $torneiIscritto = $dbh->getTorneiIscritto();
+    foreach ($tornei as &$torneo) {
+        $torneo["iscritto"] = in_array($torneo, $torneiIscritto);
+    }
 }
-
-
+$templateParams["tornei"] = $tornei;
 
 require 'template/base.php';
 ?>

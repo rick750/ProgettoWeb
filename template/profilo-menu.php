@@ -1,6 +1,6 @@
 <div class="col-12 mb-4">
     <div>
-        <p> Benvenuto <?php echo $_SESSION["nome"]; ?>
+        <p> Benvenuto/a <?php echo $_SESSION["nome"]; ?>
             <?php if ($_SESSION["admin"] == true): ?>
                 - Amministratore
             <?php else: ?>

@@ -115,14 +115,20 @@ INSERT INTO COMMENTO VALUES
 INSERT INTO TORNEO VALUES
 (00002,1,"Hades Speedrun",
  "Torneo universitario","2025-02-20",
+ "marco.battistini10@studio.unibo.it"),
+ (000010,2,"Disco Elysium",
+ "Torneo bruttissimo","2025-02-10",
+ "riccardo.carta2@studio.unibo.it"),
+ (00018,3,"Gran Turismo 7",
+ "Torneo bellissimo","2025-02-15",
  "marco.battistini10@studio.unibo.it");
-
 -- =====================
 -- ISCRIZIONI TORNEI
 -- =====================
 INSERT INTO iscrizione VALUES
 (00002,1,"riccardo.carta2@studio.unibo.it"),
-(00002,1,"anna.rossi3@studio.unibo.it");
+(00002,1,"anna.rossi3@studio.unibo.it"),
+(00018,3,"marco.battistini10@studio.unibo.it");
 
 -- =====================
 -- CORSI
