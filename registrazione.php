@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_POST["cognome"],
         $_POST["data_nascita"],
         $_POST["matricola"],
-        $_POST["descr"]
+        $_POST["descr"],
+        $_POST["codiceCorso"]
     );
 
     if ($ok) {

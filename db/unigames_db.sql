@@ -166,8 +166,16 @@ CREATE TABLE riguarda (
 
 
 INSERT INTO UTENTE
-VALUES ("riccardo.carta2@studio.unibo.it","Riccardo2025","Riccardo","Carta","2004-07-28","0001115294","Hello World!"),
-("marco.battistini10@studio.unibo.it","Marco2025","Marco","Battistini","2004-11-28","0001114229","Ciao!");
+VALUES ("riccardo.carta2@studio.unibo.it","$2y$10$PLBHSofL/AcsBsZ2tzuHLOmpZKwq/tI4gzzRmQQkWkjxlj5fzClaS","Riccardo","Carta","2004-07-28","0001115294","Hello World!"),
+("marco.battistini10@studio.unibo.it","$2y$10$QJsd6Czd/mwGIscOjPpUIen06mbMXPoq1jhrDbXNdNEOQ3bwpJJmq","Marco","Battistini","2004-11-28","0001114229","Ciao!");
 INSERT INTO ADMIN VALUES
 ("riccardo.carta2@studio.unibo.it"),
 ("marco.battistini10@studio.unibo.it");
+
+
+INSERT INTO CORSO VALUES
+(001,"Ingegneria e Scienze Informatiche","riccardo.carta2@studio.unibo.it"),
+(002,"Architettura","marco.battistini10@studio.unibo.it"),
+(003,"Ingegneria Elettronica","riccardo.carta2@studio.unibo.it"),
+(004,"Ingegneria Biomedica","marco.battistini10@studio.unibo.it"),
+(005,"Psicologia","riccardo.carta2@studio.unibo.it");

@@ -4,8 +4,8 @@ USE Unigames_db;
 -- UTENTI EXTRA
 -- =====================
 INSERT INTO UTENTE VALUES
-("luca.rossi@studio.unibo.it","Luca2025","Luca","Rossi","2003-03-15","0001113333","Appassionato di FPS"),
-("anna.verdi@studio.unibo.it","Anna2025","Anna","Verdi","2004-01-10","0001114444","Amante dei giochi indie");
+("giorgio.bianchi@studio.unibo.it","$2y$10$grr4hpMZjf4n251jrIeI6uxeZqRMvpgdU.wOhsYhlUvBFH.hej6Me","Giorgio","Bianchi","2003-03-15","0001113333","Appassionato di FPS"),
+("anna.rossi3@studio.unibo.it","$2y$10$r5FjvbumDJz8VDCxQedwz.DIObRqzs9iBx808aOolCkh6.oVrlpZe","Anna","Rossi","2004-01-10","0001114444","Amante dei giochi indie");
 
 -- =====================
 -- TAG
@@ -89,24 +89,24 @@ INSERT INTO GENERICO VALUES
 -- POST RECENSIONI
 -- =====================
 INSERT INTO POST VALUES
-("luca.rossi@studio.unibo.it",1,
+("giorgio.bianchi@studio.unibo.it",1,
  "Un capolavoro senza tempo",
  "2025-01-12","Recensione Zelda",
  'R',NULL);
 
 INSERT INTO RECENSIONE VALUES
-("luca.rossi@studio.unibo.it",1,"5.0",00001);
+("giorgio.bianchi@studio.unibo.it",1,"5.0",00001);
 
 -- =====================
 -- COMMENTI
 -- =====================
 INSERT INTO COMMENTO VALUES
 ("riccardo.carta2@studio.unibo.it",1,
- "anna.verdi@studio.unibo.it",1,
+ "anna.rossi3@studio.unibo.it",1,
  "Sono d'accordo, DLC stupendo!"),
 
 ("marco.battistini10@studio.unibo.it",1,
- "luca.rossi@studio.unibo.it",1,
+ "giorgio.bianchi@studio.unibo.it",1,
  "Ti consiglio It Takes Two");
 
 -- =====================
@@ -122,21 +122,20 @@ INSERT INTO TORNEO VALUES
 -- =====================
 INSERT INTO iscrizione VALUES
 (00002,1,"riccardo.carta2@studio.unibo.it"),
-(00002,1,"anna.verdi@studio.unibo.it");
+(00002,1,"anna.rossi3@studio.unibo.it");
 
 -- =====================
 -- CORSI
 -- =====================
-INSERT INTO CORSO VALUES
-(500,"Game Design","riccardo.carta2@studio.unibo.it"),
-(501,"E-sports Management","marco.battistini10@studio.unibo.it");
 
 -- =====================
 -- ISCRITTI AI CORSI
 -- =====================
 INSERT INTO iscritto VALUES
-(500,"luca.rossi@studio.unibo.it"),
-(501,"anna.verdi@studio.unibo.it");
+(001,"riccardo.carta2@studio.unibo.it"),
+(001,"marco.battistini10@studio.unibo.it"),
+(002,"giorgio.bianchi@studio.unibo.it"),
+(004,"anna.rossi3@studio.unibo.it");
 
 -- =====================
 -- TAG ↔ GIOCHI

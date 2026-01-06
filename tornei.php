@@ -1,7 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-//Base Template
 $templateParams["titolo"] = "Unigames - Tornei";
 $templateParams["nome"] = "lista-tornei.php";
 $templateParams["aside"] = "lista-giochiRandom.php";
@@ -12,7 +11,6 @@ $templateParams["filtri"] = [
 ];
 $templateParams["selezionaFiltro"] = $_GET["filter"] ?? [];
 $filtri = $templateParams["selezionaFiltro"];
-
 $mostraSoloIscritto = in_array("iscritto", $filtri);
 
 if ($mostraSoloIscritto) {
@@ -20,6 +18,8 @@ if ($mostraSoloIscritto) {
 } else {
     $templateParams["tornei"] = $dbh->getTornei();
 }
+
+
 
 require 'template/base.php';
 ?>

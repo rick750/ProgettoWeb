@@ -1,53 +1,44 @@
 <div class="col-12 mb-4">
     <div>
         <p> Benvenuto <?php echo $_SESSION["nome"]; ?>
-        <?php if ($_SESSION["admin"] == true):?>
-         - Amministratore
-        <?php else:?>
-         - Utente
-        <?php endif;?>
+            <?php if ($_SESSION["admin"] == true): ?>
+                - Amministratore
+            <?php else: ?>
+                - Utente
+            <?php endif; ?>
         </p>
     </div>
     <article class="card h-100 shadow-sm ">
         <div class="card-body">
-            
-            <div class="row g-3"> <!-- g-3 = spazio tra pulsanti -->
-                <?php if ($_SESSION["admin"] == true):?>
-                    <div  class="col-3 d-grid"></div>
-                <?php endif;?>
-                
+
+            <div class="row g-3">
+                <div class="col-3 d-grid"></div>
+
                 <div class="col-6 d-grid">
                     <button class="btn fw-bold rounded-pill py-2 btn-info">Scrivi</button>
                 </div>
+                <div class="col-3 d-grid"></div>
 
-                <?php if ($_SESSION["admin"] == true):?>
-                    <div class="col-3 d-grid"></div>
-                <?php endif;?>
-                
 
                 <div class="col-6 d-grid">
-                    <a href="profilo-post.php"
-                       class="btn btn-primary rounded-pill px-4">Post</a>
+                    <a href="profilo-post.php" class="btn btn-primary rounded-pill px-4">Post</a>
                 </div>
 
                 <div class="col-6 d-grid">
-                    <a href="profilo-recensioni.php"
-                       class="btn btn-primary rounded-pill px-4">Recensioni</a>
+                    <a href="profilo-recensioni.php" class="btn btn-primary rounded-pill px-4">Recensioni</a>
                 </div>
-                
-                <?php if ($_SESSION["admin"] == true):?>
-                    <div class="col-6 d-grid">
-                        <a href="profilo-tornei.php"
-                        class="btn btn-primary rounded-pill px-4">Tornei Aggiunti</a>
-                    </div>
-                <?php endif;?>
 
-                <?php if ($_SESSION["admin"] == true):?>
+                <?php if ($_SESSION["admin"] == true): ?>
                     <div class="col-6 d-grid">
-                        <a href="profilo-giochi.php"
-                            class="btn btn-primary rounded-pill px-4">Giochi Aggiunti</a>
+                        <a href="profilo-tornei.php" class="btn btn-primary rounded-pill px-4">Tornei Aggiunti</a>
                     </div>
-                <?php endif;?>
+                <?php endif; ?>
+
+                <?php if ($_SESSION["admin"] == true): ?>
+                    <div class="col-6 d-grid">
+                        <a href="profilo-giochi.php" class="btn btn-primary rounded-pill px-4">Giochi Aggiunti</a>
+                    </div>
+                <?php endif; ?>
             </div>
 
         </div>

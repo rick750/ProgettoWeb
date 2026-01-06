@@ -4,7 +4,7 @@
 
 <?php if (isset($templateParams["indietro"])):?>
     <a href="<?php echo $templateParams["indietro"];?>"
-        class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
+        class="btn btn-primary rounded-pill px-4 mb-3"> Torna al profilo</a>
 <?php endif;?>
 
 <div class="row">

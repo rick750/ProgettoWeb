@@ -32,34 +32,41 @@
             <li class="nav-item">
                 <a class="nav-link text-primary" href="giochi.php">GIOCHI</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary" href="tornei.php">TORNEI</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary" href="#">NOTIFICHE</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary" href="login.php">ACCEDI/PROFILO</a>
-            </li>
+            <?php if (!empty($_SESSION)): ?>
+                <li class="nav-item">
+                    <a class="nav-link text-primary" href="tornei.php">TORNEI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-primary" href="#">NOTIFICHE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-primary" href="profilo.php">PROFILO</a>
+                </li>
+            <?php else: ?>
+
+                <li class="nav-item">
+                    <a class="nav-link text-primary" href="login.php">ACCEDI</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </nav>
 
-    <?php if (isset($templateParams["filtri"]) && count($templateParams["filtri"])>0): ?>
-    <div class="bg-light border-bottom border-secondary py-2">
-        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
-            <form method="get" class="d-flex flex-wrap align-items-center gap-3" id="form-filtri">
-                <?php foreach ($templateParams["filtri"] as $filtro): ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="filter[]"
-                            value="<?php echo $filtro["valore"]; ?>" <?php if (in_array($filtro["valore"], $templateParams["selezionaFiltro"]))
-                                   echo "checked"; ?>>
-                        <label class="form-check-label"><?php echo $filtro["nome"]; ?></label>
-                    </div>
-                <?php endforeach; ?>
-            </form>
+    <?php if (isset($templateParams["filtri"]) && count($templateParams["filtri"]) > 0): ?>
+        <div class="bg-light border-bottom border-secondary py-2">
+            <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <form method="get" class="d-flex flex-wrap align-items-center gap-3" id="form-filtri">
+                    <?php foreach ($templateParams["filtri"] as $filtro): ?>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="filter[]"
+                                value="<?php echo $filtro["valore"]; ?>" <?php if (in_array($filtro["valore"], $templateParams["selezionaFiltro"]))
+                                       echo "checked"; ?>>
+                            <label class="form-check-label"><?php echo $filtro["nome"]; ?></label>
+                        </div>
+                    <?php endforeach; ?>
+                </form>
+            </div>
         </div>
-    </div>
-    <?php endif;?>
+    <?php endif; ?>
 
     <main class="container-fluid bg-info bg-opacity-10">
         <div class="row gx-4">
@@ -93,6 +100,7 @@
     <script src="js/info-giochi.js"></script>
     <script src="js/filtri-di-ricerca.js"></script>
     <script src="js/info-post.js"></script>
+    <script src="js/logout-listener.js"></script>
 </body>
 
 </html>

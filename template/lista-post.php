@@ -1,11 +1,13 @@
-<?php if(empty($templateParams["post"])): ?>
+<?php if (empty($templateParams["post"])): ?>
     <p>Al momento Non hai pubblicato Post</p>
-<?php endif;?>
+<?php endif; ?>
 
-<?php if (isset($templateParams["indietro"])):?>
-    <a href="<?php echo $templateParams["indietro"];?>"
-        class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
-<?php endif;?>
+<?php if (isset($templateParams["indietro"])): ?>
+    <div class="mb-3">
+    <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
+    <a href="#" class="btn btn-primary rounded-pill px-4"> Nuovo Post</a>
+</div>
+<?php endif; ?>
 
 <?php foreach ($templateParams["post"] as $post): ?>
     <article class="card mb-4 shadow-sm border-0 border-start border-4 border-primary">
@@ -32,5 +34,3 @@
         </div>
     </article>
 <?php endforeach; ?>
-
-                        

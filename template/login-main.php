@@ -26,13 +26,12 @@
         <label for="password" class="form-text-label">Password</label><br />
         <input type="password" id="password" name="password"><br /><br />
         <label for="corso" class="form-label">Corso di laurea seguito:</label>
-        <select id="corso" name="corso" class="form-select">
-            <option value="">-- Seleziona un corso di laurea --</option>
-            <option value="Ingegneria biomedica">Ingegneria biomedica</option>
-            <option value="Ingegneria e scienze informatiche">Ingegneria e scienze informatiche</option>
-            <option value="Ingegneria elettronica">Ingegneria elettronica</option>
-            <option value="Architettura">Architettura</option>
-            <option value="Psicologia">Psicologia</option>
+        <select id="corso" name="codiceCorso" class="form-select">
+            <option value="" disabled selected>-- Seleziona un corso di laurea --</option>
+            <?php foreach ($templateParams["corsi"] as $corso): ?>
+                <option id="<?php echo getValueFromCorso($corso["nome"]); ?>" value="<?php echo ($corso["codiceCorso"]); ?>">
+                    <?php echo $corso["nome"]; ?></option>
+            <?php endforeach; ?>
         </select><br /><br />
         <label for="descr" class="form-label">Dicci qualcosa di te!</label><br />
         <textarea id="descr" name="descr" rows="5" cols="50" maxlength="200"
