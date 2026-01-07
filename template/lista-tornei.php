@@ -27,16 +27,23 @@
             <p><?php echo $torneo["descrizione"]; ?></p>
         </section>
 
-
         <div class="position-absolute bottom-0 end-0 m-3">
             <?php if ($torneo["iscritto"]): ?>
-                <button type="submit" class="btn btn-secondary btn-sm">
-                    Iscritto
-                </button>
+                <form action="tornei.php" method="POST">
+                    <input type="text" value="<?php echo $torneo["codiceGioco"];?>" name="codiceGioco" hidden/>
+                    <input type="text" value="<?php echo $torneo["codiceTorneo"];?>" name="codiceTorneo" hidden/>
+                    <button type="submit" name="azione" value="disiscrizione" class="btn btn-secondary btn-sm">
+                        Iscritto
+                    </button>
+                </form>
             <?php else: ?>
-                <button type="submit" class="btn btn-primary btn-sm">
-                    Iscriviti
-                </button>
+                <form action="tornei.php" method="POST">
+                    <input type="text" value="<?php echo $torneo["codiceGioco"];?>" name="codiceGioco" hidden/>
+                    <input type="text" value="<?php echo $torneo["codiceTorneo"];?>" name="codiceTorneo" hidden/>
+                    <button type="submit" name="azione" value="iscrizione" class="btn btn-primary btn-sm">
+                        Iscriviti
+                    </button>
+                </form>
             <?php endif; ?>
         </div>
     </article>

@@ -82,7 +82,7 @@ class DatabaseHelper
 
     public function getTornei()
     {
-        $query = "SELECT t.nome AS nomeTorneo, g.nome AS nomeGioco, t.descrizione, t.data
+        $query = "SELECT t.nome AS nomeTorneo, g.nome AS nomeGioco, t.descrizione, t.data, t.codiceGioco, t.codiceTorneo
                     FROM TORNEO t, GIOCO g
                     WHERE g.codiceGioco = t.codiceGioco
                     ORDER BY t.data DESC;
@@ -103,7 +103,9 @@ class DatabaseHelper
             t.nome AS nomeTorneo,
             g.nome AS nomeGioco,
             t.descrizione,
-            t.data
+            t.data,
+            t.codiceGioco,
+            t.codiceTorneo
         FROM TORNEO t
         JOIN GIOCO g
             ON g.codiceGioco = t.codiceGioco
@@ -111,7 +113,7 @@ class DatabaseHelper
             ON i.codiceGioco = t.codiceGioco
             AND i.codiceTorneo = t.codiceTorneo
         WHERE i.email = ?
-    ";
+        ";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $email);
@@ -288,7 +290,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getUserTornei($email)
+    public function getTorneiCreati($email)
     {
         $query = "SELECT t.nome AS nomeTorneo, t.email , g.nome AS nomeGioco, t.descrizione, t.data
                     FROM TORNEO t, GIOCO g
@@ -340,6 +342,26 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function iscriviUtenteATorneo($codiceGioco, $codiceTorneo)
+    {
+        $email = $_SESSION["email"];
+        $query = "INSERT INTO ISCRIZIONE VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iis", $codiceGioco, $codiceTorneo, $email);
+
+        return $stmt->execute();
+    }
+
+    public function disiscriviUtenteDaTorneo($codiceGioco, $codiceTorneo)
+    {
+        $email = $_SESSION["email"];
+        $query = "DELETE FROM ISCRIZIONE WHERE codiceGioco=? AND codiceTorneo=? AND email=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iis", $codiceGioco, $codiceTorneo, $email);
+
+        return $stmt->execute();
     }
 }
 ?>

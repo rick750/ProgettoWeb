@@ -25,7 +25,18 @@ if ($mostraSoloIscritto) {
         $torneo["iscritto"] = in_array($torneo, $torneiIscritto);
     }
 }
+    unset($torneo);
 $templateParams["tornei"] = $tornei;
+
+if (isset($_POST["azione"]) && $_POST["azione"] === "iscrizione") {
+    $dbh->iscriviUtenteATorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
+    unset($_POST["azione"]);
+    header("Location: tornei.php");
+} else if (isset($_POST["azione"]) && $_POST["azione"] === "disiscrizione") {
+    $dbh->disiscriviUtenteDaTorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
+    unset($_POST["azione"]);
+    header("Location: tornei.php");
+}
 
 require 'template/base.php';
 ?>

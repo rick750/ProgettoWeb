@@ -23,5 +23,4 @@ function getValueFromCorso($corso){
     return $corso;
 }
 
-
 ?>
