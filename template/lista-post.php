@@ -5,7 +5,7 @@
 <?php if (isset($templateParams["indietro"])): ?>
     <div class="mb-3">
     <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
-    <a href="#" class="btn btn-primary rounded-pill px-4"> Nuovo Post</a>
+    <a href="creazione-post.php" class="btn btn-primary rounded-pill px-4"> Nuovo Post</a>
 </div>
 <?php endif; ?>
 

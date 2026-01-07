@@ -363,5 +363,56 @@ class DatabaseHelper
 
         return $stmt->execute();
     }
+
+    private function creaCodicePost()
+    {
+        $email = $_SESSION["email"];
+        $indice = count($this->getUserPosts($email));
+        return $indice + 1;
+    }
+
+    private function inserisciPost($titolo, $testo, $codicePost, $isRecensione)
+    {
+        $email = $_SESSION["email"];
+        $query = "INSERT INTO POST VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        if ($isRecensione) {
+            $recensione = "R";
+            $generico = NULL;
+        } else {
+            $recensione = NULL;
+            $generico = "G";
+        }
+        $data = date("Y-m-d");
+        $stmt->bind_param("sisssss", $email, $codicePost, $testo, $data, $titolo, $recensione, $generico);
+
+        return $stmt->execute();
+    }
+
+    public function inserisciGenerico($titolo, $testo)
+    {
+        $email = $_SESSION["email"];
+        $codicePost = $this->creaCodicePost();
+        if ($this->inserisciPost($titolo, $testo, $codicePost, false)) {
+            $query = "INSERT INTO GENERICO VALUES (?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("si", $email, $codicePost);
+            return $stmt->execute();
+        }
+        return false;
+    }
+
+    public function inserisciRecensione($titolo, $testo, $valutazione, $codiceGioco)
+    {
+        $email = $_SESSION["email"];
+        $codicePost = $this->creaCodicePost();
+        if ($this->inserisciPost($titolo, $testo, $codicePost, true)) {
+            $query = "INSERT INTO RECENSIONE VALUES (?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("sidi", $email, $codicePost, $valutazione, $codiceGioco);
+            return $stmt->execute();
+        }
+        return false;
+    }
 }
 ?>

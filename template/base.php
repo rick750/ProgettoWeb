@@ -109,6 +109,7 @@
     <script src="js/filtri-di-ricerca.js"></script>
     <script src="js/info-post.js"></script>
     <script src="js/logout-listener.js"></script>
+    <script src="js/seleziona-tipo-post.js"></script>
 </body>
 
 </html>
