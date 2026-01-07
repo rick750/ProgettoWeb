@@ -126,7 +126,7 @@ class DatabaseHelper
 
     public function getGiochiRandom($n = -1)
     {
-        $query = "SELECT g.codiceGioco, g.nome, g.valutazioneGiornalistica,
+        $query = "SELECT g.codiceGioco, g.nome, g.valutazioneGiornalistica, g.immagine,
                      GROUP_CONCAT(t.nome SEPARATOR ', ') AS listaTag
                     FROM GIOCO g
                     LEFT JOIN riguarda r ON g.codiceGioco = r.codiceGioco
@@ -265,6 +265,22 @@ class DatabaseHelper
     public function getUserPosts($email)
     {
         $query = "SELECT * FROM POST WHERE crea_email = ? ORDER BY data DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserGenerici()
+    {
+        $email = $_SESSION["email"];
+        $query = "SELECT * 
+                    FROM POST 
+                    WHERE crea_email = ? 
+                    AND RECENSIONE IS NULL 
+                    ORDER BY data DESC;";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();

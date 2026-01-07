@@ -17,8 +17,10 @@
                 </h2>
             </header>
             <section class="card-text small text-muted">
-                <p class="mb-1">
-                    <?php echo $giocoRandom["valutazioneGiornalistica"]; ?>
+                <img class="img-fluid" src="upload/<?php echo $giocoRandom["immagine"]; ?>"
+                    alt="immagine di <?php echo $giocoRandom["nome"]; ?>" />
+                <p class="badge bg-primary mb-2">
+                    Valutazione: <?php echo $giocoRandom["valutazioneGiornalistica"]; ?>
                 </p>
                 <p class="mb-0">
                     <?php echo $giocoRandom["listaTag"]; ?>

@@ -27,9 +27,9 @@
                 </p>
             </section>
             <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-answer d-none">Rispondi</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-expand">Espandi</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-collapse d-none">Riduci</button>
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-answer d-none">Rispondi</button>
             </div>
         </div>
     </article>

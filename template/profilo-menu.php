@@ -21,7 +21,7 @@
 
 
                 <div class="col-6 d-grid">
-                    <a href="profilo-post.php" class="btn btn-primary rounded-pill px-4">Post</a>
+                    <a href="profilo-post.php" class="btn btn-primary rounded-pill px-4">Post Generici</a>
                 </div>
 
                 <div class="col-6 d-grid">

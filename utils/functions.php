@@ -1,5 +1,15 @@
 <?php 
 
+function isActive($pagename) {
+    return (basename($_SERVER['PHP_SELF'])==$pagename);
+}
+
+function isActiveNav($pagename){
+    if(isActive($pagename)){
+        echo " fw-bold text-decoration-underline active ";
+    }
+}
+
 function isUserLoggedIn(){
     return !empty($_SESSION['email']);
 }

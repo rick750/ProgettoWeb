@@ -24,28 +24,28 @@
     <nav class="bg-dark border-bottom border-secondary">
         <ul class="nav justify-content-center gap-3 py-2">
             <li class="nav-item">
-                <a class="nav-link text-primary fw-semibold active" href="index.php">HOME</a>
+                <a class="nav-link text-primary <?php isActiveNav("index.php");?>" href="index.php">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="archivio-post.php">ARCHIVIO POST</a>
+                <a class="nav-link text-primary <?php isActiveNav("archivio-post.php");?></a>" href="archivio-post.php">ARCHIVIO</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="giochi.php">GIOCHI</a>
+                <a class="nav-link text-primary <?php isActiveNav("giochi.php");?></a>" href="giochi.php">GIOCHI</a>
             </li>
             <?php if (!empty($_SESSION)): ?>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="tornei.php">TORNEI</a>
+                    <a class="nav-link text-primary <?php isActiveNav("tornei.php");?></a>" href="tornei.php">TORNEI</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="#">NOTIFICHE</a>
+                    <a class="nav-link text-primary <?php isActiveNav("login.php");?></a>" href="#">NOTIFICHE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="profilo.php">PROFILO</a>
+                    <a class="nav-link text-primary <?php isActiveNav("profilo.php");?></a>" href="profilo.php">PROFILO</a>
                 </li>
             <?php else: ?>
 
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="login.php">ACCEDI</a>
+                    <a class="nav-link text-primary <?php isActiveNav("login.php");?></a>" href="login.php">ACCEDI</a>
                 </li>
             <?php endif; ?>
         </ul>

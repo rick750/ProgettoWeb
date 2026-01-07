@@ -1,11 +1,13 @@
-<?php if(empty($templateParams["recensioni"])): ?>
+<?php if (empty($templateParams["recensioni"])): ?>
     <p>Al momento Non hai scritto Recensioni</p>
-<?php endif;?>
+<?php endif; ?>
 
-<?php if (isset($templateParams["indietro"])):?>
-    <a href="<?php echo $templateParams["indietro"];?>"
-        class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
-<?php endif;?>
+<?php if (isset($templateParams["indietro"])): ?>
+    <div class="mb-3">
+        <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
+        <a href="creazione-post.php" class="btn btn-primary rounded-pill px-4"> Nuovo Post</a>
+    </div>
+<?php endif; ?>
 
 <?php foreach ($templateParams["recensioni"] as $recensioni): ?>
     <article class="card mb-4 shadow-sm border-0 border-start border-4 border-primary">
@@ -33,9 +35,10 @@
                 </p>
             </section>
             <div class="d-flex justify-content-end mt-3">
-                <button class="btn btn-primary rounded-pill px-4 btn-recensione-expand">Espandi</button>
-                <button class="btn btn-primary rounded-pill px-4 btn-recensione-collapse d-none">Riduci</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-recensione-answer d-none">Rispondi</button>
+                <button
+                    class="btn btn-primary rounded-pill px-4 btn-recensione-expand">Espandi</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-recensione-collapse d-none">Riduci</button>
             </div>
         </div>
     </article>

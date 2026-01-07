@@ -25,7 +25,7 @@ if ($mostraSoloIscritto) {
         $torneo["iscritto"] = in_array($torneo, $torneiIscritto);
     }
 }
-    unset($torneo);
+unset($torneo);
 $templateParams["tornei"] = $tornei;
 
 if (isset($_POST["azione"]) && $_POST["azione"] === "iscrizione") {

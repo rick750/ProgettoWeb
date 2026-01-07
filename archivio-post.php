@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-$templateParams["titolo"] = "Unigames - Archivio Post";
+$templateParams["titolo"] = "Unigames - Archivio";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["selezionaFiltro"] = [];
 $templateParams["aside"] = "lista-giochiRandom.php";

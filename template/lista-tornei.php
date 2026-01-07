@@ -1,4 +1,4 @@
-<?php if (basename($_SERVER['PHP_SELF']) === 'profilo-tornei.php'): ?>
+<?php if (isActive("profilo-tornei.php")): ?>
     <?php if (!empty($_SESSION) && ($_SESSION["admin"] == true)): ?>
         <?php if (empty($templateParams["tornei"])): ?>
             <p>Al momento non hai creato nessun Torneo</p>
@@ -27,24 +27,26 @@
             <p><?php echo $torneo["descrizione"]; ?></p>
         </section>
 
-        <div class="position-absolute bottom-0 end-0 m-3">
-            <?php if ($torneo["iscritto"]): ?>
-                <form action="tornei.php" method="POST">
-                    <input type="text" value="<?php echo $torneo["codiceGioco"];?>" name="codiceGioco" hidden/>
-                    <input type="text" value="<?php echo $torneo["codiceTorneo"];?>" name="codiceTorneo" hidden/>
-                    <button type="submit" name="azione" value="disiscrizione" class="btn btn-secondary btn-sm">
-                        Iscritto
-                    </button>
-                </form>
-            <?php else: ?>
-                <form action="tornei.php" method="POST">
-                    <input type="text" value="<?php echo $torneo["codiceGioco"];?>" name="codiceGioco" hidden/>
-                    <input type="text" value="<?php echo $torneo["codiceTorneo"];?>" name="codiceTorneo" hidden/>
-                    <button type="submit" name="azione" value="iscrizione" class="btn btn-primary btn-sm">
-                        Iscriviti
-                    </button>
-                </form>
-            <?php endif; ?>
-        </div>
+        <?php if (!isActive("profilo-tornei.php")): ?>
+            <div class="position-absolute bottom-0 end-0 m-3">
+                <?php if ($torneo["iscritto"]): ?>
+                    <form action="tornei.php" method="POST">
+                        <input type="text" value="<?php echo $torneo["codiceGioco"]; ?>" name="codiceGioco" hidden />
+                        <input type="text" value="<?php echo $torneo["codiceTorneo"]; ?>" name="codiceTorneo" hidden />
+                        <button type="submit" name="azione" value="disiscrizione" class="btn btn-secondary btn-sm">
+                            Iscritto
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <form action="tornei.php" method="POST">
+                        <input type="text" value="<?php echo $torneo["codiceGioco"]; ?>" name="codiceGioco" hidden />
+                        <input type="text" value="<?php echo $torneo["codiceTorneo"]; ?>" name="codiceTorneo" hidden />
+                        <button type="submit" name="azione" value="iscrizione" class="btn btn-primary btn-sm">
+                            Iscriviti
+                        </button>
+                    </form>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
     </article>
 <?php endforeach; ?>
