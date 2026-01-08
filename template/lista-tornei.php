@@ -7,7 +7,7 @@
             <?php if (isset($templateParams["indietro"])): ?>
                 <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
             <?php endif; ?>
-            <a href="#" class="btn btn-primary rounded-pill px-4"> Nuovo Torneo</a>
+            <a href="creazione-torneo.php" class="btn btn-primary rounded-pill px-4"> Nuovo Torneo</a>
         </div>
     <?php endif; ?>
 

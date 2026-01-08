@@ -49,6 +49,6 @@
 
 <?php if (isset($templateParams["indietro"])): ?>
     <div class="mb-3">
-        <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4 my-4"> Torna al profilo</a>
+        <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4 my-4">Indietro</a>
     </div>
 <?php endif; ?>

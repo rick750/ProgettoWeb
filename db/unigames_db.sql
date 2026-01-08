@@ -26,7 +26,7 @@ CREATE TABLE UTENTE (
   nome VARCHAR(30) NOT NULL,
   cognome VARCHAR(30) NOT NULL,
   dataDiNascita DATE NOT NULL,
-  matricola NUMERIC(10) NOT NULL,
+  matricola INT UNSIGNED NOT NULL,
   descrizione VARCHAR(500) NOT NULL,
   PRIMARY KEY (email)
 ) ENGINE=InnoDB;
@@ -38,7 +38,7 @@ CREATE TABLE ADMIN (
 ) ENGINE=InnoDB;
 
 CREATE TABLE TAG (
-  codiceTag NUMERIC(10) NOT NULL,
+  codiceTag INT UNSIGNED NOT NULL,
   nome VARCHAR(50) NOT NULL,
   email VARCHAR(254) NOT NULL,
   PRIMARY KEY (codiceTag),
@@ -46,7 +46,7 @@ CREATE TABLE TAG (
 ) ENGINE=InnoDB;
 
 CREATE TABLE MESSAGGIO (
-  codiceMessaggio NUMERIC(10) NOT NULL,
+  codiceMessaggio INT UNSIGNED NOT NULL,
   testo VARCHAR(2000) NOT NULL,
   email VARCHAR(254) NOT NULL,
   PRIMARY KEY (codiceMessaggio),
@@ -55,7 +55,7 @@ CREATE TABLE MESSAGGIO (
 
 CREATE TABLE POST (
   crea_email VARCHAR(254) NOT NULL,
-  codicePost NUMERIC(10) NOT NULL,
+  codicePost INT UNSIGNED NOT NULL,
   testo VARCHAR(2000) NOT NULL,
   data DATE NOT NULL,
   titolo VARCHAR(150) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE POST (
 ) ENGINE=InnoDB;
 
 CREATE TABLE GIOCO (
-  codiceGioco NUMERIC(10) NOT NULL,
+  codiceGioco INT UNSIGNED NOT NULL,
   nome VARCHAR(100) NOT NULL,
   annoDiPubblicazione DATE NOT NULL,
   softwareHouse VARCHAR(100) NOT NULL,
@@ -85,17 +85,17 @@ CREATE TABLE GIOCO (
 
 CREATE TABLE RECENSIONE (
   crea_email VARCHAR(254) NOT NULL,
-  codicePost NUMERIC(10) NOT NULL,
+  codicePost INT UNSIGNED NOT NULL,
   valutazione DECIMAL(2,1) NOT NULL,
-  codiceGioco NUMERIC(10) NOT NULL,
+  codiceGioco INT UNSIGNED NOT NULL,
   PRIMARY KEY (crea_email, codicePost),
   FOREIGN KEY (crea_email, codicePost) REFERENCES POST(crea_email, codicePost),
   FOREIGN KEY (codiceGioco) REFERENCES GIOCO(codiceGioco)
 ) ENGINE=InnoDB;
 
 CREATE TABLE TORNEO (
-  codiceGioco NUMERIC(10) NOT NULL,
-  codiceTorneo NUMERIC(10) NOT NULL,
+  codiceGioco INT UNSIGNED NOT NULL,
+  codiceTorneo INT UNSIGNED NOT NULL,
   nome VARCHAR(100) NOT NULL,
   descrizione VARCHAR(500) NOT NULL,
   data DATE NOT NULL,
@@ -107,24 +107,24 @@ CREATE TABLE TORNEO (
 
 CREATE TABLE GENERICO (
   crea_email VARCHAR(254) NOT NULL,
-  codicePost NUMERIC(10) NOT NULL,
+  codicePost INT UNSIGNED NOT NULL,
   PRIMARY KEY (crea_email, codicePost),
   FOREIGN KEY (crea_email, codicePost) REFERENCES POST(crea_email, codicePost)
 ) ENGINE=InnoDB;
 
 CREATE TABLE COMMENTO (
   crea_email VARCHAR(254) NOT NULL,
-  codicePost NUMERIC(10) NOT NULL,
+  codicePost INT UNSIGNED NOT NULL,
   email VARCHAR(254) NOT NULL,
-  codiceCommento NUMERIC(10) NOT NULL,
+  codiceCommento INT UNSIGNED NOT NULL,
   testo VARCHAR(1000) NOT NULL,
-  PRIMARY KEY (email, crea_email, codicePost, codiceCommento),
+  PRIMARY KEY (crea_email, codicePost, codiceCommento),
   FOREIGN KEY (email) REFERENCES UTENTE(email),
   FOREIGN KEY (crea_email, codicePost) REFERENCES POST(crea_email, codicePost)
 ) ENGINE=InnoDB;
 
 CREATE TABLE CORSO (
-  codiceCorso NUMERIC(10) NOT NULL,
+  codiceCorso INT UNSIGNED NOT NULL,
   nome VARCHAR(100) NOT NULL,
   email VARCHAR(254) NOT NULL,
   PRIMARY KEY (codiceCorso),
@@ -132,7 +132,7 @@ CREATE TABLE CORSO (
 ) ENGINE=InnoDB;
 
 CREATE TABLE iscritto (
-  codiceCorso NUMERIC(10) NOT NULL,
+  codiceCorso INT UNSIGNED NOT NULL,
   email VARCHAR(254) NOT NULL,
   PRIMARY KEY (codiceCorso, email),
   FOREIGN KEY (codiceCorso) REFERENCES CORSO(codiceCorso),
@@ -140,8 +140,8 @@ CREATE TABLE iscritto (
 ) ENGINE=InnoDB;
 
 CREATE TABLE iscrizione (
-  codiceGioco NUMERIC(10) NOT NULL,
-  codiceTorneo NUMERIC(10) NOT NULL,
+  codiceGioco INT UNSIGNED NOT NULL,
+  codiceTorneo INT UNSIGNED NOT NULL,
   email VARCHAR(254) NOT NULL,
   PRIMARY KEY (codiceGioco, codiceTorneo, email),
   FOREIGN KEY (codiceGioco, codiceTorneo) REFERENCES TORNEO(codiceGioco, codiceTorneo),
@@ -149,7 +149,7 @@ CREATE TABLE iscrizione (
 ) ENGINE=InnoDB;
 
 CREATE TABLE riceve (
-  codiceMessaggio NUMERIC(10) NOT NULL,
+  codiceMessaggio INT UNSIGNED NOT NULL,
   email VARCHAR(254) NOT NULL,
   PRIMARY KEY (email, codiceMessaggio),
   FOREIGN KEY (email) REFERENCES UTENTE(email),
@@ -157,8 +157,8 @@ CREATE TABLE riceve (
 ) ENGINE=InnoDB;
 
 CREATE TABLE riguarda (
-  codiceGioco NUMERIC(10) NOT NULL,
-  codiceTag NUMERIC(10) NOT NULL,
+  codiceGioco INT UNSIGNED NOT NULL,
+  codiceTag INT UNSIGNED NOT NULL,
   PRIMARY KEY (codiceGioco, codiceTag),
   FOREIGN KEY (codiceGioco) REFERENCES GIOCO(codiceGioco),
   FOREIGN KEY (codiceTag) REFERENCES TAG(codiceTag)

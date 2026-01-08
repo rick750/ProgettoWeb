@@ -1,6 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
+$_SESSION["pagina_precedente"] = $_SERVER["REQUEST_URI"];
 $templateParams["titolo"] = "Unigames - Archivio";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["selezionaFiltro"] = [];

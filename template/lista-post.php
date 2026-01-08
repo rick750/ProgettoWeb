@@ -27,7 +27,7 @@
                 </p>
             </section>
             <div class="d-flex justify-content-end mt-3">
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-answer d-none">Rispondi</button>
+                <a href="creazione-commento.php?action=commento&id=<?php echo $post['codicePost']; ?>&crea_email=<?php echo $post['crea_email']; ?>"class="btn btn-primary rounded-pill px-4"> Rispondi </a>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-expand">Espandi</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-collapse d-none">Riduci</button>
             </div>

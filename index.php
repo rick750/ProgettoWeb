@@ -1,4 +1,5 @@
 <?php
+$_SESSION["pagina_precedente"] = $_SERVER["REQUEST_URI"];
 require_once 'bootstrap.php';
 $templateParams["titolo"] = "Unigames - Home";
 $templateParams["nome"] = "lista-post.php";

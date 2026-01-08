@@ -42,6 +42,23 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPost($codicePost, $autore) {
+        $query = "SELECT p.*
+                    FROM POST p
+                    JOIN GENERICO g
+                    ON p.crea_email = g.crea_email
+                    AND p.codicePost = g.codicePost
+                    WHERE p.crea_email = ?
+                    AND p.codicePost = ?
+                    ;";
+        $stmt = $this->db->prepare($query);
+        
+        $stmt->bind_param('si', $autore, $codicePost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
     public function getRecensioni($n = -1)
     {
         $query = "SELECT p.*, r.valutazione, g.nome
@@ -429,6 +446,51 @@ class DatabaseHelper
             return $stmt->execute();
         }
         return false;
+    }
+
+    private function creaCodiceTorneo() {
+        $indice = count($this->getTornei());
+        return $indice + 1;
+    }
+
+    public function inserisciTorneo($codiceGioco, $data, $descrizione) {
+        $email = $_SESSION["email"];
+        $nomeGioco = $this->getNomeGioco($codiceGioco);
+        $codiceTorneo = $this->creaCodiceTorneo();
+        $query = "INSERT INTO TORNEO VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iissss",$codiceGioco, $codiceTorneo, $nomeGioco, $descrizione, $data, $email);
+        return $stmt->execute();
+    }
+
+
+
+    public function getCommentiPost($autorePost, $codicePost) {
+                $query = "SELECT *
+                FROM COMMENTO
+                WHERE crea_email = ?
+                AND codicePost = ?;
+                    ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si",$autorePost, $codicePost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function creaCodiceCommento($autorePost, $codicePost) {
+        $result = count($this->getCommentiPost($autorePost, $codicePost));
+        return $result + 1;
+    }
+
+    public function inserisciCommento($autorePost, $codicePost, $testoCommento) {
+        $email = $_SESSION["email"];
+        $codiceCommento = $this->creaCodiceCommento($autorePost, $codicePost);
+        $query = "INSERT INTO COMMENTO VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sisis",$autorePost, $codicePost, $email, $codiceCommento, $testoCommento);
+        return $stmt->execute();
     }
 }
 ?>
