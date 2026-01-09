@@ -37,13 +37,13 @@
                     <div class="mt-auto d-flex justify-content-end">
                         <?php if (isActive("profilo-giochi.php")): ?>
                             <a href="profilo-giochi.php?action=recensioni&id=<?php echo $gioco['codiceGioco']; ?>"
-                                class="btn btn-primary rounded-pill px-4"> Recensioni </a>
+                                class="btn btn-primary rounded-pill px-4 mx-1"> Recensioni </a>
                         <?php else: ?>
                             <a href="giochi.php?action=recensioni&id=<?php echo $gioco['codiceGioco']; ?>"
-                                class="btn btn-primary rounded-pill px-4"> Recensioni </a>
+                                class="btn btn-primary rounded-pill px-4 mx-1"> Recensioni </a>
                         <?php endif; ?>
-                        <button class="btn btn-primary rounded-pill px-4 btn-expand">Espandi</button>
-                        <button class="btn btn-primary rounded-pill px-4 btn-collapse d-none">Riduci</button>
+                        <button class="btn btn-primary rounded-pill px-4 btn-expand mx-1">Espandi</button>
+                        <button class="btn btn-primary rounded-pill px-4 btn-collapse d-none mx-1">Riduci</button>
                     </div>
                 </div>
             </article>

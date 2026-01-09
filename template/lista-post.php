@@ -44,11 +44,11 @@
             </section>
 
             <div class="d-flex justify-content-end mt-3">
-                <a href="creazione-commento.php?action=commento&id=<?php echo $post['codicePost']; ?>&crea_email=<?php echo $post['crea_email']; ?>"class="btn btn-primary rounded-pill px-4"> Rispondi </a>
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-expand">Espandi</button>
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-collapse d-none">Riduci</button>
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-show-answer">Mostra Risposte</button>
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-hid-answer d-none">Nascondi Risposte</button>
+                <a href="creazione-commento.php?action=commento&id=<?php echo $post['codicePost']; ?>&crea_email=<?php echo $post['crea_email']; ?>"class="btn btn-primary rounded-pill px-4 mx-1"> Rispondi </a>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-show-answer mx-1">Mostra Risposte</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-hid-answer d-none mx-1">Nascondi Risposte</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-expand mx-1">Espandi</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-collapse d-none mx-1">Riduci</button>
             </div>
         </div>
     </article>
