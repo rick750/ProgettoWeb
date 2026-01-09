@@ -15,13 +15,13 @@
 
 <?php foreach ($templateParams["tornei"] as $torneo): ?>
     <article class="px-4 py-3 card mb-4 shadow-sm border-0 border-start border-4 border-primary">
-        <header>
+        <div>
             <h2 class="h5"><?php echo $torneo["nomeTorneo"]; ?></h2>
             <p class="text-muted mb-2">
                 Torneo di <?php echo $torneo["nomeGioco"]; ?> –
                 <?php echo $torneo["data"]; ?>
             </p>
-        </header>
+        </div>
 
         <section>
             <p><?php echo $torneo["descrizione"]; ?></p>
@@ -29,23 +29,19 @@
 
         <?php if (!isActive("profilo-tornei.php")): ?>
             <div class="position-absolute bottom-0 end-0 m-3">
-                <?php if ($torneo["iscritto"]): ?>
-                    <form action="tornei.php" method="POST">
-                        <input type="text" value="<?php echo $torneo["codiceGioco"]; ?>" name="codiceGioco" hidden />
-                        <input type="text" value="<?php echo $torneo["codiceTorneo"]; ?>" name="codiceTorneo" hidden />
+                <form action="tornei.php" method="POST">
+                    <input type="text" value="<?php echo $torneo["codiceGioco"]; ?>" name="codiceGioco" hidden />
+                    <input type="text" value="<?php echo $torneo["codiceTorneo"]; ?>" name="codiceTorneo" hidden />
+                    <?php if ($torneo["iscritto"]): ?>
                         <button type="submit" name="azione" value="disiscrizione" class="btn btn-secondary btn-sm">
                             Iscritto
                         </button>
-                    </form>
-                <?php else: ?>
-                    <form action="tornei.php" method="POST">
-                        <input type="text" value="<?php echo $torneo["codiceGioco"]; ?>" name="codiceGioco" hidden />
-                        <input type="text" value="<?php echo $torneo["codiceTorneo"]; ?>" name="codiceTorneo" hidden />
+                    <?php else: ?>
                         <button type="submit" name="azione" value="iscrizione" class="btn btn-primary btn-sm">
                             Iscriviti
                         </button>
-                    </form>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </form>
             </div>
         <?php endif; ?>
     </article>
