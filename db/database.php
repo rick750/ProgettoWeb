@@ -2,10 +2,12 @@
 class DatabaseHelper
 {
     private $db;
+    private $codiceMessaggio;
 
     public function __construct($servername, $username, $password, $dbname, $port)
     {
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
+        $this->codiceMessaggio = $this->creaCodiceMessaggio();
 
         if ($this->db->connect_error) {
             die("Connection failed: " . $this->db->connect_error);
@@ -489,6 +491,47 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("sisis",$autorePost, $codicePost, $email, $codiceCommento, $testoCommento);
         return $stmt->execute();
+    }
+
+    public function getUsers() {
+                $query = "SELECT email
+                FROM UTENTE;";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getMessages() {
+                $query = "SELECT *
+                FROM MESSAGGIO;";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function creaCodiceMessaggio() {
+        return count($this->getMessages());
+    }
+
+    public function inserisciMessaggio($destinatario, $testo) {
+        $mittente = $_SESSION["email"];
+        $this->codiceMessaggio = $this->codiceMessaggio + 1;
+        $data = date("Y-m-d");
+        $query = "INSERT INTO MESSAGGIO VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isss", $this->codiceMessaggio, $testo, $mittente, $data);
+        if ($stmt ->execute()) {
+            $query = "INSERT INTO RICEVE VALUES(?, ?, ?)";
+            if ($destinatario === "tutti") {
+                $c = 1;
+            } else {
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param("iss", $this->codiceMessaggio, $destinatario, $data);
+                return $stmt->execute();
+            }
+        }
     }
 }
 ?>

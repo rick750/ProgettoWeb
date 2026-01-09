@@ -15,7 +15,7 @@
                 <div class="col-3 d-grid"></div>
 
                 <div class="col-6 d-grid">
-                    <button class="btn fw-bold rounded-pill py-2 btn-info">Scrivi</button>
+                    <a href="creazione-messaggio.php" class="btn fw-bold rounded-pill py-2 btn-info">Nuovo Messaggio</a>
                 </div>
                 <div class="col-3 d-grid"></div>
 

@@ -49,6 +49,7 @@ CREATE TABLE MESSAGGIO (
   codiceMessaggio INT UNSIGNED NOT NULL,
   testo VARCHAR(2000) NOT NULL,
   email VARCHAR(254) NOT NULL,
+  data DATE NOT NULL,
   PRIMARY KEY (codiceMessaggio),
   FOREIGN KEY (email) REFERENCES UTENTE(email)
 ) ENGINE=InnoDB;
@@ -151,6 +152,7 @@ CREATE TABLE iscrizione (
 CREATE TABLE riceve (
   codiceMessaggio INT UNSIGNED NOT NULL,
   email VARCHAR(254) NOT NULL,
+  data DATE NOT NULL,
   PRIMARY KEY (email, codiceMessaggio),
   FOREIGN KEY (email) REFERENCES UTENTE(email),
   FOREIGN KEY (codiceMessaggio) REFERENCES MESSAGGIO(codiceMessaggio)
