@@ -525,7 +525,16 @@ class DatabaseHelper
         if ($stmt ->execute()) {
             $query = "INSERT INTO RICEVE VALUES(?, ?, ?)";
             if ($destinatario === "tutti") {
-                $c = 1;
+                $utenti = $this->getUsers();
+                foreach($utenti as $utente) {
+                   $destinatario = $utente["email"];
+                   if($destinatario != $mittente) {
+                        $stmt = $this->db->prepare($query);
+                        $stmt->bind_param("iss", $this->codiceMessaggio, $destinatario, $data);
+                        $stmt->execute();                     
+                   }
+                }
+                return true;
             } else {
                 $stmt = $this->db->prepare($query);
                 $stmt->bind_param("iss", $this->codiceMessaggio, $destinatario, $data);
