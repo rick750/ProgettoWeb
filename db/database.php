@@ -463,8 +463,6 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-
-
     public function getCommentiPost($autorePost, $codicePost) {
                 $query = "SELECT *
                 FROM COMMENTO

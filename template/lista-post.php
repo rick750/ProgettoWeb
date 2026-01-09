@@ -26,10 +26,29 @@
                     <?php echo $post["testo"]; ?>
                 </p>
             </section>
+
+            <section class="card-text generic-answers d-none mt-3">
+                <?php foreach ($post["commenti"] as $answer): ?>
+                    <div class="p-3 mb-3 border rounded bg-light">
+                        <p class="fw-bold mb-1 text-primary">
+                            <?php echo htmlspecialchars($answer["email"]); ?>
+                        </p>
+                        <p class="mb-0">
+                            <?php echo nl2br(htmlspecialchars($answer["testo"])); ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
+                <?php if (empty($post["commenti"])): ?>
+                    <p class="text-muted fst-italic">Nessuna risposta presente.</p>
+                <?php endif; ?>
+            </section>
+
             <div class="d-flex justify-content-end mt-3">
                 <a href="creazione-commento.php?action=commento&id=<?php echo $post['codicePost']; ?>&crea_email=<?php echo $post['crea_email']; ?>"class="btn btn-primary rounded-pill px-4"> Rispondi </a>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-expand">Espandi</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-collapse d-none">Riduci</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-show-answer">Mostra Risposte</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-hid-answer d-none">Nascondi Risposte</button>
             </div>
         </div>
     </article>
