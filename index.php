@@ -1,6 +1,8 @@
 <?php
 require_once 'bootstrap.php';
-$_SESSION["pagina_precedente"] = $_SERVER["REQUEST_URI"];
+if (isset($_SESSION["email"])) {
+    $_SESSION["pagina_precedente"] = $_SERVER["REQUEST_URI"];
+}
 $templateParams["titolo"] = "Unigames - Home";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["selezionaFiltro"] = [];

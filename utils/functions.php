@@ -23,6 +23,7 @@ function userLogOut(){
     unset($_SESSION["email"]);
     unset($_SESSION["nome"]);
     unset($_SESSION["admin"]);
+    unset($_SESSION["pagina_precedente"]);
 }
 
 function getValueFromCorso($corso){
