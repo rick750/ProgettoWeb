@@ -542,5 +542,35 @@ class DatabaseHelper
             }
         }
     }
+
+    public function getMessaggiInviati() {
+        $email = $_SESSION["email"];
+                $query = "SELECT m.codiceMessaggio, m.testo, r.data, r.email
+                FROM MESSAGGIO m
+                JOIN RICEVE r
+                ON m.codiceMessaggio = r.codiceMessaggio
+                WHERE m.email = ?
+                ORDER BY r.data DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getMessaggiRicevuti() {
+        $email = $_SESSION["email"];
+        $query = "SELECT r.codiceMessaggio, r.data, m.email, m.testo
+        FROM RICEVE r 
+        JOIN MESSAGGIO m
+        ON r.codiceMessaggio = m.codiceMessaggio
+        WHERE r.email = ?
+        ORDER BY r.data DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

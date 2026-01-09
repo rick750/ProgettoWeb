@@ -19,7 +19,7 @@
 <form action="creazione-commento.php" method="POST">
     <h1 class="fw-bold text-uppercase text-primary mb-0">Inserisci il nuovo Commento:</h1>
     <fieldset class=" flex-wrap align-items-center gap-3">
-            <label for="testo" class="form-textarea-label">Testo</label><br />
+            <label for="testo" class="form-textarea-label"></label><br />
             <textarea id="testo" name="testo" value="testo" rows="10" cols="120" maxlength="500"
                 class="form-control"></textarea><br /><br />
             <input type="text" name="autorePost" value="<?php echo $templateParams["post"]["crea_email"];?>" hidden>

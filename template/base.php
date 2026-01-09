@@ -37,7 +37,7 @@
                     <a class="nav-link text-primary <?php isActiveNav("tornei.php");?></a>" href="tornei.php">TORNEI</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("login.php");?></a>" href="#">NOTIFICHE</a>
+                    <a class="nav-link text-primary <?php isActiveNav("notifiche.php");?></a>" href="notifiche.php">NOTIFICHE</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-primary <?php isActiveNav("profilo.php");?></a>" href="profilo.php">PROFILO</a>
@@ -110,6 +110,7 @@
     <script src="js/info-post.js"></script>
     <script src="js/logout-listener.js"></script>
     <script src="js/seleziona-tipo-post.js"></script>
+    <script src="js/notifiche.js"></script>
 </body>
 
 </html>
