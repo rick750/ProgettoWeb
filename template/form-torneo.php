@@ -1,3 +1,9 @@
+<?php if (isset($templateParams["errore_torneo"])): ?>
+    <div class="alert alert-danger">
+        <?php echo $templateParams["errore_torneo"]; ?>
+    </div>
+<?php endif; ?>
+
 <form action="creazione-torneo.php" method="POST">
     <h1 class="fw-bold text-uppercase text-primary mb-0">Inserisci i dati del nuovo Torneo</h1>
     <fieldset class=" flex-wrap align-items-center gap-3">

@@ -1,3 +1,8 @@
+<?php if (isset($templateParams["errore_messaggio"])): ?>
+    <div class="alert alert-danger">
+        <?php echo $templateParams["errore_messaggio"]; ?>
+    </div>
+<?php endif; ?>
 <form action="creazione-messaggio.php" method="POST">
     <h1 class="fw-bold text-uppercase text-primary mb-0">Scrivi il nuovo Messaggio:</h1>
     <fieldset class=" flex-wrap align-items-center gap-3">
