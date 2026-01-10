@@ -1,3 +1,9 @@
+<?php if (isset($templateParams["errore_post"])): ?>
+    <div class="alert alert-danger">
+        <?php echo $templateParams["errore_post"]; ?>
+    </div>
+<?php endif; ?>
+
 <form action="creazione-post.php" method="POST">
     <h1 class="fw-bold text-uppercase text-primary mb-0">Inserisci i dati del nuovo Post</h1>
     <fieldset class=" flex-wrap align-items-center gap-3">
