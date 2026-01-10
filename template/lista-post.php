@@ -4,9 +4,9 @@
 
 <?php if (isset($templateParams["indietro"])): ?>
     <div class="mb-3">
-    <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
-    <a href="creazione-post.php" class="btn btn-primary rounded-pill px-4"> Nuovo Post</a>
-</div>
+        <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4"> Torna al profilo</a>
+        <a href="creazione-post.php" class="btn btn-primary rounded-pill px-4"> Nuovo Post</a>
+    </div>
 <?php endif; ?>
 
 <?php foreach ($templateParams["post"] as $post): ?>
@@ -44,9 +44,15 @@
             </section>
 
             <div class="d-flex justify-content-end mt-3">
-                <a href="creazione-commento.php?action=commento&id=<?php echo $post['codicePost']; ?>&crea_email=<?php echo $post['crea_email']; ?>"class="btn btn-primary rounded-pill px-4 mx-1"> Rispondi </a>
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-show-answer mx-1 d-none">Mostra Risposte</button>
-                <button class="btn btn-primary rounded-pill px-4 btn-generic-hid-answer d-none mx-1">Nascondi Risposte</button>
+
+                <?php if (!empty($_SESSION)): ?>
+                    <a href="creazione-commento.php?action=commento&id=<?php echo $post['codicePost']; ?>&crea_email=<?php echo $post['crea_email']; ?>"
+                        class="btn btn-primary rounded-pill px-4 mx-1"> Rispondi </a>
+                <?php endif; ?>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-show-answer mx-1 d-none">Mostra
+                    Risposte</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-hid-answer d-none mx-1">Nascondi
+                    Risposte</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-expand mx-1">Espandi</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-collapse d-none mx-1">Riduci</button>
             </div>

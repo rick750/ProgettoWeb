@@ -24,28 +24,29 @@
     <nav class="bg-dark border-bottom border-secondary">
         <ul class="nav justify-content-center gap-3 py-2">
             <li class="nav-item">
-                <a class="nav-link text-primary <?php isActiveNav("index.php");?>" href="index.php">HOME</a>
+                <a class="nav-link text-primary <?php isActiveNav("index.php"); ?>" href="index.php">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary <?php isActiveNav("archivio-post.php");?></a>" href="archivio-post.php">ARCHIVIO</a>
+                <a class="nav-link text-primary <?php isActiveNav("archivio-post.php"); ?></a>"
+                    href="archivio-post.php">ARCHIVIO</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary <?php isActiveNav("giochi.php");?></a>" href="giochi.php">GIOCHI</a>
+                <a class="nav-link text-primary <?php isActiveNav("giochi.php"); ?></a>" href="giochi.php">GIOCHI</a>
             </li>
             <?php if (!empty($_SESSION)): ?>
                 <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("tornei.php");?></a>" href="tornei.php">TORNEI</a>
+                    <a class="nav-link text-primary <?php isActiveNav("tornei.php"); ?></a>" href="tornei.php">TORNEI</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("notifiche.php");?></a>" href="notifiche.php">NOTIFICHE</a>
+                    <a class="nav-link text-primary <?php isActiveNav("notifiche.php"); ?></a>"
+                        href="notifiche.php">NOTIFICHE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("profilo.php");?></a>" href="profilo.php">PROFILO</a>
+                    <a class="nav-link text-primary <?php isActiveNav("profilo.php"); ?></a>" href="profilo.php">PROFILO</a>
                 </li>
             <?php else: ?>
-
                 <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("login.php");?></a>" href="login.php">ACCEDI</a>
+                    <a class="nav-link text-primary <?php isActiveNav("login.php"); ?></a>" href="login.php">ACCEDI</a>
                 </li>
             <?php endif; ?>
         </ul>
