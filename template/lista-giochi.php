@@ -1,3 +1,5 @@
+<?php require_once 'bootstrap.php';?>
+
 <?php if (empty($templateParams["libreriaGiochiFunc"])): ?>
     <?php if(isset($templateParams["indietro"])): ?>
         <p>Al momento non hai pubblicato Giochi in Libreria</p>
@@ -30,6 +32,7 @@
 
 <div class="row mt-3">
     <?php foreach ($templateParams["libreriaGiochiFunc"] as $gioco): ?>
+        <?php $recensioniUtenti = $dbh->getStatisticheRecensioniGioco($gioco["codiceGioco"]); ?>
         <div class="col-12 col-md-6 mb-4">
             <article class="card h-100 shadow-sm border-0 border-start border-4 border-primary">
                 <div>
@@ -38,10 +41,19 @@
                 </div>
 
                 <div class="card-body d-flex flex-column">
-                    <div class="mb-3">
+                    <div>
                         <h2 class="card-title fw-bold mb-1"><?php echo $gioco["nome"]; ?></h2>
                         <p class="badge bg-primary mb-2">
                             Valutazione: <?php echo $gioco["valutazioneGiornalistica"]; ?>
+                        </p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="badge bg-primary mb-2">
+                            <?php if($recensioniUtenti["media"] === NULL): ?>
+                                Valutazione Utenti: -
+                            <?php else: ?>
+                                Valutazione Utenti: <?php echo $recensioniUtenti["media"]; ?> (<?php echo $recensioniUtenti["numero"]; ?>)
+                            <?php endif;?>
                         </p>
                     </div>
 

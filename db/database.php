@@ -601,6 +601,25 @@ class DatabaseHelper
         };
     }
 
+    public function getStatisticheRecensioniGioco($idGioco){
+        $query = "
+            SELECT 
+                ROUND(AVG(valutazione), 1) AS media,
+                COUNT(*) AS numero
+            FROM RECENSIONE
+            WHERE codiceGioco = ?;
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$idGioco]);
+        $result = $stmt->get_result()->fetch_assoc();
+        // media può essere NULL se non ci sono recensioni
+        // numero sarà 0 in quel caso
+        return [
+            "media" => $result["media"],
+            "numero" => (int)$result["numero"]
+        ];
+    }
+
     public function addTag($nome) {
         $email = $_SESSION["email"];
         $this->codiceTag += 1;
