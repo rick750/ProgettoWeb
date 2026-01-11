@@ -41,13 +41,11 @@
                 </div>
 
                 <div class="card-body d-flex flex-column">
-                    <div>
+                    <div class="mb-3">
                         <h2 class="card-title fw-bold mb-1"><?php echo $gioco["nome"]; ?></h2>
                         <p class="badge bg-primary mb-2">
                             Valutazione: <?php echo $gioco["valutazioneGiornalistica"]; ?>
                         </p>
-                    </div>
-                    <div class="mb-3">
                         <p class="badge bg-primary mb-2">
                             <?php if($recensioniUtenti["media"] === NULL): ?>
                                 Valutazione Utenti: -
