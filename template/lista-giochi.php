@@ -1,5 +1,9 @@
 <?php if (empty($templateParams["libreriaGiochiFunc"])): ?>
-    <p>Al momento Non hai pubblicato Giochi in Libreria</p>
+    <?php if(isset($templateParams["indietro"])): ?>
+        <p>Al momento non hai pubblicato Giochi in Libreria</p>
+    <?php else: ?>
+        <p>Al momento non ci sono giochi in libreria con i tag selezionati </p>
+    <?php endif; ?>
 <?php endif; ?>
 
 <?php if (isset($templateParams["indietro"])): ?>
@@ -7,7 +11,24 @@
         profilo</a>
 <?php endif; ?>
 
-<div class="row">
+<?php if (isset($templateParams["indietro"]) && $_SESSION["admin"]): ?>
+    <a href="creazione-gioco.php" class="btn btn-primary rounded-pill px-4 mb-3">Aggiungi Gioco</a>
+<?php endif; ?>
+
+<?php if (isset($templateParams["indietro"]) && $_SESSION["admin"]): ?>
+    <form action="creazione-tag.php" method="POST">
+        <fieldset class=" flex-wrap align-items-center gap-3">
+                <label for="tag" class="form-textarea-label">Aggiungi un nuovo Tag:</label><br />
+                <input type="text" name="tag">
+                <input type="text" name="nuovo_tag" value="nuovo_tag" hidden>
+        </fieldset>
+        <input type="submit" value="Aggiungi" class="btn btn-primary rounded-pill px-4">
+        <input type="reset" value="Cancella" class="btn btn-primary rounded-pill px-4">
+    </form>
+<?php endif; ?>
+
+
+<div class="row mt-3">
     <?php foreach ($templateParams["libreriaGiochiFunc"] as $gioco): ?>
         <div class="col-12 col-md-6 mb-4">
             <article class="card h-100 shadow-sm border-0 border-start border-4 border-primary">

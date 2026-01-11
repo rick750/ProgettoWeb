@@ -21,7 +21,7 @@ if (isset($_POST["torneo"])) {
     } else {
         $dataInput = new DateTime($_POST["data"]);
         $differenza = $oggi->diff($dataInput);
-        if ($differenza->invert === 1) {
+        if ($differenza->invert === 1) { //0-> dataInput nel futuro 1-> dataInput nel passato
             $templateParams["errore_torneo"] = "La data deve essere DOPO quella odierna";
             $valid = false;
         }

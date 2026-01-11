@@ -3,11 +3,15 @@ class DatabaseHelper
 {
     private $db;
     private $codiceMessaggio;
+    private $codiceGioco;
+    private $codiceTag;
 
     public function __construct($servername, $username, $password, $dbname, $port)
     {
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         $this->codiceMessaggio = $this->creaCodiceMessaggio();
+        $this->codiceGioco = $this->creaCodiceGioco();
+        $this->codiceTag = $this->creaCodiceTag();
 
         if ($this->db->connect_error) {
             die("Connection failed: " . $this->db->connect_error);
@@ -98,6 +102,9 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    private function creaCodiceTag() {
+        return count($this->getTags());
+    }
 
     public function getTornei()
     {
@@ -571,6 +578,36 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    private function creaCodiceGioco() {
+        return count($this->getLibreriaGiochi([]));
+    }
+
+    public function addGioco($nome, $anno, $sHouse, $voto, $descrizione, $nomeImmagine, $tags) {
+        $email = $_SESSION["email"];
+        $this->codiceGioco += 1;
+        $query = "INSERT INTO GIOCO VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isssdsss",$this->codiceGioco, $nome, $anno, $sHouse, $voto, $descrizione, $nomeImmagine, $email);
+        if($stmt->execute()) {
+            $query = "INSERT INTO RIGUARDA VALUES (?, ?)";
+            foreach($tags as $tag) {
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param("is", $this->codiceGioco, $tag);
+                $stmt->execute();                     
+            }
+            return true;
+        };
+    }
+
+    public function addTag($nome) {
+        $email = $_SESSION["email"];
+        $this->codiceTag += 1;
+        $query = "INSERT INTO TAG VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iss", $this->codiceTag, $nome, $email);
+        return $stmt->execute();
     }
 }
 ?>
