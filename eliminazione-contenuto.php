@@ -6,7 +6,7 @@ if (!empty($_SESSION)) {
         header("Location: " . $_POST["paginaDiRitorno"]);
     } else if (isset($_POST["eliminaPost"])) {
         if (array_key_exists("cancellaTipoPost", $_POST)) {
-            if ($_POST["cancellaTipoPost"] === null) {
+            if ($_POST["cancellaTipoPost"] === "R") {
                 //è una recensione
                 $dbh->eliminaPost($_POST["cancellaCreaEmail"], $_POST["cancellaCodicePost"], false);
             } else {

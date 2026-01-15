@@ -12,14 +12,24 @@
 <?php foreach ($templateParams["recensioni"] as $recensioni): ?>
     <article class="card mb-4 shadow-sm border-0 border-start border-4 border-primary">
         <div class="card-body">
-            <header class="mb-3">
+            <div class="mb-3">
                 <h2 class="card-title fw-bold mb-1">
                     <?php echo $recensioni["titolo"]; ?>
                 </h2>
+                <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $recensioni["crea_email"]))): ?>
+                    <form action="eliminazione-contenuto.php" method="POST">
+                        <input type="text" name="cancellaCreaEmail" value="<?php echo $recensioni["crea_email"]; ?>" hidden />
+                        <input type="text" name="cancellaCodicePost" value="<?php echo $recensioni["codicePost"]; ?>" hidden />
+                        <input type="text" name="cancellaTipoPost" value="R" hidden />
+                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <input type="submit" name="eliminaPost" value="Elimina Recensione"
+                            class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3">
+                    </form>
+                <?php endif; ?>
                 <p class="card-subtitle text-muted small">
                     <?php echo $recensioni["data"]; ?> · <?php echo $recensioni["crea_email"]; ?>
                 </p>
-            </header>
+            </div>
 
             <section class="card-text recensione-extra-info d-none">
                 <p class="fw-semibold mb-1">
