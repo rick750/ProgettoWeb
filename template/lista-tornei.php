@@ -10,13 +10,23 @@
             <a href="creazione-torneo.php" class="btn btn-primary rounded-pill px-4"> Nuovo Torneo</a>
         </div>
     <?php endif; ?>
-
 <?php endif; ?>
 
 <?php foreach ($templateParams["tornei"] as $torneo): ?>
     <article class="px-4 py-3 card mb-4 shadow-sm border-0 border-start border-4 border-primary">
         <div>
-            <h2 class="h5"><?php echo $torneo["nomeTorneo"]; ?></h2>
+            <div class="row">
+                <?php if (!empty($_SESSION) && ($_SESSION["email"] === $torneo["email"])): ?>
+                    <h2 class="h5 col-4"><?php echo $torneo["nomeTorneo"]; ?></h2>
+                    <div class="col-6"></div>
+                    <form action="tornei.php" method="POST" class="col-2">
+                        <input type="text" name="cancellaTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden />
+                        <input type="submit" name="elimina" value="elimina" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3">
+                    </form>
+                </div>
+            <?php else: ?>
+                <h2 class="h5"><?php echo $torneo["nomeTorneo"]; ?></h2>
+            <?php endif; ?>
             <p class="text-muted mb-2">
                 Torneo di <?php echo $torneo["nomeGioco"]; ?> –
                 <?php echo $torneo["data"]; ?>

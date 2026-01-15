@@ -1,42 +1,52 @@
 <?php
 require_once 'bootstrap.php';
+if (!empty($_SESSION)) {
 
-$templateParams["titolo"] = "Unigames - Tornei";
-$templateParams["nome"] = "lista-tornei.php";
-$templateParams["aside"] = "lista-giochiRandom.php";
-$templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
+    $templateParams["titolo"] = "Unigames - Tornei";
+    $templateParams["nome"] = "lista-tornei.php";
+    $templateParams["aside"] = "lista-giochiRandom.php";
+    $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
 
-$templateParams["filtri"] = [
-    ["valore" => "iscritto", "nome" => "Iscritto"]
-];
-$templateParams["selezionaFiltro"] = $_GET["filter"] ?? [];
-$filtri = $templateParams["selezionaFiltro"];
-$mostraSoloIscritto = in_array("iscritto", $filtri);
+    $templateParams["filtri"] = [
+        ["valore" => "iscritto", "nome" => "Iscritto"]
+    ];
+    $templateParams["selezionaFiltro"] = $_GET["filter"] ?? [];
+    $filtri = $templateParams["selezionaFiltro"];
+    $mostraSoloIscritto = in_array("iscritto", $filtri);
 
-if ($mostraSoloIscritto) {
-    $tornei = $dbh->getTorneiIscritto();
-    foreach ($tornei as &$torneo) {
-        $torneo["iscritto"] = true;
+    if ($mostraSoloIscritto) {
+        $tornei = $dbh->getTorneiIscritto();
+        foreach ($tornei as &$torneo) {
+            $torneo["iscritto"] = true;
+        }
+    } else {
+        $tornei = $dbh->getTornei();
+        $torneiIscritto = $dbh->getTorneiIscritto();
+        foreach ($tornei as &$torneo) {
+            $torneo["iscritto"] = in_array($torneo, $torneiIscritto);
+        }
     }
-} else {
-    $tornei = $dbh->getTornei();
-    $torneiIscritto = $dbh->getTorneiIscritto();
-    foreach ($tornei as &$torneo) {
-        $torneo["iscritto"] = in_array($torneo, $torneiIscritto);
+    unset($torneo);
+    $templateParams["tornei"] = $tornei;
+
+    if (isset($_POST["azione"]) && $_POST["azione"] === "iscrizione") {
+        $dbh->iscriviUtenteATorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
+        unset($_POST["azione"]);
+        unset($_POST["codiceTorneo"]);
+        header("Location: tornei.php");
+    } else if (isset($_POST["azione"]) && $_POST["azione"] === "disiscrizione") {
+        $dbh->disiscriviUtenteDaTorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
+        unset($_POST["azione"]);
+        unset($_POST["codiceTorneo"]);
+        header("Location: tornei.php");
     }
-}
-unset($torneo);
-$templateParams["tornei"] = $tornei;
 
-if (isset($_POST["azione"]) && $_POST["azione"] === "iscrizione") {
-    $dbh->iscriviUtenteATorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
-    unset($_POST["azione"]);
-    header("Location: tornei.php");
-} else if (isset($_POST["azione"]) && $_POST["azione"] === "disiscrizione") {
-    $dbh->disiscriviUtenteDaTorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
-    unset($_POST["azione"]);
-    header("Location: tornei.php");
+    if (isset($_POST["elimina"])) {
+        $dbh->eliminaTorneo($_POST["cancellaTorneo"]);
+        unset($_POST["elimina"]);
+        unset($_POST["cancellaTorneo"]);
+        header("Location: tornei.php");
+    }
+    require 'template/base.php';
 }
-
-require 'template/base.php';
 ?>

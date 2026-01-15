@@ -12,14 +12,24 @@
 <?php foreach ($templateParams["post"] as $post): ?>
     <article class="card mb-4 shadow-sm border-0 border-start border-4 border-primary">
         <div class="card-body">
-            <header class="mb-3">
+            <div class="mb-3">
                 <h2 class="card-title fw-bold mb-1">
                     <?php echo $post["titolo"]; ?>
                 </h2>
+                <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $post["crea_email"]))): ?>
+                    <form action="eliminazione-contenuto.php" method="POST">
+                        <input type="text" name="cancellaCreaEmail" value="<?php echo $post["crea_email"]; ?>" hidden />
+                        <input type="text" name="cancellaCodicePost" value="<?php echo $post["codicePost"]; ?>" hidden />
+                        <input type="text" name="cancellaTipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
+                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <input type="submit" name="eliminaPost" value="Elimina Post"
+                            class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3">
+                    </form>
+                <?php endif; ?>
                 <p class="card-subtitle text-muted small">
                     <?php echo $post["data"]; ?> · <?php echo $post["crea_email"]; ?>
                 </p>
-            </header>
+                </div>
 
             <section class="card-text generic-extra-info d-none">
                 <p class="mb-0">
@@ -29,13 +39,25 @@
 
             <section class="card-text generic-answers d-none mt-3">
                 <?php foreach ($post["commenti"] as $answer): ?>
-                    <div class="p-3 mb-3 border rounded bg-light">
+                    <div class="p-3 mb-3 border rounded bg-light position-relative">
                         <p class="fw-bold mb-1 text-primary">
                             <?php echo htmlspecialchars($answer["email"]); ?>
                         </p>
                         <p class="mb-0">
                             <?php echo nl2br(htmlspecialchars($answer["testo"])); ?>
                         </p>
+
+                        <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $answer["email"]))): ?>
+                            <form action="eliminazione-contenuto.php" method="POST">
+                                <input type="text" name="cancellaCreaEmail" value="<?php echo $answer["crea_email"]; ?>" hidden />
+                                <input type="text" name="cancellaCodicePost" value="<?php echo $answer["codicePost"]; ?>" hidden />
+                                <input type="text" name="cancellaCodiceCommento" value="<?php echo $answer["codiceCommento"]; ?>"
+                                    hidden />
+                                <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                                <input type="submit" name="eliminaCommento" value="Elimina"
+                                    class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2">
+                            </form>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
                 <?php if (empty($post["commenti"])): ?>

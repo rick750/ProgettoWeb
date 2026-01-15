@@ -48,7 +48,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPost($codicePost, $autore) {
+    public function getPost($codicePost, $autore)
+    {
         $query = "SELECT p.*
                     FROM POST p
                     JOIN GENERICO g
@@ -58,7 +59,7 @@ class DatabaseHelper
                     AND p.codicePost = ?
                     ;";
         $stmt = $this->db->prepare($query);
-        
+
         $stmt->bind_param('si', $autore, $codicePost);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -102,13 +103,14 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    private function creaCodiceTag() {
+    private function creaCodiceTag()
+    {
         return count($this->getTags());
     }
 
     public function getTornei()
     {
-        $query = "SELECT t.nome AS nomeTorneo, g.nome AS nomeGioco, t.descrizione, t.data, t.codiceGioco, t.codiceTorneo
+        $query = "SELECT t.nome AS nomeTorneo, g.nome AS nomeGioco, t.descrizione, t.data, t.codiceGioco, t.codiceTorneo, t.email
                     FROM TORNEO t, GIOCO g
                     WHERE g.codiceGioco = t.codiceGioco
                     ORDER BY t.data DESC;
@@ -131,7 +133,8 @@ class DatabaseHelper
             t.descrizione,
             t.data,
             t.codiceGioco,
-            t.codiceTorneo
+            t.codiceTorneo,
+            t.email
         FROM TORNEO t
         JOIN GIOCO g
             ON g.codiceGioco = t.codiceGioco
@@ -334,7 +337,7 @@ class DatabaseHelper
 
     public function getTorneiCreati($email)
     {
-        $query = "SELECT t.nome AS nomeTorneo, t.email , g.nome AS nomeGioco, t.descrizione, t.data
+        $query = "SELECT t.nome AS nomeTorneo, t.email , g.nome AS nomeGioco, t.codiceGioco, t.codiceTorneo, t.descrizione, t.data
                     FROM TORNEO t, GIOCO g
                     WHERE g.codiceGioco = t.codiceGioco
                     AND t.email = ?
@@ -406,11 +409,36 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
+    public function eliminaTorneo($codiceTorneo)
+    {
+        $query = "DELETE FROM iscrizione WHERE codiceTorneo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $codiceTorneo);
+        if ($stmt->execute()) {
+            $query2 = "DELETE FROM TORNEO WHERE codiceTorneo = ?";
+            $stmt2 = $this->db->prepare($query2);
+            $stmt2->bind_param("i", $codiceTorneo);
+            $stmt2->execute();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     private function creaCodicePost()
     {
         $email = $_SESSION["email"];
-        $indice = count($this->getUserPosts($email));
-        return $indice + 1;
+        $query = "SELECT codicePost FROM POST WHERE crea_email = ? ORDER BY codicePost DESC LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if ($row === null) {
+            return 1;
+        }
+        return $row["codicePost"] + 1;
     }
 
     private function inserisciPost($titolo, $testo, $codicePost, $isRecensione)
@@ -457,51 +485,135 @@ class DatabaseHelper
         return false;
     }
 
-    private function creaCodiceTorneo() {
-        $indice = count($this->getTornei());
-        return $indice + 1;
+    public function eliminaPost($autorePost, $codicePost, $isGenerico)
+    {
+        if ($isGenerico) {
+            $query = "DELETE FROM GENERICO 
+                WHERE crea_email = ?
+                AND codicePost = ?;
+                ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("si", $autorePost, $codicePost);
+            $res = $stmt->execute();
+        } else {
+            $query = "DELETE FROM RECENSIONE 
+                WHERE crea_email = ?
+                AND codicePost = ?;
+                ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("si", $autorePost, $codicePost);
+            $res = $stmt->execute();
+        }
+        if ($res) {
+            $query2 = "DELETE FROM COMMENTO 
+                WHERE crea_email = ?
+                AND codicePost = ?;
+                ";
+            $stmt2 = $this->db->prepare($query2);
+            $stmt2->bind_param("si", $autorePost, $codicePost);
+            $res2 = $stmt2->execute();
+            if ($res2) {
+                $query3 = "DELETE FROM POST 
+                    WHERE crea_email = ?
+                    AND codicePost = ?;
+                ";
+                $stmt3 = $this->db->prepare($query3);
+                $stmt3->bind_param("si", $autorePost, $codicePost);
+                return $stmt3->execute();
+            }
+        }
+        return false;
     }
 
-    public function inserisciTorneo($codiceGioco, $data, $descrizione) {
+    private function creaCodiceTorneo()
+    {
+        $query = "SELECT t.codiceTorneo           
+                    FROM TORNEO t, GIOCO g
+                    WHERE g.codiceGioco = t.codiceGioco
+                    ORDER BY t.codiceTorneo DESC
+                    LIMIT 1;
+                    ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if ($row === null) {
+            return 1;
+        }
+        return $row["codiceTorneo"] + 1;
+    }
+
+    public function inserisciTorneo($codiceGioco, $data, $descrizione)
+    {
         $email = $_SESSION["email"];
         $nomeGioco = $this->getNomeGioco($codiceGioco);
         $codiceTorneo = $this->creaCodiceTorneo();
         $query = "INSERT INTO TORNEO VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("iissss",$codiceGioco, $codiceTorneo, $nomeGioco, $descrizione, $data, $email);
+        $stmt->bind_param("iissss", $codiceGioco, $codiceTorneo, $nomeGioco, $descrizione, $data, $email);
         return $stmt->execute();
     }
 
-    public function getCommentiPost($autorePost, $codicePost) {
-                $query = "SELECT *
+    public function getCommentiPost($autorePost, $codicePost)
+    {
+        $query = "SELECT *
                 FROM COMMENTO
                 WHERE crea_email = ?
                 AND codicePost = ?;
                     ";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("si",$autorePost, $codicePost);
+        $stmt->bind_param("si", $autorePost, $codicePost);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function creaCodiceCommento($autorePost, $codicePost) {
-        $result = count($this->getCommentiPost($autorePost, $codicePost));
-        return $result + 1;
+    public function creaCodiceCommento($autorePost, $codicePost)
+    {
+        $query = "SELECT codiceCommento
+                FROM COMMENTO
+                WHERE crea_email = ?
+                AND codicePost = ?
+                ORDER BY codiceCommento DESC
+                LIMIT 1;
+                ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $autorePost, $codicePost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if ($row === null) {
+            return 1;
+        }
+        return $row["codiceCommento"] + 1;
     }
 
-    public function inserisciCommento($autorePost, $codicePost, $testoCommento) {
+    public function eliminaCommento($autorePost, $codicePost, $codiceCommento)
+    {
+        $query = "DELETE FROM COMMENTO 
+        WHERE crea_email = ?
+        AND codicePost = ?
+        AND codiceCommento = ?
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sii", $autorePost, $codicePost, $codiceCommento);
+        return $stmt->execute();
+    }
+
+    public function inserisciCommento($autorePost, $codicePost, $testoCommento)
+    {
         $email = $_SESSION["email"];
         $codiceCommento = $this->creaCodiceCommento($autorePost, $codicePost);
         $query = "INSERT INTO COMMENTO VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sisis",$autorePost, $codicePost, $email, $codiceCommento, $testoCommento);
+        $stmt->bind_param("sisis", $autorePost, $codicePost, $email, $codiceCommento, $testoCommento);
         return $stmt->execute();
     }
 
-    public function getUsers() {
-                $query = "SELECT email
+    public function getUsers()
+    {
+        $query = "SELECT email
                 FROM UTENTE;";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -509,8 +621,9 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getMessages() {
-                $query = "SELECT *
+    public function getMessages()
+    {
+        $query = "SELECT *
                 FROM MESSAGGIO;";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -518,28 +631,30 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function creaCodiceMessaggio() {
+    public function creaCodiceMessaggio()
+    {
         return count($this->getMessages());
     }
 
-    public function inserisciMessaggio($destinatario, $testo) {
+    public function inserisciMessaggio($destinatario, $testo)
+    {
         $mittente = $_SESSION["email"];
         $this->codiceMessaggio = $this->codiceMessaggio + 1;
         $data = date("Y-m-d");
         $query = "INSERT INTO MESSAGGIO VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isss", $this->codiceMessaggio, $testo, $mittente, $data);
-        if ($stmt ->execute()) {
+        if ($stmt->execute()) {
             $query = "INSERT INTO RICEVE VALUES(?, ?, ?)";
             if ($destinatario === "tutti") {
                 $utenti = $this->getUsers();
-                foreach($utenti as $utente) {
-                   $destinatario = $utente["email"];
-                   if($destinatario != $mittente) {
+                foreach ($utenti as $utente) {
+                    $destinatario = $utente["email"];
+                    if ($destinatario != $mittente) {
                         $stmt = $this->db->prepare($query);
                         $stmt->bind_param("iss", $this->codiceMessaggio, $destinatario, $data);
-                        $stmt->execute();                     
-                   }
+                        $stmt->execute();
+                    }
                 }
                 return true;
             } else {
@@ -550,9 +665,10 @@ class DatabaseHelper
         }
     }
 
-    public function getMessaggiInviati() {
+    public function getMessaggiInviati()
+    {
         $email = $_SESSION["email"];
-                $query = "SELECT m.codiceMessaggio, m.testo, r.data, r.email
+        $query = "SELECT m.codiceMessaggio, m.testo, r.data, r.email
                 FROM MESSAGGIO m
                 JOIN RICEVE r
                 ON m.codiceMessaggio = r.codiceMessaggio
@@ -565,7 +681,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getMessaggiRicevuti() {
+    public function getMessaggiRicevuti()
+    {
         $email = $_SESSION["email"];
         $query = "SELECT r.codiceMessaggio, r.data, m.email, m.testo
         FROM RICEVE r 
@@ -580,28 +697,32 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    private function creaCodiceGioco() {
+    private function creaCodiceGioco()
+    {
         return count($this->getLibreriaGiochi([]));
     }
 
-    public function addGioco($nome, $anno, $sHouse, $voto, $descrizione, $nomeImmagine, $tags) {
+    public function addGioco($nome, $anno, $sHouse, $voto, $descrizione, $nomeImmagine, $tags)
+    {
         $email = $_SESSION["email"];
         $this->codiceGioco += 1;
         $query = "INSERT INTO GIOCO VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("isssdsss",$this->codiceGioco, $nome, $anno, $sHouse, $voto, $descrizione, $nomeImmagine, $email);
-        if($stmt->execute()) {
+        $stmt->bind_param("isssdsss", $this->codiceGioco, $nome, $anno, $sHouse, $voto, $descrizione, $nomeImmagine, $email);
+        if ($stmt->execute()) {
             $query = "INSERT INTO RIGUARDA VALUES (?, ?)";
-            foreach($tags as $tag) {
+            foreach ($tags as $tag) {
                 $stmt = $this->db->prepare($query);
                 $stmt->bind_param("is", $this->codiceGioco, $tag);
-                $stmt->execute();                     
+                $stmt->execute();
             }
             return true;
-        };
+        }
+        ;
     }
 
-    public function getStatisticheRecensioniGioco($idGioco){
+    public function getStatisticheRecensioniGioco($idGioco)
+    {
         $query = "
             SELECT 
                 ROUND(AVG(valutazione), 1) AS media,
@@ -616,11 +737,12 @@ class DatabaseHelper
         // numero sarà 0 in quel caso
         return [
             "media" => $result["media"],
-            "numero" => (int)$result["numero"]
+            "numero" => (int) $result["numero"]
         ];
     }
 
-    public function addTag($nome) {
+    public function addTag($nome)
+    {
         $email = $_SESSION["email"];
         $this->codiceTag += 1;
         $query = "INSERT INTO TAG VALUES (?, ?, ?)";
@@ -628,5 +750,6 @@ class DatabaseHelper
         $stmt->bind_param("iss", $this->codiceTag, $nome, $email);
         return $stmt->execute();
     }
+
 }
 ?>

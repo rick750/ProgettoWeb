@@ -25,5 +25,7 @@ if (isset($_POST["autorePost"])) {
     header("Location: " . $templateParams["indietro"]);
 }
 
+
+
 require 'template/base.php';
 ?>
