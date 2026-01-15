@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const btnGenericShowAnswers = card.querySelector(".btn-generic-show-answer");
             const btnGenericHidAnswers = card.querySelector(".btn-generic-hid-answer");
             const genericAnswers = card.querySelector(".generic-answers");
+            const btnRecensioneExpand = card.querySelector(".btn-recensione-expand");
+            const btnRecensioneCollapse = card.querySelector(".btn-recensione-collapse");
+            const recensioneExtraInfo = card.querySelector(".recensione-extra-info");
 
             if(btnGenericoExpand) {
                 btnGenericoExpand.addEventListener("click", () => {
@@ -42,6 +45,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     btnGenericShowAnswers.classList.remove("d-none");
                     genericAnswers.classList.add("d-none");
                     btnGenericHidAnswers.classList.add("d-none");
+                });
+            }
+
+            if(btnRecensioneExpand) {
+                btnRecensioneExpand.addEventListener("click", () => {
+                    btnRecensioneCollapse.classList.remove("d-none");
+                    btnRecensioneExpand.classList.add("d-none");
+                    recensioneExtraInfo.classList.remove("d-none");
+                });
+            }
+
+            if(btnRecensioneCollapse) {
+                btnRecensioneCollapse.addEventListener("click", () => {
+                    btnRecensioneCollapse.classList.add("d-none");
+                    btnRecensioneExpand.classList.remove("d-none");
+                    recensioneExtraInfo.classList.add("d-none");
                 });
             }
         }); 

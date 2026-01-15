@@ -5,16 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnMessaggiRicevuti = notifiche.querySelector(".btn-messaggi-ricevuti");
     const messaggiRicevuti = notifiche.querySelector(".messaggi-ricevuti");
 
-    btnMessaggiInviati.addEventListener("click", () => {
-        messaggiInviati.classList.remove("d-none");
-        messaggiRicevuti.classList.add("d-none");
-        btnMessaggiRicevuti.classList.remove("d-none");
-        btnMessaggiInviati.classList.add("d-none");
-    }); 
-    btnMessaggiRicevuti.addEventListener("click", () => {
-        messaggiInviati.classList.add("d-none");
-        messaggiRicevuti.classList.remove("d-none");
-        btnMessaggiRicevuti.classList.add("d-none");
-        btnMessaggiInviati.classList.remove("d-none");
-    }); 
+    if(btnMessaggiInviati) {
+        btnMessaggiInviati.addEventListener("click", () => {
+            messaggiInviati.classList.remove("d-none");
+            messaggiRicevuti.classList.add("d-none");
+            btnMessaggiRicevuti.classList.remove("d-none");
+            btnMessaggiInviati.classList.add("d-none");
+        }); 
+    }
+
+    if(btnMessaggiRicevuti) {
+        btnMessaggiRicevuti.addEventListener("click", () => {
+            messaggiInviati.classList.add("d-none");
+            messaggiRicevuti.classList.remove("d-none");
+            btnMessaggiRicevuti.classList.add("d-none");
+            btnMessaggiInviati.classList.remove("d-none");
+        });
+    }
 });

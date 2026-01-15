@@ -320,11 +320,13 @@ class DatabaseHelper
 
     public function getUserRecensioni($email)
     {
-        $query = "SELECT p.*
+        $query = "SELECT p.*, r.valutazione, g.nome
                     FROM POST p
                     JOIN RECENSIONE r
+                    JOIN GIOCO g
                     ON p.crea_email = r.crea_email
                     AND p.codicePost = r.codicePost
+                    AND r.codiceGioco = g.codiceGioco
                     WHERE p.crea_email = ?
                     ORDER BY p.data DESC;";
         $stmt = $this->db->prepare($query);
