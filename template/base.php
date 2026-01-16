@@ -109,6 +109,9 @@
     <script src="js/info-giochi.js"></script>
     <script src="js/filtri-di-ricerca.js"></script>
     <script src="js/info-post.js"></script>
+    <script src="js/modifica-post.js"></script>
+    <script src="js/modifica-commento.js"></script>
+    <script src="js/modifica-torneo.js"></script>
     <script src="js/logout-listener.js"></script>
     <script src="js/seleziona-tipo-post.js"></script>
     <script src="js/notifiche.js"></script>

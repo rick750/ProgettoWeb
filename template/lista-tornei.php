@@ -35,6 +35,19 @@
 
         <section>
             <p><?php echo $torneo["descrizione"]; ?></p>
+            <?php if (!empty($_SESSION) && (($_SESSION["email"] === $torneo["email"]))): ?>
+                <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-torneo d-none">
+                    <input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden />
+                    <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                    <label for="data" class="form-radio-label ps-4">Nuova Data</label>
+                    <input type="date" id="data" name="data" value="data"><br /><br />
+                    <textarea id="descrizione" name="descrizione" rows="10" cols="120" maxlength="300"
+                    class="form-control"></textarea><br /><br />
+                    <input type="submit" name="modificaTorneo" value="Conferma Modifica" class="btn btn-primary rounded-pill btn-sm">
+                </form>
+                <button class="btn btn-primary rounded-pill px-4 btn-torneo-update-expand mx-1">Modifica Torneo</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-torneo-update-collapse d-none mx-1">Annulla</button>
+            <?php endif; ?>
         </section>
 
         <?php if (!isActive("profilo-tornei.php")): ?>

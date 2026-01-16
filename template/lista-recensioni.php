@@ -43,6 +43,28 @@
                 <p class="mt-2 mb-0">
                     <?php echo $recensioni["testo"]; ?>
                 </p>
+                <?php if (!empty($_SESSION) && (($_SESSION["email"] === $recensioni["crea_email"]))): ?>
+                    <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-recensione d-none">
+                        <input type="text" name="creaEmail" value="<?php echo $recensioni["crea_email"]; ?>" hidden />
+                        <input type="text" name="codicePost" value="<?php echo $recensioni["codicePost"]; ?>" hidden />
+                        <input type="text" name="tipoPost" value="R" hidden />
+                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <select id="voto" name="voto" class="form-select">
+                            <option value="" disabled selected>-- Seleziona un nuovo voto --</option>
+                                <?php
+                                for ($voto = 5; $voto >= 0; $voto -= 0.1) {
+                                    $v = number_format($voto, 1);
+                                    echo "<option value=\"$v\">$v</option>";
+                                }
+                                ?>
+                        </select><br /><br />
+                        <textarea id="testo_post" name="testo_post" rows="20" cols="120" maxlength="1000"
+                        class="form-control"></textarea><br /><br />
+                        <input type="submit" name="modificaPost" value="Conferma Modifica" class="btn btn-primary rounded-pill btn-sm">
+                    </form>
+                <button class="btn btn-primary rounded-pill px-4 btn-rec-update-expand mx-1">Modifica Recensione</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-rec-update-collapse d-none mx-1">Annulla</button>
+                <?php endif; ?>
             </section>
             <div class="d-flex justify-content-end mt-3">
                 <button class="btn btn-primary rounded-pill px-4 btn-recensione-expand">Espandi</button>

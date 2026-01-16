@@ -35,6 +35,20 @@
                 <p class="mb-0">
                     <?php echo $post["testo"]; ?>
                 </p>
+                <?php if (!empty($_SESSION) && (($_SESSION["email"] === $post["crea_email"]))): ?>
+                    <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-generico d-none">
+                        <input type="text" name="creaEmail" value="<?php echo $post["crea_email"]; ?>" hidden />
+                        <input type="text" name="codicePost" value="<?php echo $post["codicePost"]; ?>" hidden />
+                        <input type="text" name="tipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
+                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <textarea id="testo_post" name="testo_post" rows="20" cols="120" maxlength="1000"
+                        class="form-control"></textarea><br /><br />
+                        <input type="submit" name="modificaPost" value="Conferma Modifica" class="btn btn-primary rounded-pill btn-sm">
+                    </form>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-update-expand mx-1">Modifica Post</button>
+                <button class="btn btn-primary rounded-pill px-4 btn-generic-update-collapse d-none mx-1">Annulla</button>
+                <?php endif; ?>
+
             </section>
 
             <section class="card-text generic-answers d-none mt-3">
@@ -57,6 +71,19 @@
                                 <input type="submit" name="eliminaCommento" value="Elimina"
                                     class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2">
                             </form>
+                        <?php endif; ?>
+                        <?php if (!empty($_SESSION) && (($_SESSION["email"] === $answer["email"]))): ?>
+                            <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-commento d-none">
+                                <input type="text" name="creaEmail" value="<?php echo $answer["crea_email"]; ?>" hidden />
+                                <input type="text" name="codicePost" value="<?php echo $answer["codicePost"]; ?>" hidden />
+                                <input type="text" name="codiceCommento" value="<?php echo $answer["codiceCommento"]; ?>" hidden />
+                                <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                                <textarea id="testo_commento" name="testo_commento" rows="10" cols="120" maxlength="500"
+                                class="form-control"></textarea><br /><br />
+                                <input type="submit" name="modificaCommento" value="Conferma Modifica" class="btn btn-primary rounded-pill btn-sm">
+                            </form>
+                            <button class="btn btn-primary rounded-pill px-4 btn-commento-update-expand mx-1">Modifica Commento</button>
+                            <button class="btn btn-primary rounded-pill px-4 btn-commento-update-collapse d-none mx-1">Annulla</button>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>

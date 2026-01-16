@@ -411,8 +411,7 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-    public function eliminaTorneo($codiceTorneo)
-    {
+    public function eliminaTorneo($codiceTorneo) {
         $query = "DELETE FROM iscrizione WHERE codiceTorneo = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $codiceTorneo);
@@ -427,6 +426,16 @@ class DatabaseHelper
         }
     }
 
+    public function modificaTorneo($codiceTorneo, $data, $descrizione) {
+        $query = "UPDATE TORNEO
+        SET data = ?,
+            descrizione = ?
+        WHERE codiceTorneo = ?;
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssi", $data, $descrizione, $codiceTorneo);
+        return $stmt->execute();
+    }
 
     private function creaCodicePost()
     {
@@ -487,8 +496,7 @@ class DatabaseHelper
         return false;
     }
 
-    public function eliminaPost($autorePost, $codicePost, $isGenerico)
-    {
+    public function eliminaPost($autorePost, $codicePost, $isGenerico) {
         if ($isGenerico) {
             $query = "DELETE FROM GENERICO 
                 WHERE crea_email = ?
@@ -524,6 +532,40 @@ class DatabaseHelper
                 return $stmt3->execute();
             }
         }
+        return false;
+    }
+
+    public function modificaPost($autorePost, $codicePost, $voto, $testoPost, $isGenerico) {
+        if ($isGenerico) {
+            $query = "
+                UPDATE POST
+                SET testo = ?
+                WHERE crea_email = ? AND codicePost = ?;
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ssi", $testoPost, $autorePost, $codicePost);
+            $stmt->execute();
+        } else {
+            $queryPost = "
+                UPDATE POST
+                SET testo = ?
+                WHERE crea_email = ? AND codicePost = ?;
+            ";
+            $stmt = $this->db->prepare($queryPost);
+            $stmt->bind_param("ssi", $testoPost, $autorePost, $codicePost);
+            $stmt->execute();
+
+            $queryRec = "
+                UPDATE RECENSIONE
+                SET valutazione = ?
+                WHERE crea_email = ? AND codicePost = ?;
+            ";
+            $stmt = $this->db->prepare($queryRec);
+            $stmt->bind_param("dsi", $voto, $autorePost, $codicePost);
+            $stmt->execute();
+        }
+
         return false;
     }
 
@@ -591,8 +633,7 @@ class DatabaseHelper
         return $row["codiceCommento"] + 1;
     }
 
-    public function eliminaCommento($autorePost, $codicePost, $codiceCommento)
-    {
+    public function eliminaCommento($autorePost, $codicePost, $codiceCommento) {
         $query = "DELETE FROM COMMENTO 
         WHERE crea_email = ?
         AND codicePost = ?
@@ -602,6 +643,20 @@ class DatabaseHelper
         $stmt->bind_param("sii", $autorePost, $codicePost, $codiceCommento);
         return $stmt->execute();
     }
+
+    public function modificaCommento($autorePost, $codicePost, $codiceCommento, $testoCommento) {
+        $query = "UPDATE COMMENTO
+        SET testo = ? 
+        WHERE crea_email = ?
+        AND codicePost = ?
+        AND codiceCommento = ?;
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssii", $testoCommento, $autorePost, $codicePost, $codiceCommento);
+        return $stmt->execute();
+    }
+
+
 
     public function inserisciCommento($autorePost, $codicePost, $testoCommento)
     {

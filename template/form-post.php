@@ -30,7 +30,7 @@
             <select id="voto" name="voto" class="form-select">
                 <option value="" disabled selected>-- Seleziona un voto --</option>
                 <?php
-                for ($voto = 0; $voto <= 5; $voto += 0.5) {
+                for ($voto = 5; $voto >= 0; $voto -= 0.1) {
                     $v = number_format($voto, 1);
                     echo "<option value=\"$v\">$v</option>";
                 }
