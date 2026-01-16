@@ -17,7 +17,7 @@
                     <?php echo $recensioni["titolo"]; ?>
                 </h2>
                 <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $recensioni["crea_email"]))): ?>
-                    <form action="eliminazione-contenuto.php" method="POST">
+                    <form action="modifica-contenuto.php" method="POST">
                         <input type="text" name="cancellaCreaEmail" value="<?php echo $recensioni["crea_email"]; ?>" hidden />
                         <input type="text" name="cancellaCodicePost" value="<?php echo $recensioni["codicePost"]; ?>" hidden />
                         <input type="text" name="cancellaTipoPost" value="R" hidden />
@@ -44,7 +44,7 @@
                     <?php echo $recensioni["testo"]; ?>
                 </p>
                 <?php if (!empty($_SESSION) && (($_SESSION["email"] === $recensioni["crea_email"]))): ?>
-                    <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-recensione d-none">
+                    <form action="modifica-contenuto.php" method="POST" class="form-modifica-recensione d-none">
                         <input type="text" name="creaEmail" value="<?php echo $recensioni["crea_email"]; ?>" hidden />
                         <input type="text" name="codicePost" value="<?php echo $recensioni["codicePost"]; ?>" hidden />
                         <input type="text" name="tipoPost" value="R" hidden />

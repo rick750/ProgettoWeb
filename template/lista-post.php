@@ -17,7 +17,7 @@
                     <?php echo $post["titolo"]; ?>
                 </h2>
                 <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $post["crea_email"]))): ?>
-                    <form action="eliminazione-contenuto.php" method="POST">
+                    <form action="modifica-contenuto.php" method="POST">
                         <input type="text" name="cancellaCreaEmail" value="<?php echo $post["crea_email"]; ?>" hidden />
                         <input type="text" name="cancellaCodicePost" value="<?php echo $post["codicePost"]; ?>" hidden />
                         <input type="text" name="cancellaTipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
@@ -36,7 +36,7 @@
                     <?php echo $post["testo"]; ?>
                 </p>
                 <?php if (!empty($_SESSION) && (($_SESSION["email"] === $post["crea_email"]))): ?>
-                    <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-generico d-none">
+                    <form action="modifica-contenuto.php" method="POST" class="form-modifica-generico d-none">
                         <input type="text" name="creaEmail" value="<?php echo $post["crea_email"]; ?>" hidden />
                         <input type="text" name="codicePost" value="<?php echo $post["codicePost"]; ?>" hidden />
                         <input type="text" name="tipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
@@ -62,7 +62,7 @@
                         </p>
 
                         <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $answer["email"]))): ?>
-                            <form action="eliminazione-contenuto.php" method="POST">
+                            <form action="modifica-contenuto.php" method="POST">
                                 <input type="text" name="cancellaCreaEmail" value="<?php echo $answer["crea_email"]; ?>" hidden />
                                 <input type="text" name="cancellaCodicePost" value="<?php echo $answer["codicePost"]; ?>" hidden />
                                 <input type="text" name="cancellaCodiceCommento" value="<?php echo $answer["codiceCommento"]; ?>"
@@ -73,7 +73,7 @@
                             </form>
                         <?php endif; ?>
                         <?php if (!empty($_SESSION) && (($_SESSION["email"] === $answer["email"]))): ?>
-                            <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-commento d-none">
+                            <form action="modifica-contenuto.php" method="POST" class="form-modifica-commento d-none">
                                 <input type="text" name="creaEmail" value="<?php echo $answer["crea_email"]; ?>" hidden />
                                 <input type="text" name="codicePost" value="<?php echo $answer["codicePost"]; ?>" hidden />
                                 <input type="text" name="codiceCommento" value="<?php echo $answer["codiceCommento"]; ?>" hidden />

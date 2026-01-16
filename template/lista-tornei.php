@@ -36,7 +36,7 @@
         <section>
             <p><?php echo $torneo["descrizione"]; ?></p>
             <?php if (!empty($_SESSION) && (($_SESSION["email"] === $torneo["email"]))): ?>
-                <form action="eliminazione-contenuto.php" method="POST" class="form-modifica-torneo d-none">
+                <form action="modifica-contenuto.php" method="POST" class="form-modifica-torneo d-none">
                     <input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden />
                     <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
                     <label for="data" class="form-radio-label ps-4">Nuova Data</label>
