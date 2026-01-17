@@ -254,6 +254,20 @@ class DatabaseHelper
         return null;
     }
 
+    public function inserisciIscrittoCorso($email, $codiceCorso)
+    {
+        $query2 = "INSERT INTO ISCRITTO
+        (codiceCorso, email)
+        VALUES (?, ?)";
+        $stmt2 = $this->db->prepare($query2);
+        $stmt2->bind_param(
+            "is",
+            $codiceCorso,
+            $email
+        );
+        return $stmt2->execute();
+    }
+
 
     public function registraUtente($email, $password, $nome, $cognome, $dataNascita, $matricola, $descrizione, $codiceCorso)
     {
@@ -275,18 +289,10 @@ class DatabaseHelper
             $descrizione
         );
 
-        $res = $stmt->execute();
-
-        $query2 = "INSERT INTO ISCRITTO
-        (codiceCorso, email)
-        VALUES (?, ?)";
-        $stmt2 = $this->db->prepare($query2);
-        $stmt2->bind_param(
-            "is",
-            $codiceCorso,
-            $email
-        );
-        $stmt2->execute();
+        $res = false;
+        if ($stmt->execute()) {
+            $res = $this->inserisciIscrittoCorso($email, $codiceCorso);
+        }
 
         return $res;
     }
@@ -391,6 +397,54 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getCorsoForUtente()
+    {
+        $email = $_SESSION["email"];
+        $query = "SELECT c.* 
+                FROM CORSO c, UTENTE u, ISCRITTO i
+                WHERE u.email = ?
+                AND u.email = i.email
+                AND i.codiceCorso = c.codiceCorso;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function eliminaIscrittoCorso($email, $codiceCorso)
+    {
+        $query = "DELETE FROM ISCRITTO WHERE codiceCorso=? AND email=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $codiceCorso, $email);
+
+        return $stmt->execute();
+    }
+
+    public function modificaUtente($codiceNuovoCorso, $nuovaDescrizione)
+    {
+        $email = $_SESSION["email"];
+        $codiceVecchioCorso = $this->getCorsoForUtente();
+        $codiceVecchioCorso = $codiceVecchioCorso["codiceCorso"];
+        $res = true;
+        if ($codiceVecchioCorso != $codiceNuovoCorso) {
+            if (!$this->eliminaIscrittoCorso($email, $codiceVecchioCorso)) {
+               return false;
+            }
+            $res = $this->inserisciIscrittoCorso($email, $codiceNuovoCorso);
+        }
+        if ($res) {
+            $query = "UPDATE UTENTE
+                            SET descrizione = ?
+                            WHERE email = ?;
+                            ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ss", $nuovaDescrizione, $email);
+            return $stmt->execute();
+        }
+        return false;
+    }
+
     public function iscriviUtenteATorneo($codiceGioco, $codiceTorneo)
     {
         $email = $_SESSION["email"];
@@ -411,7 +465,8 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-    public function eliminaTorneo($codiceTorneo) {
+    public function eliminaTorneo($codiceTorneo)
+    {
         $query = "DELETE FROM iscrizione WHERE codiceTorneo = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $codiceTorneo);
@@ -426,7 +481,8 @@ class DatabaseHelper
         }
     }
 
-    public function modificaTorneo($codiceTorneo, $data, $descrizione) {
+    public function modificaTorneo($codiceTorneo, $data, $descrizione)
+    {
         $query = "UPDATE TORNEO
         SET data = ?,
             descrizione = ?
@@ -496,7 +552,8 @@ class DatabaseHelper
         return false;
     }
 
-    public function eliminaPost($autorePost, $codicePost, $isGenerico) {
+    public function eliminaPost($autorePost, $codicePost, $isGenerico)
+    {
         if ($isGenerico) {
             $query = "DELETE FROM GENERICO 
                 WHERE crea_email = ?
@@ -535,7 +592,8 @@ class DatabaseHelper
         return false;
     }
 
-    public function modificaPost($autorePost, $codicePost, $voto, $testoPost, $isGenerico) {
+    public function modificaPost($autorePost, $codicePost, $voto, $testoPost, $isGenerico)
+    {
         if ($isGenerico) {
             $query = "
                 UPDATE POST
@@ -633,7 +691,8 @@ class DatabaseHelper
         return $row["codiceCommento"] + 1;
     }
 
-    public function eliminaCommento($autorePost, $codicePost, $codiceCommento) {
+    public function eliminaCommento($autorePost, $codicePost, $codiceCommento)
+    {
         $query = "DELETE FROM COMMENTO 
         WHERE crea_email = ?
         AND codicePost = ?
@@ -644,7 +703,8 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-    public function modificaCommento($autorePost, $codicePost, $codiceCommento, $testoCommento) {
+    public function modificaCommento($autorePost, $codicePost, $codiceCommento, $testoCommento)
+    {
         $query = "UPDATE COMMENTO
         SET testo = ? 
         WHERE crea_email = ?
@@ -656,8 +716,6 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-
-
     public function inserisciCommento($autorePost, $codicePost, $testoCommento)
     {
         $email = $_SESSION["email"];
@@ -666,6 +724,21 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("sisis", $autorePost, $codicePost, $email, $codiceCommento, $testoCommento);
         return $stmt->execute();
+    }
+
+    public function getLoggedUser()
+    {
+        $email = $_SESSION["email"];
+        $query = "SELECT u.*, i.codiceCorso, c.nome AS nomeCorso
+                FROM UTENTE u, ISCRITTO i, CORSO c
+                WHERE u.email = ?
+                AND u.email = i.email
+                AND i.codiceCorso = c.codiceCorso;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 
     public function getUsers()

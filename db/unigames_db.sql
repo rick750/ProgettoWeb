@@ -26,7 +26,7 @@ CREATE TABLE UTENTE (
   nome VARCHAR(30) NOT NULL,
   cognome VARCHAR(30) NOT NULL,
   dataDiNascita DATE NOT NULL,
-  matricola INT UNSIGNED NOT NULL,
+  matricola varchar(10) NOT NULL,
   descrizione VARCHAR(500) NOT NULL,
   PRIMARY KEY (email)
 ) ENGINE=InnoDB;

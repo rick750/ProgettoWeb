@@ -42,7 +42,7 @@
                         <input type="text" name="tipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
                         <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
                         <textarea id="testo_post" name="testo_post" rows="20" cols="120" maxlength="1000"
-                        class="form-control"></textarea><br /><br />
+                        class="form-control"><?php echo $post["testo"];?></textarea><br /><br />
                         <input type="submit" name="modificaPost" value="Conferma Modifica" class="btn btn-primary rounded-pill btn-sm">
                     </form>
                 <button class="btn btn-primary rounded-pill px-4 btn-generic-update-expand mx-1">Modifica Post</button>
@@ -79,7 +79,7 @@
                                 <input type="text" name="codiceCommento" value="<?php echo $answer["codiceCommento"]; ?>" hidden />
                                 <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
                                 <textarea id="testo_commento" name="testo_commento" rows="10" cols="120" maxlength="500"
-                                class="form-control"></textarea><br /><br />
+                                class="form-control"><?php echo $answer["testo"];?></textarea><br /><br />
                                 <input type="submit" name="modificaCommento" value="Conferma Modifica" class="btn btn-primary rounded-pill btn-sm">
                             </form>
                             <button class="btn btn-primary rounded-pill px-4 btn-commento-update-expand mx-1">Modifica Commento</button>

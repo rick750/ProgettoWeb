@@ -21,29 +21,34 @@
                     <div class="col-6"></div>
                     <form action="tornei.php" method="POST" class="col-2">
                         <input type="text" name="cancellaTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden />
-                        <input type="submit" name="elimina" value="elimina" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3">
+                        <input type="submit" name="elimina" value="elimina"
+                            class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3">
                     </form>
                 </div>
             <?php else: ?>
                 <h2 class="h5"><?php echo $torneo["nomeTorneo"]; ?></h2>
             <?php endif; ?>
-            <p class="text-muted mb-2">
+            <p class="text-muted">
                 Torneo di <?php echo $torneo["nomeGioco"]; ?> –
                 <?php echo $torneo["data"]; ?>
+            </p>
+            <p><?php echo $torneo["descrizione"]; ?></p>
+            <p class="text-muted">
+                Aggiunto da: <?php echo $torneo["email"]; ?>
             </p>
         </div>
 
         <section>
-            <p><?php echo $torneo["descrizione"]; ?></p>
             <?php if (!empty($_SESSION) && (($_SESSION["email"] === $torneo["email"]))): ?>
                 <form action="modifica-contenuto.php" method="POST" class="form-modifica-torneo d-none">
                     <input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden />
                     <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
                     <label for="data" class="form-radio-label ps-4">Nuova Data</label>
-                    <input type="date" id="data" name="data" value="data"><br /><br />
+                    <input type="date" id="data" name="data" value="<?php echo $torneo["data"];?>"><br /><br />
                     <textarea id="descrizione" name="descrizione" rows="10" cols="120" maxlength="300"
-                    class="form-control"></textarea><br /><br />
-                    <input type="submit" name="modificaTorneo" value="Conferma Modifica" class="btn btn-primary rounded-pill btn-sm">
+                        class="form-control"><?php echo $torneo["descrizione"];?></textarea><br /><br />
+                    <input type="submit" name="modificaTorneo" value="Conferma Modifica"
+                        class="btn btn-primary rounded-pill btn-sm">
                 </form>
                 <button class="btn btn-primary rounded-pill px-4 btn-torneo-update-expand mx-1">Modifica Torneo</button>
                 <button class="btn btn-primary rounded-pill px-4 btn-torneo-update-collapse d-none mx-1">Annulla</button>
