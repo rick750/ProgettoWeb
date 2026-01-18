@@ -56,7 +56,7 @@
         </section>
 
         <?php if (!isActive("profilo-tornei.php")): ?>
-            <div class="position-absolute bottom-0 end-0 m-3">
+            <div class="mt-3 d-flex justify-content-end position-static position-md-absolute bottom-md-0 end-md-0 m-md-3">
                 <form action="tornei.php" method="POST">
                     <input type="text" value="<?php echo $torneo["codiceGioco"]; ?>" name="codiceGioco" hidden />
                     <input type="text" value="<?php echo $torneo["codiceTorneo"]; ?>" name="codiceTorneo" hidden />

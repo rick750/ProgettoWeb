@@ -10,33 +10,69 @@
     </div>
 <?php endif; ?>
 
-<form action="registrazione.php" method="POST">
-    <h1 class="fw-bold text-uppercase text-primary mb-0">Inserisci i dati del tuo nuovo profilo</h1>
-    <fieldset class=" flex-wrap align-items-center gap-3">
-        <label for="nome" class="form-text-label">Nome</label><br />
-        <input type="text" id="nome" name="nome" /><br /><br />
-        <label for="cognome" class="form-text-label">Cognome</label><br />
-        <input type="text" id="cognome" name="cognome"><br /><br />
-        <label for="data_nascita" class="form-data-label">Data di nascita</label><br />
-        <input type="date" id="data_nascita" name="data_nascita"><br /><br />
-        <label for="matricola" class="form-number-label">Matricola</label><br />
-        <input type="number" id="matricola" name="matricola"><br /><br />
-        <label for="email" class="form-text-label">Mail istituzionale</label><br />
-        <input type="text" id="email" name="email"><br /><br />
-        <label for="password" class="form-text-label">Password</label><br />
-        <input type="password" id="password" name="password"><br /><br />
-        <label for="corso" class="form-label">Corso di laurea seguito:</label>
-        <select id="corso" name="codiceCorso" class="form-select">
-            <option value="" disabled selected>-- Seleziona un corso di laurea --</option>
-            <?php foreach ($templateParams["corsi"] as $corso): ?>
-                <option id="<?php echo getValueFromCorso($corso["nome"]); ?>" value="<?php echo ($corso["codiceCorso"]); ?>">
-                    <?php echo $corso["nome"]; ?></option>
-            <?php endforeach; ?>
-        </select><br /><br />
-        <label for="descr" class="form-label">Dicci qualcosa di te!</label><br />
-        <textarea id="descr" name="descr" rows="5" cols="50" maxlength="200"
-            class="form-control"></textarea><br /><br />
-    </fieldset>
-    <input type="submit" value="Registrati" class="btn btn-primary rounded-pill px-4">
-    <input type="reset" value="Cancella" class="btn btn-primary rounded-pill px-4">
-</form>
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h1 class="fw-bold text-uppercase text-primary mb-4 text-center">
+                    Inserisci i dati del tuo nuovo profilo
+                </h1>
+
+                <form action="registrazione.php" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cognome" class="form-label">Cognome</label>
+                        <input type="text" id="cognome" name="cognome" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="data_nascita" class="form-label">Data di nascita</label>
+                        <input type="date" id="data_nascita" name="data_nascita" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="matricola" class="form-label">Matricola</label>
+                        <input type="number" id="matricola" name="matricola" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Mail istituzionale</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="corso" class="form-label">Corso di laurea seguito:</label>
+                        <select id="corso" name="codiceCorso" class="form-select" required>
+                            <option value="" disabled selected>-- Seleziona un corso di laurea --</option>
+                            <?php foreach ($templateParams["corsi"] as $corso): ?>
+                                <option id="<?php echo getValueFromCorso($corso["nome"]); ?>" value="<?php echo $corso["codiceCorso"]; ?>">
+                                    <?php echo $corso["nome"]; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descr" class="form-label">Dicci qualcosa di te!</label>
+                        <textarea id="descr" name="descr" rows="5" maxlength="200" class="form-control"></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <input type="submit" value="Registrati" class="btn btn-primary rounded-pill px-4">
+                        <input type="reset" value="Cancella" class="btn btn-outline-primary rounded-pill px-4">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
