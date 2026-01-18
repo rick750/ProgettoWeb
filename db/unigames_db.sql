@@ -175,7 +175,7 @@ VALUES ("riccardo.carta2@studio.unibo.it","$2y$10$PLBHSofL/AcsBsZ2tzuHLOmpZKwq/t
 ("alessandro.ferri@studio.unibo.it", "$2y$10$4v3oxmCcspRqVtbmiwuHFOcMujQEYpW5Anh08sR6l8zk9Tu8Hm.Ou", "Alessandro", "Ferri", "2004-02-27", "1112345", "Stratega nei giochi RTS, eccelle nella gestione delle risorse e nelle build a lungo termine."),
 ("chiara.moretti@studio.unibo.it", "$2y$10$EHB02K0dvqKgZOwDwR2jVO9oKygNfqo7rGlYALGysgDKrxLECXnC2", "Chiara", "Moretti", "2003-08-16", "1117264", "Streamer occasionale di giochi indie, apprezzata per l’analisi del game design e dell’atmosfera"),
 ("davide.lombardi@studio.unibo.it", "$2y$10$b84d1O6hYXl7jzkeM.8EL.VbuuiKFhCRRO4BmRpA8jtcoPjljSmay", "Davide", "Lombardi", "2004-11-13", "1114563", "Appassionato di giochi stealth, preferisce approcci silenziosi e pianificazione meticolosa."),
-("elena.bianchi2025@studio.unibo.it", "$2y$10$3YD1okn/9ZLAp7X7L.B1.ORL5yvwrYXTYIl2qXtMksqmFz8gFAYXO", "Elena", "Bianchi", "2005-10-12", "1113367", "Giocatrice di survival sandbox, predilige l’esplorazione e la costruzione di basi efficienti."),
+("elena.bianchi@studio.unibo.it", "$2y$10$3YD1okn/9ZLAp7X7L.B1.ORL5yvwrYXTYIl2qXtMksqmFz8gFAYXO", "Elena", "Bianchi", "2005-10-12", "1113367", "Giocatrice di survival sandbox, predilige l’esplorazione e la costruzione di basi efficienti."),
 ("francesco.gallo@studio.unibo.it", "$2y$10$ToEeBLe9lqc2XmMo3Y5MruARVtVJpPn522ZQLVH9Ndg5xDX8fB8W2", "Francesco", "Gallo", "2003-09-01", "1111221", "Designer amatoriale di mod, crea contenuti personalizzati per prolungare la vita dei suoi giochi preferiti."),
 ("giulia.romano@studio.unibo.it", "$2y$10$Vjl00PTLcJA3zPfah5P5IeAQ3.oOzY5L65uGZ27dx.IcUn5eUqnBC", "Giulia", "Romano", "2004-06-18", "1119234", "Speedrunner, sempre alla ricerca di glitch e scorciatoie per migliorare i propri record."),
 ("marco.rinaldi@studio.unibo.it", "$2y$10$nOF1Qq2gWdTVADr2qesgc.K.EZW6TqRoNBN2klgLd6sIJHD890.Q2", "Marco", "Rinaldi", "2003-12-04", "1113256", "Giocatore competitivo di FPS, noto per i suoi riflessi rapidi e l’ottima gestione delle mappe nelle partite ranked."),
@@ -206,6 +206,6 @@ INSERT INTO ISCRITTO VALUES
 ("3", "alessandro.ferri@studio.unibo.it"),
 ("4", "anna.rossi3@studio.unibo.it"),
 ("4", "chiara.moretti@studio.unibo.it"),
-("4", "elena.bianchi2025@studio.unibo.it"),
+("4", "elena.bianchi@studio.unibo.it"),
 ("5", "davide.lombardi@studio.unibo.it"),
 ("5", "stefano.desantis@studio.unibo.it");
