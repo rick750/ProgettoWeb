@@ -12,7 +12,6 @@
 </head>
 
 <body class="bg-light text-dark">
-
     <header class="bg-dark border-bottom border-secondary py-3">
         <div class="container-fluid text-center">
             <h1 class="fw-bold text-uppercase text-primary mb-0">
@@ -20,51 +19,78 @@
             </h1>
         </div>
     </header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-secondary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <nav class="bg-dark border-bottom border-secondary">
-        <ul class="nav justify-content-center gap-3 py-2">
-            <li class="nav-item">
-                <a class="nav-link text-primary <?php isActiveNav("index.php"); ?>" href="index.php">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary <?php isActiveNav("archivio-post.php"); ?></a>"
-                    href="archivio-post.php">ARCHIVIO</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary <?php isActiveNav("giochi.php"); ?></a>" href="giochi.php">GIOCHI</a>
-            </li>
-            <?php if (!empty($_SESSION)): ?>
-                <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("tornei.php"); ?></a>" href="tornei.php">TORNEI</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("notifiche.php"); ?></a>"
-                        href="notifiche.php">NOTIFICHE</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("profilo.php"); ?></a>" href="profilo.php">PROFILO</a>
-                </li>
-            <?php else: ?>
-                <li class="nav-item">
-                    <a class="nav-link text-primary <?php isActiveNav("login.php"); ?></a>" href="login.php">ACCEDI</a>
-                </li>
-            <?php endif; ?>
-        </ul>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav gap-md-3 text-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-primary <?php isActiveNav("index.php"); ?>" href="index.php">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary <?php isActiveNav("archivio-post.php"); ?>" href="archivio-post.php">ARCHIVIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary <?php isActiveNav("giochi.php"); ?></a>" href="giochi.php">GIOCHI</a>
+                    </li>
+                    <?php if (!empty($_SESSION)): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary <?php isActiveNav("tornei.php"); ?></a>" href="tornei.php">TORNEI</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary <?php isActiveNav("notifiche.php"); ?></a>"
+                                href="notifiche.php">NOTIFICHE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary <?php isActiveNav("profilo.php"); ?></a>" href="profilo.php">PROFILO</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary <?php isActiveNav("login.php"); ?></a>" href="login.php">ACCEDI</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
     </nav>
-
     <?php if (isset($templateParams["filtri"]) && count($templateParams["filtri"]) > 0): ?>
         <div class="bg-light border-bottom border-secondary py-2">
-            <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
-                <form method="get" class="d-flex flex-wrap align-items-center gap-3" id="form-filtri">
-                    <?php foreach ($templateParams["filtri"] as $filtro): ?>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="filter[]"
-                                value="<?php echo $filtro["valore"]; ?>" <?php if (in_array($filtro["valore"], $templateParams["selezionaFiltro"]))
-                                       echo "checked"; ?>>
-                            <label class="form-check-label"><?php echo $filtro["nome"]; ?></label>
-                        </div>
-                    <?php endforeach; ?>
-                </form>
+            <div class="container">
+                <!-- Bottone filtri (solo mobile) -->
+                <?php $isGiochi = ("giochi.php" === basename($_SERVER['PHP_SELF']));?>
+                <?php if ($isGiochi):?>
+                    <div class="d-md-none text-center">
+                        <button class="btn btn-primary w-100"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#filtriCollapse"
+                                aria-expanded="false">
+                            Filtri di ricerca
+                        </button>
+                    </div>                    
+                <?php endif; ?>
+                <!-- Filtri -->
+                <div class="<?php echo $isGiochi ? 'collapse d-md-block' : 'd-block'; ?>" id="filtriCollapse">
+                    <form method="get"
+                        class="d-flex flex-column flex-md-row flex-wrap align-items-start gap-2 gap-md-3"
+                        id="form-filtri">
+                        <?php foreach ($templateParams["filtri"] as $filtro): ?>
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    type="checkbox"
+                                    name="filter[]"
+                                    value="<?php echo $filtro["valore"]; ?>"
+                                    <?php if (in_array($filtro["valore"], $templateParams["selezionaFiltro"])) echo "checked"; ?>>
+                                <label class="form-check-label">
+                                    <?php echo $filtro["nome"]; ?>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </form>
+                </div>
             </div>
         </div>
     <?php endif; ?>
@@ -83,7 +109,7 @@
                 </div>
             </section>
 
-            <aside class="col-md-3 bg-primary bg-opacity-10 border-start border-secondary py-4">
+            <aside class="col-md-3 bg-primary bg-opacity-10 border-start border-secondary py-4" id="aside">
                 <div>
                     <?php
                     if (isset($templateParams["aside"])) {

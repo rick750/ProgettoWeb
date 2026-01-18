@@ -34,15 +34,15 @@
     <?php foreach ($templateParams["libreriaGiochiFunc"] as $gioco): ?>
         <?php $recensioniUtenti = $dbh->getStatisticheRecensioniGioco($gioco["codiceGioco"]); ?>
         <div class="col-12 col-md-6 mb-4">
-            <article class="card h-100 shadow-sm border-0 border-start border-4 border-primary">
+            <article class="card h-100 shadow-sm border-0 border-start border-4 border-primary" id="<?php echo getIdFromGioco($gioco["nome"]);?>">
                 <div>
                     <img class="img-fluid" src="upload/<?php echo $gioco["immagine"]; ?>"
                         alt="immagine di <?php echo $gioco["nome"]; ?>">
                 </div>
 
-                <div class="card-body d-flex flex-column">
+                <div class="card-body d-flex flex-column" >
                     <div class="mb-3">
-                        <h2 class="card-title fw-bold mb-1"><?php echo $gioco["nome"]; ?></h2>
+                        <h2 class="card-title fw-bold mb-1" ><?php echo $gioco["nome"]; ?></h2>
                         <p class="badge bg-primary mb-2">
                             Valutazione: <?php echo $gioco["valutazioneGiornalistica"]; ?>
                         </p>
@@ -67,10 +67,10 @@
 
                     <div class="mt-auto d-flex justify-content-end">
                         <?php if (isActive("profilo-giochi.php")): ?>
-                            <a href="profilo-giochi.php?action=recensioni&id=<?php echo $gioco['codiceGioco']; ?>"
+                            <a href="profilo-giochi.php?action=recensioni&codice=<?php echo $gioco['codiceGioco'];?>&id=#aside"
                                 class="btn btn-primary rounded-pill px-4 mx-1"> Recensioni </a>
                         <?php else: ?>
-                            <a href="giochi.php?action=recensioni&id=<?php echo $gioco['codiceGioco']; ?>"
+                            <a href="giochi.php?action=recensioni&codice=<?php echo $gioco['codiceGioco'];?>&id=#aside"
                                 class="btn btn-primary rounded-pill px-4 mx-1"> Recensioni </a>
                         <?php endif; ?>
                         <button class="btn btn-primary rounded-pill px-4 btn-expand mx-1">Espandi</button>

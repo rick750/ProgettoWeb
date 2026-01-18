@@ -30,8 +30,14 @@ function getValueFromCorso($corso){
     $corso = strtolower($corso);
     $corso = str_replace(' ', '_', $corso);
     $corso = preg_replace('/[^a-z0-9_]/', '', $corso);
-
     return $corso;
+}
+
+function getIdFromGioco($gioco){
+    $gioco = strtolower($gioco);
+    $gioco = str_replace(' ', '_', $gioco);
+    $gioco = preg_replace('/[^a-z0-9_]/', '', $gioco);
+    return $gioco;
 }
 
 ?>
