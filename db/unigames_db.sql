@@ -169,7 +169,19 @@ CREATE TABLE riguarda (
 
 INSERT INTO UTENTE
 VALUES ("riccardo.carta2@studio.unibo.it","$2y$10$PLBHSofL/AcsBsZ2tzuHLOmpZKwq/tI4gzzRmQQkWkjxlj5fzClaS","Riccardo","Carta","2004-07-28","0001115294","Hello World!"),
-("marco.battistini10@studio.unibo.it","$2y$10$QJsd6Czd/mwGIscOjPpUIen06mbMXPoq1jhrDbXNdNEOQ3bwpJJmq","Marco","Battistini","2004-11-28","0001114229","Ciao!");
+("marco.battistini10@studio.unibo.it","$2y$10$QJsd6Czd/mwGIscOjPpUIen06mbMXPoq1jhrDbXNdNEOQ3bwpJJmq","Marco","Battistini","2004-11-28","0001114229","Ciao!"),
+("giorgio.bianchi@studio.unibo.it","$2y$10$grr4hpMZjf4n251jrIeI6uxeZqRMvpgdU.wOhsYhlUvBFH.hej6Me","Giorgio","Bianchi","2003-03-15","0001113333","Appassionato di FPS"),
+("anna.rossi3@studio.unibo.it","$2y$10$r5FjvbumDJz8VDCxQedwz.DIObRqzs9iBx808aOolCkh6.oVrlpZe","Anna","Rossi","2004-01-10","0001114444","Amante dei giochi indie"),
+("alessandro.ferri@studio.unibo.it", "$2y$10$4v3oxmCcspRqVtbmiwuHFOcMujQEYpW5Anh08sR6l8zk9Tu8Hm.Ou", "Alessandro", "Ferri", "2004-02-27", "1112345", "Stratega nei giochi RTS, eccelle nella gestione delle risorse e nelle build a lungo termine."),
+("chiara.moretti@studio.unibo.it", "$2y$10$EHB02K0dvqKgZOwDwR2jVO9oKygNfqo7rGlYALGysgDKrxLECXnC2", "Chiara", "Moretti", "2003-08-16", "1117264", "Streamer occasionale di giochi indie, apprezzata per l’analisi del game design e dell’atmosfera"),
+("davide.lombardi@studio.unibo.it", "$2y$10$b84d1O6hYXl7jzkeM.8EL.VbuuiKFhCRRO4BmRpA8jtcoPjljSmay", "Davide", "Lombardi", "2004-11-13", "1114563", "Appassionato di giochi stealth, preferisce approcci silenziosi e pianificazione meticolosa."),
+("elena.bianchi2025@studio.unibo.it", "$2y$10$3YD1okn/9ZLAp7X7L.B1.ORL5yvwrYXTYIl2qXtMksqmFz8gFAYXO", "Elena", "Bianchi", "2005-10-12", "1113367", "Giocatrice di survival sandbox, predilige l’esplorazione e la costruzione di basi efficienti."),
+("francesco.gallo@studio.unibo.it", "$2y$10$ToEeBLe9lqc2XmMo3Y5MruARVtVJpPn522ZQLVH9Ndg5xDX8fB8W2", "Francesco", "Gallo", "2003-09-01", "1111221", "Designer amatoriale di mod, crea contenuti personalizzati per prolungare la vita dei suoi giochi preferiti."),
+("giulia.romano@studio.unibo.it", "$2y$10$Vjl00PTLcJA3zPfah5P5IeAQ3.oOzY5L65uGZ27dx.IcUn5eUqnBC", "Giulia", "Romano", "2004-06-18", "1119234", "Speedrunner, sempre alla ricerca di glitch e scorciatoie per migliorare i propri record."),
+("marco.rinaldi@studio.unibo.it", "$2y$10$nOF1Qq2gWdTVADr2qesgc.K.EZW6TqRoNBN2klgLd6sIJHD890.Q2", "Marco", "Rinaldi", "2003-12-04", "1113256", "Giocatore competitivo di FPS, noto per i suoi riflessi rapidi e l’ottima gestione delle mappe nelle partite ranked."),
+("matteo.greco@studio.unibo.it", "$2y$10$ncrdnQg5mHJqxshpcHqZV.n/6/EeoGFZkUFA6XbEsw5SALLFagiBa", "Matteo", "Greco", "2005-03-21", "1114276", "Esperto di giochi di guida, cura in modo maniacale assetti e traiettorie perfette."),
+("sara.conti@studio.unibo.it", "$2y$10$6/RWX52O5Rj3NFvbs8ugDe5dcas74PW1mDv68QMxGCUC7RHTHSqke", "Sara", "Conti", "2005-07-21", "1111985", "Appassionata di RPG narrativi, dedica ore all’ottimizzazione dei personaggi e alle scelte di trama."),
+("stefano.desantis@studio.unibo.it", "$2y$10$8W3yW6nEgJXLCeBQ09d7yOdMqyDaVU1wtHIx6vIFnhWAG4vCIVLeO", "Stefano", "De Santis", "2005-12-31", "1112318", "Main tank nei MMORPG, specializzato nel coordinare il team durante i raid più complessi.");
 INSERT INTO ADMIN VALUES
 ("riccardo.carta2@studio.unibo.it"),
 ("marco.battistini10@studio.unibo.it");
@@ -181,3 +193,19 @@ INSERT INTO CORSO VALUES
 (003,"Ingegneria Elettronica","riccardo.carta2@studio.unibo.it"),
 (004,"Ingegneria Biomedica","marco.battistini10@studio.unibo.it"),
 (005,"Psicologia","riccardo.carta2@studio.unibo.it");
+
+INSERT INTO ISCRITTO VALUES 
+("1", "francesco.gallo@studio.unibo.it"),
+("1", "giulia.romano@studio.unibo.it"),
+("1", "marco.battistini10@studio.unibo.it"),
+("1", "marco.rinaldi@studio.unibo.it"),
+("1", "riccardo.carta2@studio.unibo.it"),
+("2", "giorgio.bianchi@studio.unibo.it"),
+("2", "matteo.greco@studio.unibo.it"),
+("2", "sara.conti@studio.unibo.it"),
+("3", "alessandro.ferri@studio.unibo.it"),
+("4", "anna.rossi3@studio.unibo.it"),
+("4", "chiara.moretti@studio.unibo.it"),
+("4", "elena.bianchi2025@studio.unibo.it"),
+("5", "davide.lombardi@studio.unibo.it"),
+("5", "stefano.desantis@studio.unibo.it");
