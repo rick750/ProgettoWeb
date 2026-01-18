@@ -419,18 +419,18 @@ INSERT INTO COMMENTO VALUES
 -- MESSAGGI PRIVATI (aggiuntivi) + riceve
 -- =====================
 INSERT INTO MESSAGGIO VALUES
-(4,"Vorresti fare una live con me questo sabato?","chiara.moretti@studio.unibo.it","2025-01-28"),
-(5,"Hai voglia di provare la build tank per il raid di venerdì?","stefano.desantis@studio.unibo.it","2025-01-28"),
-(6,"Posso dare un\'occhiata alla tua mod per bug?","francesco.gallo@studio.unibo.it","2025-01-29"),
-(7,"Organizziamo la bracket del torneo speedrun: chi è disponibile?","marco.battistini10@studio.unibo.it","2025-01-30"),
-(8,"Ti mando le impostazioni della mia wheel per GT7.","matteo.greco@studio.unibo.it","2025-01-30");
+(1,"Vorresti fare una live con me questo sabato?","chiara.moretti@studio.unibo.it","2025-01-28"),
+(2,"Hai voglia di provare la build tank per il raid di venerdì?","stefano.desantis@studio.unibo.it","2025-01-28"),
+(3,"Posso dare un\'occhiata alla tua mod per bug?","francesco.gallo@studio.unibo.it","2025-01-29"),
+(4,"Organizziamo la bracket del torneo speedrun: chi è disponibile?","marco.battistini10@studio.unibo.it","2025-01-30"),
+(5,"Ti mando le impostazioni della mia wheel per GT7.","matteo.greco@studio.unibo.it","2025-01-30");
 
 INSERT INTO riceve VALUES
-(4,"giulia.romano@studio.unibo.it","2025-01-28"),
-(5,"stefano.desantis@studio.unibo.it","2025-01-28"),
-(6,"marco.battistini10@studio.unibo.it","2025-01-29"),
-(7,"giorgio.bianchi@studio.unibo.it","2025-01-30"),
-(8,"marco.rinaldi@studio.unibo.it","2025-01-30");
+(1,"giulia.romano@studio.unibo.it","2025-01-28"),
+(2,"stefano.desantis@studio.unibo.it","2025-01-28"),
+(3,"marco.battistini10@studio.unibo.it","2025-01-29"),
+(4,"giorgio.bianchi@studio.unibo.it","2025-01-30"),
+(5,"marco.rinaldi@studio.unibo.it","2025-01-30");
 
 
 

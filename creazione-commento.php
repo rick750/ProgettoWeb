@@ -15,7 +15,7 @@ $templateParams["nome"] = "form-commento.php";
 
 $templateParams["aside"] = "lista-giochiRandom.php";
 $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
-$templateParams["indietro"] = "index.php";
+$templateParams["indietro"] = $_SESSION["pagina_precedente"];
 
 if (isset($_POST["autorePost"])) {
     if (!empty($_POST["testo"])) {
