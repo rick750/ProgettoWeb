@@ -255,11 +255,11 @@ INSERT INTO RECENSIONE VALUES
 
 -- 9
 INSERT INTO POST VALUES
-("elena.bianchi2025@studio.unibo.it",2,
+("elena.bianchi@studio.unibo.it",2,
  "Quali strategie adottate per costruire basi a prova di player nei survival multiplayer?",
  "2025-01-25","Basi in Survival",
  NULL,"G");
-INSERT INTO GENERICO VALUES ("elena.bianchi2025@studio.unibo.it",2);
+INSERT INTO GENERICO VALUES ("elena.bianchi@studio.unibo.it",2);
 
 -- 10 (recensione)
 INSERT INTO POST VALUES
@@ -364,11 +364,11 @@ INSERT INTO RECENSIONE VALUES
 
 -- 22
 INSERT INTO POST VALUES
-("elena.bianchi2025@studio.unibo.it",3,
+("elena.bianchi@studio.unibo.it",3,
  "Consiglio mod di qualità dell\'aria e luci per Subnautica per migliorare immersione.",
  "2025-01-31","Mod Subnautica",
  NULL,"G");
-INSERT INTO GENERICO VALUES ("elena.bianchi2025@studio.unibo.it",3);
+INSERT INTO GENERICO VALUES ("elena.bianchi@studio.unibo.it",3);
 
 -- =====================
 -- COMMENTI (aggiuntivi, coerenti)
