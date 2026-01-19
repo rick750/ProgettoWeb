@@ -8,7 +8,7 @@
         <div class="card shadow-sm border-0">
             <div class="card-body p-4">
                 <form action="creazione-torneo.php" method="POST">
-                    <h1 class="fw-bold text-uppercase text-primary mb-4">
+                    <h1 class="fw-bold text-uppercase text-primary mb-4 text-center">
                         Inserisci i dati del nuovo Torneo
                     </h1>
 

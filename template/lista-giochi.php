@@ -19,7 +19,7 @@
 
 <?php if (isset($templateParams["indietro"]) && $_SESSION["admin"]): ?>
     <form action="creazione-tag.php" method="POST" class="mb-4">
-        <fieldset class="row align-items-end g-3">
+        <fieldset class="row align-items-end g-5">
             <div class="col-12 col-md-6 col-lg-4">
                 <label for="tag" class="form-label fw-semibold">
                     Aggiungi un nuovo tag

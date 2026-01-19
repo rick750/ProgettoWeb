@@ -24,7 +24,7 @@
             <div class="card-body p-4">
                 <form action="creazione-commento.php" method="POST">
 
-                    <h1 class="fw-bold text-uppercase text-primary mb-4">
+                    <h1 class="fw-bold text-uppercase text-primary mb-4 text-center">
                         Inserisci il nuovo commento
                     </h1>
 
