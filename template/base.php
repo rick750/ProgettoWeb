@@ -13,10 +13,13 @@
 
 <body class="bg-light text-dark">
     <div class="sticky-top z-3">
-        <header class="bg-dark border-bottom border-secondary py-3">
-            <div class="container-fluid text-center">
-                <h1>
-                    <a href="#" class="fw-bold text-uppercase text-primary mb-0 text-decoration-none">UNIGAMES</a>
+        <header class="bg-dark border-bottom border-secondary py-2">
+            <div class="container-fluid d-flex align-items-center">
+                <img src="upload/logo.jpg" alt="Logo dell'Unibo" class="img-fluid header-logo">
+                <h1 class="flex-grow-1 text-center mb-0">
+                    <a href="index.php" class="fw-bold text-uppercase text-primary text-decoration-none">
+                        UNIGAMES
+                    </a>
                 </h1>
             </div>
         </header>
@@ -26,7 +29,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <div class="collapse navbar-collapse justify-content-center fs-5" id="mainNavbar">
                     <ul class="navbar-nav gap-md-3 text-center">
                         <li class="nav-item">
                             <a class="nav-link text-primary <?php isActiveNav("index.php"); ?>"

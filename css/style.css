@@ -1,0 +1,17 @@
+@media (min-width: 768px) {
+    #aside {
+        scroll-margin-top: 250px;
+    }
+
+    .header-logo {
+        height: 50px;
+        max-height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-logo {
+        height: 36px;
+        max-height: 36px;
+    }
+}

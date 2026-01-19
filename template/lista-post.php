@@ -17,8 +17,9 @@
                     <h2 class="card-title fw-bold mb-1"><?php echo htmlspecialchars($post["titolo"]); ?></h2>
                     <p class="card-subtitle text-muted small mb-0">
                         <?php echo htmlspecialchars($post["data"]); ?> ·
-                        <?php if ($_SESSION["email"] !== $post["crea_email"]): ?>
-                            <a href="dettaglio_profilo.php?email=<?php echo urlencode($post['crea_email']); ?>">
+                        <?php if (!empty($_SESSION["email"]) && ($_SESSION["email"] !== $post["crea_email"])): ?>
+                            <a href="dettaglio_profilo.php?email=<?php echo urlencode($post['crea_email']); ?> "
+                                class="text-decoration-none">
                                 <?php echo htmlspecialchars($post["crea_email"]); ?>
                             </a>
                         <?php else: ?>
@@ -33,7 +34,8 @@
                         <input type="text" name="cancellaCodicePost" value="<?php echo $post["codicePost"]; ?>" hidden />
                         <input type="text" name="cancellaTipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
                         <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
-                        <input type="submit" name="eliminaPost" value="Elimina Post" class="btn btn-danger btn-sm flex-shrink-0">
+                        <input type="submit" name="eliminaPost" value="Elimina Post"
+                            class="btn btn-danger btn-sm flex-shrink-0">
                     </form>
                 <?php endif; ?>
             </div>
@@ -48,11 +50,14 @@
                         <input type="text" name="tipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
                         <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
 
-                        <textarea id="testo_post" name="testo_post" rows="6" maxlength="1000" class="form-control mb-2"><?php echo htmlspecialchars($post["testo"]); ?></textarea>
+                        <textarea id="testo_post" name="testo_post" rows="6" maxlength="1000"
+                            class="form-control mb-2"><?php echo htmlspecialchars($post["testo"]); ?></textarea>
 
                         <div class="d-flex gap-2">
-                            <input type="submit" name="modificaPost" value="Conferma Modifica" class="btn btn-primary btn-sm rounded-pill">
-                            <button type="button" class="btn btn-secondary btn-sm rounded-pill btn-cancel-modifica btn-generic-update-collapse d-none">Annulla</button>
+                            <input type="submit" name="modificaPost" value="Conferma Modifica"
+                                class="btn btn-primary btn-sm rounded-pill">
+                            <button type="button"
+                                class="btn btn-secondary btn-sm rounded-pill btn-cancel-modifica btn-generic-update-collapse d-none">Annulla</button>
                         </div>
                     </form>
 
@@ -72,9 +77,11 @@
                             <form action="modifica-contenuto.php" method="POST" class="position-absolute bottom-0 end-0 m-2">
                                 <input type="text" name="cancellaCreaEmail" value="<?php echo $answer["crea_email"]; ?>" hidden />
                                 <input type="text" name="cancellaCodicePost" value="<?php echo $answer["codicePost"]; ?>" hidden />
-                                <input type="text" name="cancellaCodiceCommento" value="<?php echo $answer["codiceCommento"]; ?>" hidden />
+                                <input type="text" name="cancellaCodiceCommento" value="<?php echo $answer["codiceCommento"]; ?>"
+                                    hidden />
                                 <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
-                                <input type="submit" name="eliminaCommento" value="Elimina" class="btn btn-danger btn-sm flex-shrink-0">
+                                <input type="submit" name="eliminaCommento" value="Elimina"
+                                    class="btn btn-danger btn-sm flex-shrink-0">
                             </form>
                         <?php endif; ?>
 
@@ -85,16 +92,20 @@
                                 <input type="text" name="codiceCommento" value="<?php echo $answer["codiceCommento"]; ?>" hidden />
                                 <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
 
-                                <textarea id="testo_commento" name="testo_commento" rows="4" maxlength="500" class="form-control mb-2"><?php echo htmlspecialchars($answer["testo"]); ?></textarea>
+                                <textarea id="testo_commento" name="testo_commento" rows="4" maxlength="500"
+                                    class="form-control mb-2"><?php echo htmlspecialchars($answer["testo"]); ?></textarea>
 
                                 <div class="d-flex gap-2">
-                                    <input type="submit" name="modificaCommento" value="Conferma Modifica" class="btn btn-primary btn-sm rounded-pill">
-                                    <button type="button" class="btn btn-secondary btn-sm rounded-pill btn-commento-update-collapse d-none">Annulla</button>
+                                    <input type="submit" name="modificaCommento" value="Conferma Modifica"
+                                        class="btn btn-primary btn-sm rounded-pill">
+                                    <button type="button"
+                                        class="btn btn-secondary btn-sm rounded-pill btn-commento-update-collapse d-none">Annulla</button>
                                 </div>
                             </form>
 
                             <div class="d-flex gap-2">
-                                <button class="btn btn-primary btn-sm rounded-pill btn-commento-update-expand">Modifica Commento</button>
+                                <button class="btn btn-primary btn-sm rounded-pill btn-commento-update-expand">Modifica
+                                    Commento</button>
                             </div>
                         <?php endif; ?>
                     </div>

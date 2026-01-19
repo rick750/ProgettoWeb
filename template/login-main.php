@@ -44,7 +44,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Matricola</label>
-                            <input type="number" name="matricola" class="form-control" required>
+                            <input type="text" name="matricola" class="form-control" required>
                         </div>
 
                         <div class="col-12">

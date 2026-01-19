@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else if ($differenza->y < 18) {
         $templateParams["errore_registrazione"] = "La data di nascita non è valida";
         $valido = false;
-    } else if (!ctype_digit($_POST["matricola"]) || strlen($_POST["matricola"]) != 10) {
+    } else if (!preg_match('/^\d{10}$/', $_POST["matricola"])) {
         $templateParams["errore_registrazione"] = "La matricola inserita non è valida";
         $valido = false;
     } else if (!preg_match('/^[a-zA-Z0-9]+\.[a-zA-Z0-9]+@studio\.unibo\.it$/', $_POST["email"])) {

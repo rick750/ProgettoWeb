@@ -279,7 +279,7 @@ class DatabaseHelper
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param(
-            "sssssis",
+            "sssssss",
             $email,
             $hash,
             $nome,

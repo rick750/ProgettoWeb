@@ -42,9 +42,19 @@
 
             <section class="card-text mb-3">
                 <p class="mb-2"><?php echo $torneo["descrizione"]; ?></p>
+
                 <p class="text-muted small mb-0">
-                    Aggiunto da: <?php echo $torneo["email"]; ?>
+                    Aggiunto da:
+                    <?php if ($_SESSION["email"] === $torneo["email"]): ?>
+                        <?php echo $torneo["email"]; ?>
+                    <?php else: ?>
+                        <a href="dettaglio_profilo.php?email=<?php echo urlencode($torneo['email']); ?>" class="text-decoration-none">
+                            <?php echo htmlspecialchars($torneo["email"]); ?>
+                        </a>
+                    <?php endif; ?>
                 </p>
+
+
             </section>
 
             <?php if (!empty($_SESSION) && (($_SESSION["email"] === $torneo["email"]))): ?>
@@ -64,8 +74,7 @@
                         <input type="submit" name="modificaTorneo" value="Conferma Modifica"
                             class="btn btn-primary rounded-pill px-4">
 
-                        <input type="reset"
-                        value="Annulla"
+                        <input type="reset" value="Annulla"
                             class="btn btn-secondary rounded-pill px-4 btn-torneo-update-collapse d-none">
                     </form>
 
