@@ -1,10 +1,8 @@
 <?php
 require_once 'bootstrap.php';
 if (isset($_GET["action"]) && $_GET["action"] === "commento" && isset($_GET["id"]) && isset($_GET["crea_email"])) {
-    // 1. Recupero ID post 
     $idPost = intval($_GET["id"]);
 
-    // autore commento
     $autore = $_GET["crea_email"];
 
     $templateParams["post"] = $dbh->getPost($idPost, $autore);
@@ -24,8 +22,6 @@ if (isset($_POST["autorePost"])) {
     unset($_POST["autorePost"]);
     header("Location: " . $templateParams["indietro"]);
 }
-
-
 
 require 'template/base.php';
 ?>

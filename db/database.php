@@ -726,9 +726,8 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-    public function getLoggedUser()
+    public function getUser($email)
     {
-        $email = $_SESSION["email"];
         $query = "SELECT u.*, i.codiceCorso, c.nome AS nomeCorso
                 FROM UTENTE u, ISCRITTO i, CORSO c
                 WHERE u.email = ?

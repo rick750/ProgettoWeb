@@ -1,15 +1,23 @@
-<h2 class="mb-4">Recensioni di:</h2>
-<a href="#<?php echo getIdFromGioco($templateParams["nomeGioco"]);?>"><?php echo($templateParams["nomeGioco"]);?></a>
+<div class="mb-3">
+    <div class="text-center">
+    <h4 class="mb-2">Recensioni di:</h4>
+        <a href="#<?php echo getIdFromGioco($templateParams["nomeGioco"]); ?>"
+            class="badge bg-primary text-decoration-none fs-6 px-3 py-2 rounded-pill">
+            <?php echo htmlspecialchars($templateParams["nomeGioco"]); ?>
+        </a>
+    </div>
+</div>
+
 
 <?php if (empty($templateParams["recensioni"])): ?>
     <p>Nessuna recensione disponibile per il gioco selezionato </p>
 <?php else: ?>
     <?php foreach ($templateParams["recensioni"] as $rec): ?>
-        <div class="card mb-3">
+        <div class="card mb-2">
             <div class="card-body">
                 <h5 class="fw-bold"><?php echo $rec["crea_email"]; ?></h5>
                 <p><?php echo $rec["data"]; ?></p>
-                <span class="badge bg-primary">Valutazione Utente: <?php echo $rec["valutazione"]; ?></span>
+                <p class="badge bg-primary">Valutazione Utente: <?php echo $rec["valutazione"]; ?></p>
                 <p><?php echo $rec["testo"]; ?></p>
             </div>
         </div>

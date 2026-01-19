@@ -7,7 +7,7 @@ if (!empty($_SESSION)) {
 
     $templateParams["aside"] = "lista-giochiRandom.php";
     $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
-    $templateParams["infoUtente"] = $dbh->getLoggedUser();
+    $templateParams["infoUtente"] = $dbh->getUser($_SESSION["email"]);
     $templateParams["corsi"] = $dbh->getCorsi();
     $templateParams["vecchioCorso"] = $dbh->getCorsoForUtente();
     if (isset($_POST["modificaProfilo"])) {

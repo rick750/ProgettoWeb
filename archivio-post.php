@@ -7,7 +7,7 @@ $templateParams["titolo"] = "Unigames - Archivio";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["selezionaFiltro"] = [];
 $templateParams["aside"] = "lista-giochiRandom.php";
-$templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
+$templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(6);
 $templateParams["post"] = $dbh->getGenericPosts(-1);
 foreach ($templateParams["post"] as &$post) {
     $post["commenti"] = $dbh->getCommentiPost($post["crea_email"], $post["codicePost"]);

@@ -1,14 +1,29 @@
-<div class="text-center">
-    <h2 class="fw-bold">Sei già registrato?</h2>
+<div class="justify-content-center">
+
+    <h2 class="fw-bold text-center text-primary mb-4">
+        Sei già registrato?
+    </h2>
+
     <form action="login.php" method="POST">
-        <fieldset>
-            <label for="email" class="form-text-label">Mail istituzionale</label><br />
-            <input type="text" name="email" value="<?php echo htmlspecialchars($_POST["email"] ?? ""); ?>">
-            <br /><br />
-            <label for="password" class="form-text-label">Password</label><br />
-            <input type="password" id="password" name="password"><br /><br />
-        </fieldset>
-        <input type="submit" value="Accedi" class="btn btn-primary rounded-pill px-4">
-        <input type="reset" value="Cancella" class="btn btn-primary rounded-pill px-4">
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                Mail istituzionale
+            </label>
+            <input type="email" name="email" class="form-control"
+                value="<?php echo htmlspecialchars($_POST["email"] ?? ""); ?>">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold">
+                Password
+            </label>
+            <input type="password" name="password" class="form-control">
+        </div>
+
+        <div class="d-flex justify-content-end gap-2 mt-4">
+            <input type="submit" value="Accedi" class="btn btn-primary rounded-pill px-4">
+            <input type="reset" value="Cancella" class="btn btn-secondary rounded-pill px-4">
+        </div>
     </form>
 </div>

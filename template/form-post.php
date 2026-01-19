@@ -4,57 +4,100 @@
     </div>
 <?php endif; ?>
 
-<form action="creazione-post.php" method="POST">
-    <h1 class="fw-bold text-uppercase text-primary mb-0">Inserisci i dati del nuovo Post</h1>
-    <fieldset class=" flex-wrap align-items-center gap-3">
-        <label for="titolo" class="form-text-label">Titolo</label><br />
-        <input type="text" id="titolo" name="titolo" class="form-text-input" /><br /><br />
-        <label class="form-label">Tipo di post</label><br />
-        <label for="generico" class="form-radio-label">Generico</label>
-        <input type="radio" id="generico" name="tipo_post" value="generico" class="form-radio-input">
-        <label for="recensione" class="form-radio-label ps-4">Recensione</label>
-        <input type="radio" id="recensione" name="tipo_post" value="recensione" class="form-radio-input"><br /><br />
+<div class="container my-5">
+    <div class="justify-content-center">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
 
-        <div id="sezione_recensione_videogioco" class="container-fluid text-center">
-            <label for="scelta_gioco" class="form-label">Scegli il gioco da recensire:</label>
-            <select id="scelta_gioco" name="scelta_gioco" class="form-select">
-                <option value="" disabled selected>-- Seleziona un videogioco --</option>
-                <?php foreach ($templateParams["giochi"] as $gioco): ?>
-                    <option value="<?php echo $gioco["codiceGioco"]; ?>">
-                        <?php echo $gioco["nome"]; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select><br /><br />
+                    <h1 class="fw-bold text-uppercase text-primary mb-4 text-center">
+                        Nuovo Post
+                    </h1>
 
-            <label for="voto" class="form-label">Valuta il gioco secondo la tua opinione:</label>
-            <select id="voto" name="voto" class="form-select">
-                <option value="" disabled selected>-- Seleziona un voto --</option>
-                <?php
-                for ($voto = 5; $voto >= 0; $voto -= 0.1) {
-                    $v = number_format($voto, 1);
-                    echo "<option value=\"$v\">$v</option>";
-                }
-                ?>
-            </select><br /><br />
-            <label for="testo_rec" class="form-textarea-label">Testo della recensione</label><br />
-            <textarea id="testo_rec" name="testo_rec" rows="20" cols="120" maxlength="1000"
-                class="form-control"></textarea><br /><br />
+                    <form action="creazione-post.php" method="POST">
+
+                        <div class="mb-4">
+                            <label for="titolo" class="form-label fw-semibold">Titolo</label>
+                            <input type="text" id="titolo" name="titolo" class="form-control">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Tipo di post</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="generico" name="tipo_post" value="generico">
+                                <label class="form-check-label" for="generico">
+                                    Generico
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="recensione" name="tipo_post" value="recensione">
+                                <label class="form-check-label" for="recensione">
+                                    Recensione
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="sezione_recensione_videogioco" class="border rounded p-3 mb-4">
+                            <h5 class="fw-semibold text-primary mb-3">Dettagli recensione</h5>
+
+                            <div class="mb-3">
+                                <label for="scelta_gioco" class="form-label">Videogioco</label>
+                                <select id="scelta_gioco" name="scelta_gioco" class="form-select">
+                                    <option value="" disabled selected>-- Seleziona un videogioco --</option>
+                                    <?php foreach ($templateParams["giochi"] as $gioco): ?>
+                                        <option value="<?php echo $gioco["codiceGioco"]; ?>">
+                                            <?php echo $gioco["nome"]; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="voto" class="form-label">Voto</label>
+                                <select id="voto" name="voto" class="form-select">
+                                    <option value="" disabled selected>-- Seleziona un voto --</option>
+                                    <?php
+                                    for ($voto = 5; $voto >= 0; $voto -= 0.1) {
+                                        $v = number_format($voto, 1);
+                                        echo "<option value=\"$v\">$v</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="testo_rec" class="form-label">Testo della recensione</label>
+                                <textarea id="testo_rec" name="testo_rec" rows="8" maxlength="1000"
+                                          class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="sezione_generico" class="border rounded p-3 mb-4">
+                            <h5 class="fw-semibold text-primary mb-3">Contenuto post</h5>
+
+                            <label for="testo_post" class="form-label">Testo del post</label>
+                            <textarea id="testo_post" name="testo_post" rows="8" maxlength="1000"
+                                      class="form-control"></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <input type="submit" value="Invia" class="btn btn-primary rounded-pill px-4">
+                            <input type="reset" value="Cancella" class="btn btn-secondary rounded-pill px-4">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <?php if (isset($templateParams["indietro"])): ?>
+                <div class="text-center mt-4">
+                    <a href="<?php echo $templateParams["indietro"]; ?>"
+                       class="btn btn-secondary rounded-pill px-4">
+                        Indietro
+                    </a>
+                </div>
+            <?php endif; ?>
+
         </div>
-
-        <div id="sezione_generico" class="container-fluid text-center">
-            <label for="testo_post" class="form-label">Testo del post</label><br />
-            <textarea id="testo_post" name="testo_post" rows="20" cols="120" maxlength="1000"
-                class="form-control"></textarea><br /><br />
-        </div>
-
-
-    </fieldset>
-    <input type="submit" value="Invia" class="btn btn-primary rounded-pill px-4">
-    <input type="reset" value="Cancella" class="btn btn-primary rounded-pill px-4">
-</form>
-
-<?php if (isset($templateParams["indietro"])): ?>
-    <div class="mb-3">
-        <a href="<?php echo $templateParams["indietro"]; ?>" class="btn btn-primary rounded-pill px-4 my-4">Indietro</a>
-    </div>
-<?php endif; ?>
+</div>
