@@ -19,9 +19,8 @@
                     <?php echo $giocoRandom["nome"]; ?>
                 </h2>
             </div>
-            <section class="card-text small text-muted">
-                <img class="img-fluid" src="upload/<?php echo $giocoRandom["immagine"]; ?>"
-                    alt="immagine di <?php echo $giocoRandom["nome"]; ?>" />
+            <div class="card-text small text-muted">
+                <img class="img-fluid" src="upload/<?php echo $giocoRandom["immagine"]; ?>" alt="immagine di <?php echo $giocoRandom["nome"]; ?>" />
                 <p class="badge bg-primary mb-2">
                     Valutazione: <?php echo $giocoRandom["valutazioneGiornalistica"]; ?>
                 </p>
@@ -35,7 +34,7 @@
                 <p class="mb-0">
                     <?php echo $giocoRandom["listaTag"]; ?>
                 </p>
-            </section>
+                    </div>
         </div>
     </article>
 <?php endforeach; ?>

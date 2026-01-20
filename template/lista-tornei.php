@@ -18,7 +18,7 @@
 <?php endif; ?>
 
 <?php foreach ($templateParams["tornei"] as $torneo): ?>
-    <article class="card mb-4 shadow-sm border-0 border-start border-4 border-primary">
+    <article class="card mb-4 shadow-sm border-0 border-start border-4 border-primary" id="<?php echo(getIdFromStringa($torneo["nomeTorneo"]).$torneo["codiceTorneo"]);?>">
         <div class="card-body position-relative">
 
             <div class="d-flex justify-content-between align-items-start mb-2">
@@ -34,13 +34,13 @@
 
                 <?php if (!empty($_SESSION) && ($_SESSION["email"] === $torneo["email"])): ?>
                     <form action="tornei.php" method="POST">
-                        <input type="text" name="cancellaTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden>
+                        <label><input type="text" name="cancellaTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden></label>
                         <input type="submit" name="elimina" value="Elimina" class="btn btn-danger px-3">
                     </form>
                 <?php endif; ?>
             </div>
 
-            <section class="card-text mb-3">
+            <div class="card-text mb-3">
                 <p class="mb-2"><?php echo $torneo["descrizione"]; ?></p>
 
                 <p class="text-muted small mb-0">
@@ -55,21 +55,21 @@
                 </p>
 
 
-            </section>
+            </div>
 
             <?php if (!empty($_SESSION) && (($_SESSION["email"] === $torneo["email"]))): ?>
-                <section class="mt-3">
+                <div class="mt-3">
                     <form action="modifica-contenuto.php" method="POST" class="form-modifica-torneo d-none">
-                        <input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden>
-                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden>
+                        <label><input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden></label>
+                        <label><input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden></label>
 
                         <div class="mb-2">
-                            <label class="form-label fw-semibold">Nuova data</label>
-                            <input type="date" name="data" value="<?php echo $torneo["data"]; ?>" class="form-control">
+                            <label class="form-label fw-semibold">Nuova data:<input type="date" name="data" value="<?php echo $torneo["data"]; ?>" class="form-control"></label>
                         </div>
 
+                        <label class="form-label fw-semibold" for="<?php echo("descr".getIdFromStringa($torneo["nomeTorneo"]).$torneo["codiceTorneo"]);?>">Nuova descrizione:</label>
                         <textarea name="descrizione" rows="5" maxlength="300"
-                            class="form-control mb-2"><?php echo $torneo["descrizione"]; ?></textarea>
+                            class="form-control mb-2" id="<?php echo("descr".getIdFromStringa($torneo["nomeTorneo"]).$torneo["codiceTorneo"]);?>"><?php echo $torneo["descrizione"]; ?></textarea>
 
                         <input type="submit" name="modificaTorneo" value="Conferma Modifica"
                             class="btn btn-primary rounded-pill px-4">
@@ -83,14 +83,14 @@
                             Modifica Torneo
                         </button>
                     </div>
-                </section>
+                </div>
             <?php endif; ?>
 
             <?php if (!isActive("profilo-tornei.php")): ?>
                 <div class="d-flex justify-content-end mt-3">
                     <form action="tornei.php" method="POST">
-                        <input type="text" name="codiceGioco" value="<?php echo $torneo["codiceGioco"]; ?>" hidden>
-                        <input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden>
+                        <label><input type="text" name="codiceGioco" value="<?php echo $torneo["codiceGioco"]; ?>" hidden></label>
+                        <label><input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden></label>
 
                         <?php if ($torneo["iscritto"]): ?>
                             <button type="submit" name="azione" value="disiscrizione" class="btn btn-secondary rounded-pill px-4">

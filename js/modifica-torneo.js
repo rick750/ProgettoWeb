@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => { 
     const cards = document.querySelectorAll("article.card");
-
     cards.forEach( card => {
             const btnTorneoModificaExpand = card.querySelector(".btn-torneo-update-expand");
             const btnTorneoModificaCollapse = card.querySelector(".btn-torneo-update-collapse");

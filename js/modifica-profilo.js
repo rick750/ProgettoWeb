@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => { 
-    const cards = document.querySelectorAll("article.card");
-
-    cards.forEach( card => {
+    const card = document.getElementById("modifica_profilo");
             const btnProfiloModificaExpand = card.querySelector(".btn-profilo-update-expand");
             const btnProfiloModificaCollapse = card.querySelector(".btn-profilo-update-collapse");
             const formModificaProfilo = card.querySelector(".form-modifica-profilo");
@@ -22,4 +20,3 @@ document.addEventListener("DOMContentLoaded", () => {
             });  
             }
         }); 
-    });

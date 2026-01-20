@@ -40,7 +40,7 @@
                 <?php endif; ?>
             </div>
 
-            <section class="card-text generic-extra-info d-none">
+            <div class="card-text generic-extra-info d-none">
                 <p class="mb-3"><?php echo nl2br(htmlspecialchars($post["testo"])); ?></p>
 
                 <?php if (!empty($_SESSION) && (($_SESSION["email"] === $post["crea_email"]))): ?>
@@ -65,9 +65,9 @@
                         <button class="btn btn-primary rounded-pill btn-sm btn-generic-update-expand">Modifica Post</button>
                     </div>
                 <?php endif; ?>
-            </section>
+            </div>
 
-            <section class="card-text generic-answers d-none mt-3">
+            <div class="card-text generic-answers d-none mt-3">
                 <?php foreach ($post["commenti"] as $answer): ?>
                     <div class="p-3 mb-3 border rounded bg-light position-relative">
                         <p class="fw-bold mb-1 text-primary"><?php echo htmlspecialchars($answer["email"]); ?></p>
@@ -114,7 +114,7 @@
                 <?php if (empty($post["commenti"])): ?>
                     <p class="text-muted fst-italic">Nessuna risposta presente.</p>
                 <?php endif; ?>
-            </section>
+                </div>
 
             <div class="d-flex justify-content-end gap-2 mt-3 flex-wrap">
                 <?php if (!empty($_SESSION)): ?>

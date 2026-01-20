@@ -20,46 +20,44 @@
         <div class="card shadow-sm border-0">
             <div class="card-body p-4">
 
-                <h1 class="fw-bold text-uppercase text-primary mb-4 text-center">
+                <h2 class="fw-bold text-uppercase text-primary mb-4 text-center">
                     Inserisci i dati del tuo nuovo profilo
-                </h1>
+                </h2>
 
                 <form action="registrazione.php" method="POST" novalidate>
 
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Nome</label>
-                            <input type="text" name="nome" class="form-control" required>
+                            <label class="form-label fw-semibold">Nome:<input type="text" name="nome" class="form-control" required></label>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Cognome</label>
-                            <input type="text" name="cognome" class="form-control" required>
+                            <label class="form-label fw-semibold">Cognome:<input type="text" name="cognome" class="form-control" required></label>
+                            
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Data di nascita</label>
-                            <input type="date" name="data_nascita" class="form-control" required>
+                            <label class="form-label fw-semibold">Data di nascita:<input type="date" name="data_nascita" class="form-control" required></label>
+                            
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Matricola</label>
-                            <input type="text" name="matricola" class="form-control" required>
+                            <label class="form-label fw-semibold">Matricola:<input type="text" name="matricola" class="form-control" required></label>
+                            
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label fw-semibold">Mail istituzionale</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <label class="form-label fw-semibold">Mail istituzionale:<input type="email" name="email" class="form-control" required></label>
+                            
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label fw-semibold">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <label class="form-label fw-semibold">Password:<input type="password" name="password" class="form-control" required></label>
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label fw-semibold">Corso di laurea</label>
-                            <select name="codiceCorso" class="form-select" required>
+                            <label class="form-label fw-semibold" for="scelta_corso">Corso di laurea</label>
+                            <select name="codiceCorso" class="form-select" id="scelta_corso" required>
                                 <option value="" disabled selected>-- Seleziona un corso di laurea --</option>
                                 <?php foreach ($templateParams["corsi"] as $corso): ?>
                                     <option value="<?php echo $corso["codiceCorso"]; ?>">
@@ -70,8 +68,8 @@
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label fw-semibold">Dicci qualcosa di te</label>
-                            <textarea name="descr" rows="4" maxlength="200" class="form-control"></textarea>
+                            <label class="form-label fw-semibold" for="descrizione">Dicci qualcosa di te</label>
+                            <textarea name="descr" rows="4" maxlength="200" class="form-control" id="descrizione"></textarea>
                         </div>
                     </div>
 

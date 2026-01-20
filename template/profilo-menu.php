@@ -6,11 +6,10 @@
         </span>
     </p>
 
-    <article class="card shadow-sm mb-4">
+    <div class="card shadow-sm mb-4">
         <div class="card-body">
-
             <div class="row g-3 justify-content-center">
-    <div class="col-12 col-md-3"></div>
+                <div class="col-12 col-md-3"></div>
                 <div class="col-12 col-md-6 d-grid">
                     <a href="creazione-messaggio.php"
                        class="btn btn-info fw-bold rounded-pill py-2">
@@ -47,14 +46,13 @@
                         </a>
                     </div>
                 <?php endif; ?>
-
             </div>
         </div>
-    </article>
+    </div>
 
-    <article class="card shadow-sm mb-4">
+    <div class="card shadow-sm mb-4">
         <div class="card-body">
-            <h5 class="fw-bold text-center mb-4">I tuoi dati</h5>
+            <p class="fw-bold text-center mb-4">I tuoi dati</p>
 
             <div class="row gy-2">
                 <div class="col-12 col-md-6"><strong>Nome:</strong> <?php echo $templateParams["infoUtente"]["nome"]; ?></div>
@@ -66,17 +64,17 @@
                 <div class="col-12"><strong>Descrizione:</strong> <?php echo $templateParams["infoUtente"]["descrizione"]; ?></div>
             </div>
         </div>
-    </article>
+    </div>
 
-    <article class="card shadow-sm">
+    <div class="card shadow-sm" id="modifica_profilo">
         <div class="card-body">
 
             <?php if (!empty($_SESSION)): ?>
-                <form action="profilo.php" method="POST" class="form-modifica-profilo d-none">
+                <form action="profilo.php" method="POST" class="form-modifica-profilo d-none" >
 
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Corso</label>
-                        <select name="codiceCorsoModificato" class="form-select">
+                        <label class="form-label fw-semibold" for="modifica_corso">Corso</label>
+                        <select name="codiceCorsoModificato" class="form-select" id="modifica_corso">
                             <?php foreach ($templateParams["corsi"] as $corso): ?>
                                 <option value="<?php echo $corso["codiceCorso"]; ?>"
                                     <?php if ($corso["codiceCorso"] === $templateParams["vecchioCorso"]["codiceCorso"]) echo "selected"; ?>>
@@ -87,8 +85,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Descrizione</label>
-                        <textarea name="descrizioneModificata" rows="5" maxlength="300"
+                        <label class="form-label fw-semibold" for="descrizione_modificata">Descrizione</label>
+                        <textarea name="descrizioneModificata" rows="5" maxlength="300" id="descrizione_modificata"
                                   class="form-control"><?php echo $templateParams["infoUtente"]["descrizione"]; ?></textarea>
                     </div>
 
@@ -110,6 +108,6 @@
             <?php endif; ?>
 
         </div>
-    </article>
+    </div>
 
 </div>

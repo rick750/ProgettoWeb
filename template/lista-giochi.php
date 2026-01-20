@@ -42,7 +42,7 @@
         <?php $recensioniUtenti = $dbh->getStatisticheRecensioniGioco($gioco["codiceGioco"]); ?>
         <div class="col-12 col-md-6 mb-4">
             <article class="card h-100 shadow-sm border-0 border-start border-4 border-primary"
-                id="<?php echo getIdFromGioco($gioco["nome"]); ?>">
+                id="<?php echo getIdFromStringa($gioco["nome"]); ?>">
                 <div>
                     <img class="img-fluid" src="upload/<?php echo $gioco["immagine"]; ?>"
                         alt="immagine di <?php echo $gioco["nome"]; ?>">
@@ -64,9 +64,9 @@
                         </p>
                     </div>
 
-                    <section class="card-text">
+                    <div>
                         <p class="fw-semibold mb-2">Tag: <?php echo $gioco["listaTag"]; ?></p>
-                    </section>
+                    </div>
 
                     <div class="extra-info d-none">
                         <p>Data di rilascio: <?php echo $gioco["annoDiPubblicazione"]; ?></p>

@@ -85,8 +85,8 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="filter[]"
                                         value="<?php echo $filtro["valore"]; ?>" <?php if (in_array($filtro["valore"], $templateParams["selezionaFiltro"]))
-                                               echo "checked"; ?>>
-                                    <label class="form-check-label">
+                                               echo "checked"; ?> id="<?php echo getIdFromStringa($filtro["valore"]); ?>" />
+                                    <label class="form-check-label" for="<?php echo getIdFromStringa($filtro["valore"]); ?>">
                                         <?php echo $filtro["nome"]; ?>
                                     </label>
                                 </div>
@@ -99,7 +99,7 @@
     </div>
     <main class="container-fluid bg-info bg-opacity-10">
         <div class="row gx-4">
-            <section class="col-md-9 py-4">
+            <div class="col-md-9 py-4">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10 col-xl-9">
                         <?php
@@ -109,7 +109,7 @@
                         ?>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <aside class="col-md-3 bg-primary bg-opacity-10 border-start border-secondary py-4" id="aside">
                 <div>
@@ -125,9 +125,9 @@
 
     <footer class="bg-dark border-bottom border-secondary py-4">
         <div class="container-fluid text-center">
-            <h6 class="text-secondary mb-0">
+            <p class="text-secondary mb-0">
                 Autori: Marco Battistini - Riccardo Carta
-            </h6>
+            </p>
         </div>
     </footer>
 

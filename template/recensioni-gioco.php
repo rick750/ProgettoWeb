@@ -1,7 +1,7 @@
 <div class="mb-3">
     <div class="text-center">
-    <h4 class="mb-2">Recensioni di:</h4>
-        <a href="#<?php echo getIdFromGioco($templateParams["nomeGioco"]); ?>"
+    <h3 class="mb-2">Recensioni di:</h4>
+        <a href="#<?php echo getIdFromStringa($templateParams["nomeGioco"]); ?>"
             class="badge bg-primary text-decoration-none fs-6 px-3 py-2 rounded-pill">
             <?php echo htmlspecialchars($templateParams["nomeGioco"]); ?>
         </a>

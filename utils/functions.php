@@ -26,18 +26,11 @@ function userLogOut(){
     unset($_SESSION["pagina_precedente"]);
 }
 
-function getValueFromCorso($corso){
-    $corso = strtolower($corso);
-    $corso = str_replace(' ', '_', $corso);
-    $corso = preg_replace('/[^a-z0-9_]/', '', $corso);
-    return $corso;
-}
-
-function getIdFromGioco($gioco){
-    $gioco = strtolower($gioco);
-    $gioco = str_replace(' ', '_', $gioco);
-    $gioco = preg_replace('/[^a-z0-9_]/', '', $gioco);
-    return $gioco;
+function getIdFromStringa($stringa){
+    $stringa = strtolower($stringa);
+    $stringa = str_replace(' ', '_', $stringa);
+    $stringa = preg_replace('/[^a-z0-9_]/', '', $stringa);
+    return $stringa;
 }
 
 ?>
