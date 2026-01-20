@@ -15,7 +15,7 @@
     <div class="sticky-top z-3">
         <header class="bg-dark border-bottom border-secondary py-2">
             <div class="container-fluid d-flex align-items-center">
-                <img src="upload/logo.jpg" alt="Logo dell'Unibo" class="img-fluid header-logo">
+                <img src="upload/unibo_logo.png" alt="Logo dell'Unibo" class="img-fluid header-logo">
                 <h1 class="flex-grow-1 text-center mb-0">
                     <a href="index.php" class="fw-bold text-uppercase text-primary text-decoration-none">
                         UNIGAMES
