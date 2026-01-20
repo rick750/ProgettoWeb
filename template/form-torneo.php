@@ -45,7 +45,7 @@
                                     placeholder="Inserisci una breve descrizione del torneo"></textarea>
                             </div>
 
-                            <input type="text" name="torneo" value="torneo" hidden>
+                            <input type="hidden" name="torneo" value="torneo">
 
                             <div class="d-flex gap-3 justify-content-end flex-wrap">
                                 <input type="submit" value="Invia" class="btn btn-primary rounded-pill px-4">

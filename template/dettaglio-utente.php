@@ -1,8 +1,8 @@
-<article class="card h-100 shadow-sm border-0">
+<div class="card h-100 shadow-sm border-0">
     <div class="card-body p-4">
-        <h5 class="card-title fw-bold text-center mb-4">
+        <p class="card-title fw-bold text-center mb-4">
             Dati Utente
-        </h5>
+        </p>
         <div class="row g-3">
             <div class="col-12 col-md-6">
                 <span class="text-muted small">Nome</span>
@@ -62,4 +62,4 @@
         <?php endif; ?>
 
     </div>
-</article>
+</div>

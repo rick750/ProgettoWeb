@@ -26,7 +26,7 @@
                 </label>
                 <input type="text" name="tag" id="tag" class="form-control" placeholder="Nome del tag">
             </div>
-            <input type="text" name="nuovo_tag" value="nuovo_tag" hidden>
+            <input type="hidden" name="nuovo_tag" value="nuovo_tag">
             <div class="col-12 col-md-auto d-flex gap-2">
                 <input type="submit" value="Aggiungi" class="btn btn-primary rounded-pill px-4">
                 <input type="reset" value="Cancella" class="btn btn-secondary rounded-pill px-4">

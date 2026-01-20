@@ -34,7 +34,7 @@
 
                 <?php if (!empty($_SESSION) && ($_SESSION["email"] === $torneo["email"])): ?>
                     <form action="tornei.php" method="POST">
-                        <label><input type="text" name="cancellaTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden></label>
+                        <input type="hidden" name="cancellaTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" >
                         <input type="submit" name="elimina" value="Elimina" class="btn btn-danger px-3">
                     </form>
                 <?php endif; ?>
@@ -60,8 +60,8 @@
             <?php if (!empty($_SESSION) && (($_SESSION["email"] === $torneo["email"]))): ?>
                 <div class="mt-3">
                     <form action="modifica-contenuto.php" method="POST" class="form-modifica-torneo d-none">
-                        <label><input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden></label>
-                        <label><input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden></label>
+                        <input type="hidden" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>">
+                        <input type="hidden" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>">
 
                         <div class="mb-2">
                             <label class="form-label fw-semibold">Nuova data:<input type="date" name="data" value="<?php echo $torneo["data"]; ?>" class="form-control"></label>
@@ -89,8 +89,8 @@
             <?php if (!isActive("profilo-tornei.php")): ?>
                 <div class="d-flex justify-content-end mt-3">
                     <form action="tornei.php" method="POST">
-                        <label><input type="text" name="codiceGioco" value="<?php echo $torneo["codiceGioco"]; ?>" hidden></label>
-                        <label><input type="text" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" hidden></label>
+                        <input type="hidden" name="codiceGioco" value="<?php echo $torneo["codiceGioco"]; ?>" >
+                        <input type="hidden" name="codiceTorneo" value="<?php echo $torneo["codiceTorneo"]; ?>" >
 
                         <?php if ($torneo["iscritto"]): ?>
                             <button type="submit" name="azione" value="disiscrizione" class="btn btn-secondary rounded-pill px-4">

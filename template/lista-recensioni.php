@@ -26,10 +26,10 @@
 
                 <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $recensione["crea_email"]))): ?>
                     <form action="modifica-contenuto.php" method="POST" class="ms-3">
-                        <input type="text" name="cancellaCreaEmail" value="<?php echo $recensione["crea_email"]; ?>" hidden />
-                        <input type="text" name="cancellaCodicePost" value="<?php echo $recensione["codicePost"]; ?>" hidden />
-                        <input type="text" name="cancellaTipoPost" value="R" hidden />
-                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <input type="hidden" name="cancellaCreaEmail" value="<?php echo $recensione["crea_email"]; ?>"/>
+                        <input type="hidden" name="cancellaCodicePost" value="<?php echo $recensione["codicePost"]; ?>"/>
+                        <input type="hidden" name="cancellaTipoPost" value="R"/>
+                        <input type="hidden" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
                         <input type="submit" name="eliminaPost"
                                value="Elimina Recensione"
                                class="btn btn-danger btn-sm flex-shrink-0">
@@ -52,10 +52,10 @@
 
                 <?php if (!empty($_SESSION) && (($_SESSION["email"] === $recensione["crea_email"]))): ?>
                     <form action="modifica-contenuto.php" method="POST" class="form-modifica-recensione d-none mt-4">
-                        <input type="text" name="creaEmail" value="<?php echo $recensione["crea_email"]; ?>" hidden />
-                        <input type="text" name="codicePost" value="<?php echo $recensione["codicePost"]; ?>" hidden />
-                        <input type="text" name="tipoPost" value="R" hidden />
-                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <input type="hidden" name="creaEmail" value="<?php echo $recensione["crea_email"]; ?>"/>
+                        <input type="hidden" name="codicePost" value="<?php echo $recensione["codicePost"]; ?>"/>
+                        <input type="hidden" name="tipoPost" value="R"/>
+                        <input type="hidden" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
 
                         <div class="mb-2">
                             <select id="voto" name="voto" class="form-select form-select-sm">

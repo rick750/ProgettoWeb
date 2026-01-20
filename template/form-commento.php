@@ -10,11 +10,11 @@
             </p>
         </header>
 
-        <section class="card-text generic-extra-info">
+        <div class="card-text generic-extra-info">
             <p class="mb-0">
                 <?php echo $templateParams["post"]["testo"]; ?>
             </p>
-        </section>
+        </div>
     </div>
 </article>
 
@@ -39,10 +39,10 @@
                                     placeholder="Scrivi qui il tuo commento..."></textarea>
                             </div>
 
-                            <input type="text" name="autorePost"
-                                value="<?php echo $templateParams["post"]["crea_email"]; ?>" hidden>
-                            <input type="text" name="codicePost"
-                                value="<?php echo $templateParams["post"]["codicePost"]; ?>" hidden>
+                            <input type="hidden" name="autorePost"
+                                value="<?php echo $templateParams["post"]["crea_email"]; ?>">
+                            <input type="hidden" name="codicePost"
+                                value="<?php echo $templateParams["post"]["codicePost"]; ?>">
 
                             <div class="d-flex gap-3 justify-content-end flex-wrap">
                                 <input type="submit" value="Invia" class="btn btn-primary rounded-pill px-4">

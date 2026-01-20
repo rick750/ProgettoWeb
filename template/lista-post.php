@@ -30,10 +30,10 @@
 
                 <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $post["crea_email"]))): ?>
                     <form action="modifica-contenuto.php" method="POST" class="ms-3">
-                        <input type="text" name="cancellaCreaEmail" value="<?php echo $post["crea_email"]; ?>" hidden />
-                        <input type="text" name="cancellaCodicePost" value="<?php echo $post["codicePost"]; ?>" hidden />
-                        <input type="text" name="cancellaTipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
-                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <input type="hidden" name="cancellaCreaEmail" value="<?php echo $post["crea_email"]; ?>"/>
+                        <input type="hidden" name="cancellaCodicePost" value="<?php echo $post["codicePost"]; ?>"/>
+                        <input type="hidden" name="cancellaTipoPost" value="<?php echo $post["GENERICO"]; ?>"/>
+                        <input type="hidden" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
                         <input type="submit" name="eliminaPost" value="Elimina Post"
                             class="btn btn-danger btn-sm flex-shrink-0">
                     </form>
@@ -45,12 +45,13 @@
 
                 <?php if (!empty($_SESSION) && (($_SESSION["email"] === $post["crea_email"]))): ?>
                     <form action="modifica-contenuto.php" method="POST" class="form-modifica-generico d-none">
-                        <input type="text" name="creaEmail" value="<?php echo $post["crea_email"]; ?>" hidden />
-                        <input type="text" name="codicePost" value="<?php echo $post["codicePost"]; ?>" hidden />
-                        <input type="text" name="tipoPost" value="<?php echo $post["GENERICO"]; ?>" hidden />
-                        <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                        <input type="hidden" name="creaEmail" value="<?php echo $post["crea_email"]; ?>"/>
+                        <input type="hidden" name="codicePost" value="<?php echo $post["codicePost"]; ?>"/>
+                        <input type="hidden" name="tipoPost" value="<?php echo $post["GENERICO"]; ?>"/>
+                        <input type="hidden" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
 
-                        <textarea id="testo_post" name="testo_post" rows="6" maxlength="1000"
+                        <label class="form-label fw-semibold" for="<?php echo($post["crea_email"].$post["codicePost"]);?>">Nuovo testo:</label>
+                        <textarea id="<?php echo($post["crea_email"].$post["codicePost"]);?>" name="testo_post" rows="6" maxlength="1000"
                             class="form-control mb-2"><?php echo htmlspecialchars($post["testo"]); ?></textarea>
 
                         <div class="d-flex gap-2">
@@ -75,11 +76,10 @@
 
                         <?php if (!empty($_SESSION) && ($_SESSION["admin"] || ($_SESSION["email"] === $answer["email"]))): ?>
                             <form action="modifica-contenuto.php" method="POST" class="position-absolute bottom-0 end-0 m-2">
-                                <input type="text" name="cancellaCreaEmail" value="<?php echo $answer["crea_email"]; ?>" hidden />
-                                <input type="text" name="cancellaCodicePost" value="<?php echo $answer["codicePost"]; ?>" hidden />
-                                <input type="text" name="cancellaCodiceCommento" value="<?php echo $answer["codiceCommento"]; ?>"
-                                    hidden />
-                                <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
+                                <input type="hidden" name="cancellaCreaEmail" value="<?php echo $answer["crea_email"]; ?>"/>
+                                <input type="hidden" name="cancellaCodicePost" value="<?php echo $answer["codicePost"]; ?>"/>
+                                <input type="hidden" name="cancellaCodiceCommento" value="<?php echo $answer["codiceCommento"]; ?>"/>
+                                <input type="hidden" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
                                 <input type="submit" name="eliminaCommento" value="Elimina"
                                     class="btn btn-danger btn-sm flex-shrink-0">
                             </form>
@@ -87,12 +87,13 @@
 
                         <?php if (!empty($_SESSION) && (($_SESSION["email"] === $answer["email"]))): ?>
                             <form action="modifica-contenuto.php" method="POST" class="form-modifica-commento d-none">
-                                <input type="text" name="creaEmail" value="<?php echo $answer["crea_email"]; ?>" hidden />
-                                <input type="text" name="codicePost" value="<?php echo $answer["codicePost"]; ?>" hidden />
-                                <input type="text" name="codiceCommento" value="<?php echo $answer["codiceCommento"]; ?>" hidden />
-                                <input type="text" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" hidden />
-
-                                <textarea id="testo_commento" name="testo_commento" rows="4" maxlength="500"
+                                <input type="hidden" name="creaEmail" value="<?php echo $answer["crea_email"]; ?>"/>
+                                <input type="hidden" name="codicePost" value="<?php echo $answer["codicePost"]; ?>"/>
+                                <input type="hidden" name="codiceCommento" value="<?php echo $answer["codiceCommento"]; ?>"/>
+                                <input type="hidden" name="paginaDiRitorno" value="<?php echo $_SERVER["REQUEST_URI"]; ?>"/>
+                                
+                                <label class="form-label fw-semibold" for="<?php echo($answer["crea_email"].$answer["codicePost"].$answer["codiceCommento"]);?>">Nuovo commento:</label>
+                                <textarea id="<?php echo($answer["crea_email"].$answer["codicePost"].$answer["codiceCommento"]);?>" name="testo_commento" rows="4" maxlength="500"
                                     class="form-control mb-2"><?php echo htmlspecialchars($answer["testo"]); ?></textarea>
 
                                 <div class="d-flex gap-2">

@@ -52,7 +52,7 @@
                                           placeholder="Scrivi qui il messaggio..."></textarea>
                             </div>
 
-                            <input type="text" value="messaggio" name="messaggio" hidden>
+                            <input type="hidden" value="messaggio" name="messaggio">
                             <input type="hidden" name="destinatarioObbligato"
                                    value="<?php echo $templateParams['destinatarioObbligato']; ?>">
                             <input type="hidden" name="indietro"

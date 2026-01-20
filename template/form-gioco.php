@@ -61,9 +61,9 @@
                                 <?php foreach ($templateParams["tags"] as $tag): ?>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="tags[]"
-                                            value="<?= $tag["codiceTag"] ?>">
-                                        <label class="form-check-label">
-                                            <?= ucfirst($tag["nome"]) ?>
+                                            value="<?php echo($tag["codiceTag"]); ?>" id="<?php echo($tag["codiceTag"]); ?>">
+                                        <label class="form-check-label" for="<?php echo($tag["codiceTag"]); ?>">
+                                            <?php echo(ucfirst($tag["nome"])); ?>
                                         </label>
                                     </div>
                                 <?php endforeach; ?>
@@ -82,10 +82,10 @@
                             <label for="immagine" class="form-label fw-semibold">
                                 Immagine del gioco
                             </label>
-                            <input type="file" name="immagine" accept="image/*" class="form-control" required>
+                            <input type="file" name="immagine" id="immagine" accept="image/*" class="form-control" required>
                         </div>
 
-                        <input type="text" id="gioco" name="gioco" value="gioco" hidden>
+                        <input type="hidden" id="gioco" name="gioco" value="gioco">
 
                         <div class="d-flex gap-3 justify-content-end flex-wrap">
                             <input type="submit" value="Aggiungi" class="btn btn-primary rounded-pill px-4">
