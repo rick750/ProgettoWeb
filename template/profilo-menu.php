@@ -20,14 +20,14 @@
                 <div class="col-12 col-md-6 d-grid">
                     <a href="profilo-post.php"
                        class="btn btn-primary rounded-pill px-4 py-2">
-                        Post Generici
+                        I Tuoi Post
                     </a>
                 </div>
 
                 <div class="col-12 col-md-6 d-grid">
                     <a href="profilo-recensioni.php"
                        class="btn btn-primary rounded-pill px-4 py-2">
-                        Recensioni
+                        Le Tue Recensioni
                     </a>
                 </div>
 
@@ -35,14 +35,14 @@
                     <div class="col-12 col-md-6 d-grid">
                         <a href="profilo-tornei.php"
                            class="btn btn-primary rounded-pill px-4 py-2">
-                            Tornei Aggiunti
+                            I Tuoi Tornei
                         </a>
                     </div>
 
                     <div class="col-12 col-md-6 d-grid">
                         <a href="profilo-giochi.php"
                            class="btn btn-primary rounded-pill px-4 py-2">
-                            Giochi Aggiunti
+                            I Tuoi Giochi
                         </a>
                     </div>
                 <?php endif; ?>
@@ -53,7 +53,6 @@
     <div class="card shadow-sm mb-4">
         <div class="card-body">
             <p class="fw-bold text-center mb-4">I tuoi dati</p>
-
             <div class="row gy-2">
                 <div class="col-12 col-md-6"><strong>Nome:</strong> <?php echo $templateParams["infoUtente"]["nome"]; ?></div>
                 <div class="col-12 col-md-6"><strong>Cognome:</strong> <?php echo $templateParams["infoUtente"]["cognome"]; ?></div>
