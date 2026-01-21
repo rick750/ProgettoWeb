@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
-if (!empty($_SESSION)) {
-
+if (!empty($_SESSION["email"])) {
+    $_SESSION["pagina_precedente"] = $_SERVER["REQUEST_URI"];
     $templateParams["titolo"] = "Unigames - Tornei";
     $templateParams["nome"] = "lista-tornei.php";
     $templateParams["aside"] = "lista-giochiRandom.php";
@@ -33,19 +33,19 @@ if (!empty($_SESSION)) {
         $dbh->iscriviUtenteATorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
         unset($_POST["azione"]);
         unset($_POST["codiceTorneo"]);
-        header("Location: tornei.php");
+        header("Location: ".$_SESSION["pagina_precedente"]);
     } else if (isset($_POST["azione"]) && $_POST["azione"] === "disiscrizione") {
         $dbh->disiscriviUtenteDaTorneo($_POST["codiceGioco"], $_POST["codiceTorneo"]);
         unset($_POST["azione"]);
         unset($_POST["codiceTorneo"]);
-        header("Location: tornei.php");
+        header("Location: ".$_SESSION["pagina_precedente"]);
     }
 
     if (isset($_POST["elimina"])) {
         $dbh->eliminaTorneo($_POST["cancellaTorneo"]);
         unset($_POST["elimina"]);
         unset($_POST["cancellaTorneo"]);
-        header("Location: tornei.php");
+        header("Location: ".$_SESSION["pagina_precedente"]);
     }
     require 'template/base.php';
 }

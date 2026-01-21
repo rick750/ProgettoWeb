@@ -1,6 +1,6 @@
 <?php
 require_once 'bootstrap.php';
-if (!empty($_SESSION)) {
+if (!empty($_SESSION["email"])) {
     if (isset($_POST["eliminaCommento"])) {
         $dbh->eliminaCommento($_POST["cancellaCreaEmail"], $_POST["cancellaCodicePost"], $_POST["cancellaCodiceCommento"]);
         header("Location: " . $_POST["paginaDiRitorno"]);

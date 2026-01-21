@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $templateParams["titolo"]; ?></title>
 
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="bg-light text-dark">
     <div class="sticky-top z-3">
         <header class="bg-dark border-bottom border-secondary py-2">
             <div class="container-fluid d-flex align-items-center">
-                <img src="upload/unibo_logo.png" alt="Logo dell'Unibo" class="img-fluid header-logo">
+                <img src="upload/unibo_logo.png" class="img-fluid header-logo d-none d-md-block"
+                    alt="Logo dell'Unibo" />
                 <h1 class="flex-grow-1 text-center mb-0">
-                    <a href="index.php" class="fw-bold text-uppercase text-primary text-decoration-none">
+                    <a href="#" class="fw-bold text-uppercase text-primary text-decoration-none">
                         UNIGAMES
                     </a>
                 </h1>

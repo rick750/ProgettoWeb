@@ -1,16 +1,19 @@
 <?php
 require_once 'bootstrap.php';
-$email = $_GET['email'] ?? '';
 
-$templateParams["titolo"] = "Unigames - Dettaglio Utente";
-$templateParams["nome"] = "dettaglio-utente.php";
-$templateParams["aside"] = "lista-giochiRandom.php";
-$templateParams["filtri"] = [];
-$templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
+if (!empty($_SESSION["email"])) {
+    $email = $_GET['email'] ?? '';
 
-if(!empty($email)) {
-    $templateParams["utente"] = $dbh->getUser($email);
+    $templateParams["titolo"] = "Unigames - Dettaglio Utente";
+    $templateParams["nome"] = "dettaglio-utente.php";
+    $templateParams["aside"] = "lista-giochiRandom.php";
+    $templateParams["filtri"] = [];
+    $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
+
+    if (!empty($email)) {
+        $templateParams["utente"] = $dbh->getUser($email);
+    }
+
+    require 'template/base.php';
 }
-
-require 'template/base.php';
 ?>

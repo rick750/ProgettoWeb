@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-if (!empty($_SESSION)) {
+if (!empty($_SESSION["email"])) {
     $templateParams["titolo"] = "Unigames - Profilo";
     $templateParams["nome"] = "profilo-menu.php";
 
