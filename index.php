@@ -6,6 +6,7 @@ if (isset($_SESSION["email"])) {
 $templateParams["titolo"] = "Unigames - Home";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["selezionaFiltro"] = [];
+$templateParams["admin"] = $dbh->getAdmin(2);
 $templateParams["aside"] = "lista-giochiRandom.php";
 $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
 $templateParams["filtri"] = [];

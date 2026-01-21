@@ -127,8 +127,11 @@
     <footer class="bg-dark border-bottom border-secondary py-4">
         <div class="container-fluid text-center">
             <p class="text-secondary mb-0">
-                Autori: Marco Battistini - Riccardo Carta
+                Se hai bisogno di aiuto contatta gli amministratori:
             </p>
+            <?php foreach($templateParams["admin"] as $adm):?>
+                <span class="text-secondary mb-0"><?php echo $adm["email"];?></span><br />
+            <?php endforeach;?>
         </div>
     </footer>
 
