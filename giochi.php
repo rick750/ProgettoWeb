@@ -12,12 +12,13 @@ if (isset($_GET["action"]) && $_GET["action"] === "recensioni" && isset($_GET["c
 
 $templateParams["titolo"] = "Unigames - Libreria Giochi";
 $templateParams["nome"] = "lista-giochi.php";
-$templateParams["libreriaGiochiFunc"] = $dbh -> getLibreriaGiochi();
+$templateParams["admin"] = $dbh->getAdmin(2);
+$templateParams["libreriaGiochiFunc"] = $dbh->getLibreriaGiochi();
 
 $templateParams["filtri"] = array_map(
     fn($t) => [
         "valore" => $t["codiceTag"],
-        "nome"   => $t["nome"]
+        "nome" => $t["nome"]
     ],
     $dbh->getTags()
 );

@@ -4,6 +4,7 @@ if (!empty($_SESSION["email"])) {
     $templateParams["titolo"] = "Unigames - Nuovo Gioco";
     $templateParams["nome"] = "form-gioco.php";
     $templateParams["aside"] = "lista-giochiRandom.php";
+    $templateParams["admin"] = $dbh->getAdmin(2);
     $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
     $templateParams["tags"] = $dbh->getTags();
     $templateParams["indietro"] = "profilo-giochi.php";

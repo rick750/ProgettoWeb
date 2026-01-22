@@ -11,6 +11,7 @@ if (!empty($_SESSION["email"])) {
     }
     $templateParams["titolo"] = "Unigames - Giochi aggiunti";
     $templateParams["nome"] = "lista-giochi.php";
+    $templateParams["admin"] = $dbh->getAdmin(2);
     $templateParams["libreriaGiochiFunc"] = $dbh->getAdminGiochi($_SESSION["email"]);
 
     $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);

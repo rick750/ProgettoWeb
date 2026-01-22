@@ -5,6 +5,7 @@ $templateParams["filtri"] = [];
 $templateParams["titolo"] = "Unigames - Registrazione";
 $templateParams["corsi"] = $dbh->getCorsi();
 $templateParams["nome"] = "login-main.php";
+$templateParams["admin"] = $dbh->getAdmin(2);
 $templateParams["aside"] = "login-aside.php";
 $valido = true;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

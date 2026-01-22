@@ -4,6 +4,7 @@ require_once 'bootstrap.php';
 $templateParams["filtri"] = [];
 $templateParams["titolo"] = "Unigames - Login";
 $templateParams["corsi"] = $dbh->getCorsi();
+$templateParams["admin"] = $dbh->getAdmin(2);
 $templateParams["nome"] = "login-main.php";
 $templateParams["aside"] = "login-aside.php";
 

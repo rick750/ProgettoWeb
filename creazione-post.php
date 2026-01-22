@@ -3,6 +3,7 @@ require_once 'bootstrap.php';
 if (!empty($_SESSION["email"])) {
     $templateParams["titolo"] = "Unigames - Nuovo Post";
     $templateParams["nome"] = "form-post.php";
+    $templateParams["admin"] = $dbh->getAdmin(2);
     $templateParams["giochi"] = $dbh->getLibreriaGiochi([]);
 
     $templateParams["aside"] = "lista-giochiRandom.php";

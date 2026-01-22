@@ -4,6 +4,7 @@ if (!empty($_SESSION["email"])) {
     $templateParams["titolo"] = "Unigames - Post dell'utente";
     $templateParams["nome"] = "lista-post.php";
     $templateParams["post"] = $dbh->getUserGenerici();
+    $templateParams["admin"] = $dbh->getAdmin(2);
     $_SESSION["pagina_precedente"] = $_SERVER["REQUEST_URI"];
     foreach ($templateParams["post"] as &$post) {
         $post["commenti"] = $dbh->getCommentiPost($post["crea_email"], $post["codicePost"]);

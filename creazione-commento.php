@@ -12,6 +12,7 @@ if (!empty($_SESSION["email"])) {
     $templateParams["titolo"] = "Unigames - Nuovo Commento";
     $templateParams["nome"] = "form-commento.php";
 
+    $templateParams["admin"] = $dbh->getAdmin(2);
     $templateParams["aside"] = "lista-giochiRandom.php";
     $templateParams["giochiRandomFunc"] = $dbh->getGiochiRandom(3);
     $templateParams["indietro"] = $_SESSION["pagina_precedente"];
